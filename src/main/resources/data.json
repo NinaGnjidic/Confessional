@@ -1,0 +1,296 @@
+{
+	"categories": [
+		{
+			"id": 0,
+			"name": "Oholost"
+		},
+		{
+			"id": 1,
+			"name": "Zavist"
+		},
+		{
+			"id": 2,
+			"name": "Gnjev"
+		},
+		{
+			"id": 3,
+			"name": "Lijenost"
+		},
+		{
+			"id": 4,
+			"name": "Pohota"
+		},
+		{
+			"id": 5,
+			"name": "Proždrljivost"
+		},
+		{
+			"id": 6,
+			"name": "Pohlepa"
+		},
+		{
+			"id": 7,
+			"name": "Duhovna mlakost"
+		},
+		{
+			"id": 8,
+			"name": "Ometanje drugih u dobru"
+		},
+		{
+			"id": 9,
+			"name": "Skrnavljenje svetoga"
+		}
+	],
+	"details": [
+		{
+			"id": 0,
+			"categoryId": 0,
+			"name": "Uzdizanje iznad drugih"
+		},
+		{
+			"id": 1,
+			"categoryId": 0,
+			"name": "Neprihvaćanje kritike"
+		},
+		{
+			"id": 2,
+			"categoryId": 0,
+			"name": "Lažna poniznost"
+		},
+		{
+			"id": 3,
+			"categoryId": 0,
+			"name": "Omalovažavanje drugih"
+		},
+		{
+			"id": 4,
+			"categoryId": 0,
+			"name": "Samodostatnost"
+		},
+		{
+			"id": 5,
+			"categoryId": 1,
+			"name": "Ljubomora na tuđi uspjeh"
+		},
+		{
+			"id": 6,
+			"categoryId": 1,
+			"name": "Mržnja zbog tuđe sreće"
+		},
+		{
+			"id": 7,
+			"categoryId": 1,
+			"name": "Ogovaranje iz zavisti"
+		},
+		{
+			"id": 8,
+			"categoryId": 1,
+			"name": "Sabotiranje drugih"
+		},
+		{
+			"id": 9,
+			"categoryId": 1,
+			"name": "Nezahvalnost"
+		},
+		{
+			"id": 10,
+			"categoryId": 2,
+			"name": "Vikanje"
+		},
+		{
+			"id": 11,
+			"categoryId": 2,
+			"name": "Fizičko nasilje"
+		},
+		{
+			"id": 12,
+			"categoryId": 2,
+			"name": "Mržnja"
+		},
+		{
+			"id": 13,
+			"categoryId": 2,
+			"name": "Osvetoljubivost"
+		},
+		{
+			"id": 14,
+			"categoryId": 2,
+			"name": "Netolerancija"
+		},
+		{
+			"id": 15,
+			"categoryId": 3,
+			"name": "Zanemarivanje dužnosti"
+		},
+		{
+			"id": 16,
+			"categoryId": 3,
+			"name": "Duhovna lijenost"
+		},
+		{
+			"id": 17,
+			"categoryId": 3,
+			"name": "Odgađanje molitve"
+		},
+		{
+			"id": 18,
+			"categoryId": 3,
+			"name": "Nemarnost"
+		},
+		{
+			"id": 19,
+			"categoryId": 3,
+			"name": "Neangažiranost"
+		},
+		{
+			"id": 20,
+			"categoryId": 4,
+			"name": "Bludnost"
+		},
+		{
+			"id": 21,
+			"categoryId": 4,
+			"name": "Pornografija"
+		},
+		{
+			"id": 22,
+			"categoryId": 4,
+			"name": "Preljub"
+		},
+		{
+			"id": 23,
+			"categoryId": 4,
+			"name": "Nepristojne misli"
+		},
+		{
+			"id": 24,
+			"categoryId": 4,
+			"name": "Zavođenje"
+		},
+		{
+			"id": 25,
+			"categoryId": 5,
+			"name": "Pretjerano jedenje"
+		},
+		{
+			"id": 26,
+			"categoryId": 5,
+			"name": "Opijanje"
+		},
+		{
+			"id": 27,
+			"categoryId": 5,
+			"name": "Rastrošnost hranom"
+		},
+		{
+			"id": 28,
+			"categoryId": 5,
+			"name": "Traženje luksuza u jelu"
+		},
+		{
+			"id": 29,
+			"categoryId": 5,
+			"name": "Neumjerenost u piću"
+		},
+		{
+			"id": 30,
+			"categoryId": 6,
+			"name": "Lakomanstvo"
+		},
+		{
+			"id": 31,
+			"categoryId": 6,
+			"name": "Krađa"
+		},
+		{
+			"id": 32,
+			"categoryId": 6,
+			"name": "Mito"
+		},
+		{
+			"id": 33,
+			"categoryId": 6,
+			"name": "Zlouporaba bogatstva"
+		},
+		{
+			"id": 34,
+			"categoryId": 6,
+			"name": "Bezosjećajnost prema siromašnima"
+		},
+		{
+			"id": 35,
+			"categoryId": 7,
+			"name": "Nedostatak vjere"
+		},
+		{
+			"id": 36,
+			"categoryId": 7,
+			"name": "Ravnodušnost prema sakramentima"
+		},
+		{
+			"id": 37,
+			"categoryId": 7,
+			"name": "Ignoriranje duhovne borbe"
+		},
+		{
+			"id": 38,
+			"categoryId": 7,
+			"name": "Formalizam u molitvi"
+		},
+		{
+			"id": 39,
+			"categoryId": 7,
+			"name": "Zanemarivanje ispovijedi"
+		},
+		{
+			"id": 40,
+			"categoryId": 8,
+			"name": "Navoditi druge na grijeh"
+		},
+		{
+			"id": 41,
+			"categoryId": 8,
+			"name": "Ismijavanje vjere"
+		},
+		{
+			"id": 42,
+			"categoryId": 8,
+			"name": "Nepotrebno skandaliziranje"
+		},
+		{
+			"id": 43,
+			"categoryId": 8,
+			"name": "Podrivanje autoriteta Crkve"
+		},
+		{
+			"id": 44,
+			"categoryId": 8,
+			"name": "Negativan utjecaj na mlade"
+		},
+		{
+			"id": 45,
+			"categoryId": 9,
+			"name": "Bogohuljenje"
+		},
+		{
+			"id": 46,
+			"categoryId": 9,
+			"name": "Neprikladno ponašanje u crkvi"
+		},
+		{
+			"id": 47,
+			"categoryId": 9,
+			"name": "Zlouporaba svetih predmeta"
+		},
+		{
+			"id": 48,
+			"categoryId": 9,
+			"name": "Nepristojna pričest"
+		},
+		{
+			"id": 49,
+			"categoryId": 9,
+			"name": "Ismijavanje svetih stvari"
+		}
+	]
+}
