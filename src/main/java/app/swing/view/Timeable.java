@@ -7,10 +7,8 @@ import javax.swing.SwingUtilities;
 public interface Timeable {
 
 	default void startTimer(long ms) {
-		// Stop any previously running timer
 		stopTimer();
 
-		// Create and store a new timer
 		Timer timer = new Timer();
 		setTimer(timer);
 
@@ -19,7 +17,7 @@ public interface Timeable {
 			public void run() {
 				SwingUtilities.invokeLater(() -> {
 					onTimerUp();
-					stopTimer(); // stop the timer after running
+					stopTimer();
 				});
 			}
 		}, ms);
@@ -34,6 +32,8 @@ public interface Timeable {
 	}
 
 	void onTimerUp();
+
 	void setTimer(Timer timer);
+
 	Timer getTimer();
 }

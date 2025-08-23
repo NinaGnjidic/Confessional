@@ -11,7 +11,7 @@ import main.java.app.model.Data;
 
 public class DataReader {
 	
-	private DataReader() {};
+	private DataReader() {}
 	
 	public static Optional<Data> readData() {
 		Optional<Data> data = Optional.empty();
