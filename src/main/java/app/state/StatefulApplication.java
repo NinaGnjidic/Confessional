@@ -1,5 +1,7 @@
 package main.java.app.state;
 
+import java.awt.Font;
+import java.awt.GraphicsEnvironment;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -18,16 +20,27 @@ import main.java.app.util.DataReader;
 public abstract class StatefulApplication {
 	
 	private ApplicationFrame frame;
+	private Font font;
 
 	private Data data;
 	
 	Map<Category, List<Detail>> deatilsPerCategory;
 	protected Map<Category, List<Detail>> selectedDeatilsPerCategory;
 
+	protected StatefulApplication(String title, Font font) {
+		this(title);
+		this.font = font;
+        GraphicsEnvironment.getLocalGraphicsEnvironment().registerFont(this.font);
+	}
+	
 	protected StatefulApplication(String title) {
 		readData();
 		
 		this.frame = new ApplicationFrame(title);
+	}
+	
+	public String getFontName() {
+		return this.font.getFontName();
 	}
 
 	public void start(StatefulPanel firstPanel) {

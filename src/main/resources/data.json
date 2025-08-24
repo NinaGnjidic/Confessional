@@ -2,43 +2,53 @@
 	"categories": [
 		{
 			"id": 0,
-			"name": "Oholost"
+			"name": "Oholost",
+			"type": "Teški"
 		},
 		{
 			"id": 1,
-			"name": "Zavist"
+			"name": "Zavist",
+			"type": "Teški"
 		},
 		{
 			"id": 2,
-			"name": "Gnjev"
+			"name": "Gnjev",
+			"type": "Teški"
 		},
 		{
 			"id": 3,
-			"name": "Lijenost"
+			"name": "Lijenost",
+			"type": "Laki"
 		},
 		{
 			"id": 4,
-			"name": "Pohota"
+			"name": "Pohota",
+			"type": "Teški"
 		},
 		{
 			"id": 5,
-			"name": "Proždrljivost"
+			"name": "Proždrljivost",
+			"type": "Laki"
 		},
 		{
 			"id": 6,
-			"name": "Pohlepa"
+			"name": "Pohlepa",
+			"type": "Laki"
 		},
 		{
 			"id": 7,
-			"name": "Duhovna mlakost"
+			"name": "Duhovna mlakost",
+			"type": "Laki"
 		},
 		{
 			"id": 8,
-			"name": "Ometanje drugih u dobru"
+			"name": "Ometanje drugih u dobru",
+			"type": "Laki"
 		},
 		{
 			"id": 9,
-			"name": "Skrnavljenje svetoga"
+			"name": "Skrnavljenje svetoga",
+			"type": "Laki"
 		}
 	],
 	"details": [

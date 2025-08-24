@@ -4,12 +4,14 @@ public class Category implements Displayable{
 
 	private long id;
 	private String name;
+	private String type;
 
 	public Category() {}
 
-	public Category(long id, String name) {
+	public Category(long id, String name, String type) {
 		this.id = id;
 		this.name = name;
+		this.type = type;
 	}
 
 	public long getId() {
@@ -19,6 +21,10 @@ public class Category implements Displayable{
 	@Override
 	public String getName() {
 		return name;
+	}
+	
+	public String getType() {
+		return type;
 	}
 
 	@Override

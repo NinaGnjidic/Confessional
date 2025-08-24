@@ -5,7 +5,9 @@
 	<groupId>confessional</groupId>
 	<artifactId>confessional</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+
 	<build>
+		<finalName>confessional</finalName> <!-- This sets the JAR name -->
 		<sourceDirectory>src</sourceDirectory>
 		<plugins>
 			<plugin>
@@ -15,8 +17,27 @@
 					<release>15</release>
 				</configuration>
 			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-shade-plugin</artifactId>
+				<version>3.5.0</version>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>shade</goal>
+						</goals>
+						<configuration>
+							<transformers>
+								<transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+									<mainClass>main.java.app.Main</mainClass>
+								</transformer>
+							</transformers>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
-
 	</build>
 	<dependencies>
 		<dependency>

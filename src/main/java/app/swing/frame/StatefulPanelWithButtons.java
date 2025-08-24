@@ -33,6 +33,12 @@ public abstract class StatefulPanelWithButtons<T extends Displayable> extends St
 		this.pageSize = pageSize;
 	}
 	
+	protected StatefulPanelWithButtons(StatefulApplication app, List<T> data, int pageSize, String backgroundImagePath) {
+		super(app, backgroundImagePath);
+		this.data = data;
+		this.pageSize = pageSize;
+	}
+	
 	@Override
 	public void update() {
 		//it is okay to do nothing
@@ -49,7 +55,6 @@ public abstract class StatefulPanelWithButtons<T extends Displayable> extends St
 		centerPanel.add(rightPanel);
 		add(centerPanel, BorderLayout.CENTER);
 
-//		updateButtons();
 		setVisible(true);
 	}
 

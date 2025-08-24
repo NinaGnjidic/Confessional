@@ -8,11 +8,6 @@ import javax.swing.SwingUtilities;
 
 public class ApplicationFrame extends JFrame {
 
-	//TODO:
-	// - enable full screen
-	// - make able to have 2 columns of buttons
-	//   - if buttons are used the title is at the top, otherwise it's centered
-	
 	private static final long serialVersionUID = -7617117210435008140L;
 
 	private String title;
@@ -23,12 +18,11 @@ public class ApplicationFrame extends JFrame {
 	public ApplicationFrame(String title) {
 		this.title = title;
 	}
-
+	
 	public void init(StatefulPanel firstPanel) {
 		this.setTitle(title);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setSize(400, 200);
-//		this.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		this.setLocationRelativeTo(null);
 		
 		cardLayout = new CardLayout();
@@ -51,8 +45,6 @@ public class ApplicationFrame extends JFrame {
 	    newPanel.setVisible(true);
 	    newPanel.setFocusable(true);
 		SwingUtilities.invokeLater(newPanel::requestFocusInWindow);
-
-//	    newPanel.requestFocusInWindow();
 	}
 
 }
