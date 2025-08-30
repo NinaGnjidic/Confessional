@@ -34,20 +34,24 @@ public class EndView extends StatefulPanel{
 
 	@Override
 	public void handleInput() {
+		String content = createDetailsPerCategoryString();
+		String aiResponse = "";
+		try {
+			aiResponse = AIService.confessional(content);
+		} catch (IOException | InterruptedException e1) {
+			System.out.println("woops! something went wrong while talking with AI");
+			e1.printStackTrace();
+		}
+		String printContent = aiResponse;
+		
+		displayAIMessage(printContent);
+		
 		this.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyPressed(KeyEvent e) {
-				String content = createDetailsPerCategoryString();
-				System.out.println(content);
+				
 				try {
-					String aiResponse = AIService.confessional(content);
-					content = content + "\n" + aiResponse;
-				} catch (IOException | InterruptedException e1) {
-					System.out.println("woops! something went wrong while talking with AI");
-					e1.printStackTrace();
-				}
-				try {
-					PrinterService.print(content);
+					PrinterService.print(printContent);
 				} catch (Exception e1) {
 					e1.printStackTrace();
 					System.out.println("woops! something went wrong while printing");
@@ -58,6 +62,19 @@ public class EndView extends StatefulPanel{
 		});
 		
 		
+	}
+
+	private void displayAIMessage(String aiResponse) {
+		JLabel responseLabel = new JLabel(
+				"<html><div style='text-align: center;'>" + aiResponse.replace("\n", "<br>") + "</div></html>",
+				SwingConstants.CENTER);
+		responseLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		responseLabel.setVerticalAlignment(SwingConstants.CENTER);
+
+		this.add(responseLabel, BorderLayout.CENTER);
+
+		revalidate();
+		repaint();
 	}
 	
 	private String createDetailsPerCategoryString() {

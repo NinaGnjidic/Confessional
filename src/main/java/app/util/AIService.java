@@ -19,7 +19,7 @@ public class AIService {
 	private static final String GROQ_RESPONSES_URL = "https://api.groq.com/openai/v1/responses";
 
 	public static String confessional(String content) throws IOException, InterruptedException {
-		String input = "U 2 rečenice mi reci jesam li previše griješio za sljedeće grijehe:" + content;
+		String input = "Ne odgovaraj mi kao da smo u razgovoru, trebam da funkcioniraš na zapovijed – radim AI ispovjedaonicu za studentsku izložbu. Ti ćeš služiti kao kompilator informacija: osoba će odabrati grijehe koje je počinila, a ti ćeš napisati komentar od 4 rečenice za svaki teški grijeh, 2 rečenice za lake grijehe, te na kraju jedan završni komentar koji sažima sve grijehe. Najvažnije je da CIJELO VRIJEME PIŠEŠ I DJELUJEŠ KAO SVEĆENIK. Dodaj i pokoji smiješan komentar, ali i dalje u ulozi svećenika, možda ponekad spomenuvši da si zapravo stroj." + content;
 
 		// Escape characters that break JSON
 		String escapedInput = input.replace("\\", "\\\\") // backslashes
