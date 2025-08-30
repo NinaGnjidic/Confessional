@@ -3,52 +3,72 @@
 		{
 			"id": 0,
 			"name": "Oholost",
-			"type": "Teški"
+			"type": {
+				"name": "Teški"
+			}
 		},
 		{
 			"id": 1,
 			"name": "Zavist",
-			"type": "Teški"
+			"type": {
+				"name": "Teški"
+			}
 		},
 		{
 			"id": 2,
 			"name": "Gnjev",
-			"type": "Teški"
+			"type": {
+				"name": "Teški"
+			}
 		},
 		{
 			"id": 3,
 			"name": "Lijenost",
-			"type": "Laki"
+			"type": {
+				"name": "Laki"
+			}
 		},
 		{
 			"id": 4,
 			"name": "Pohota",
-			"type": "Teški"
+			"type": {
+				"name": "Teški"
+			}
 		},
 		{
 			"id": 5,
 			"name": "Proždrljivost",
-			"type": "Laki"
+			"type": {
+				"name": "Laki"
+			}
 		},
 		{
 			"id": 6,
 			"name": "Pohlepa",
-			"type": "Laki"
+			"type": {
+				"name": "Laki"
+			}
 		},
 		{
 			"id": 7,
 			"name": "Duhovna mlakost",
-			"type": "Laki"
+			"type": {
+				"name": "Laki"
+			}
 		},
 		{
 			"id": 8,
 			"name": "Ometanje drugih u dobru",
-			"type": "Laki"
+			"type": {
+				"name": "Laki"
+			}
 		},
 		{
 			"id": 9,
 			"name": "Skrnavljenje svetoga",
-			"type": "Laki"
+			"type": {
+				"name": "Laki"
+			}
 		}
 	],
 	"details": [

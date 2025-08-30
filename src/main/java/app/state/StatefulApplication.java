@@ -13,6 +13,7 @@ import javax.swing.SwingUtilities;
 import main.java.app.model.Category;
 import main.java.app.model.Data;
 import main.java.app.model.Detail;
+import main.java.app.model.Type;
 import main.java.app.swing.frame.ApplicationFrame;
 import main.java.app.swing.frame.StatefulPanel;
 import main.java.app.util.DataReader;
@@ -23,9 +24,11 @@ public abstract class StatefulApplication {
 	private Font font;
 
 	private Data data;
+	private Type type;
 	
 	Map<Category, List<Detail>> deatilsPerCategory;
 	protected Map<Category, List<Detail>> selectedDeatilsPerCategory;
+	private Map<Type, List<Category>> categoriesPerType;
 
 	protected StatefulApplication(String title, Font font) {
 		this(title);
@@ -51,10 +54,15 @@ public abstract class StatefulApplication {
 	private void readData() {
 		Optional<Data> data = DataReader.readData();
 		this.deatilsPerCategory = data.isPresent() ? data.get().getDetailsPerCategory() : new HashMap<>();
+		this.categoriesPerType = data.isPresent() ? data.get().getCategoriesPerType() : new HashMap<>();
 		this.data = data.isPresent() ? data.get() : null;
 		this.selectedDeatilsPerCategory = new HashMap<>();
 	}
 
+	public List<Category> getCategoriesPerType() {
+		return categoriesPerType.get(this.type);
+	}
+	
 	public Map<Category, List<Detail>> getDeatilsPerCategory() {
 		return deatilsPerCategory;
 	}
@@ -67,6 +75,14 @@ public abstract class StatefulApplication {
 		return this.data;
 	}
 	
+	public Type getType() {
+		return type;
+	}
+
+	public void setType(Type type) {
+		this.type = type;
+	}
+
 	public void show(StatefulPanel panel) {
 		this.frame.show(panel);
 	}
@@ -92,6 +108,7 @@ public abstract class StatefulApplication {
 	}
 
 	public void clearSelected() {
+		this.type = null;
 		this.selectedDeatilsPerCategory.clear();
 	}
 }

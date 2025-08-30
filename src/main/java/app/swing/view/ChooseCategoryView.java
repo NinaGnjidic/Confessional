@@ -9,7 +9,7 @@ public class ChooseCategoryView extends StatefulPanelWithButtons<Category> {
 	private static final long serialVersionUID = 5417688993812029835L;
 
 	protected ChooseCategoryView(StatefulApplication app) {
-		super(app, app.getData().getCategories(), 4);
+		super(app, app.getCategoriesPerType(), 4);
 	}
 
 	@Override
@@ -26,10 +26,15 @@ public class ChooseCategoryView extends StatefulPanelWithButtons<Category> {
 	protected void onDataUnSelected(Category data) {
 		onDataSelected(data);
 	}
+	
+	@Override
+	public void onHash() {
+		handleDone();
+	}
 
 	@Override
 	protected void handleDone() {
-		this.app.show(new EndView(app));
+		this.app.show(new ChooseTypeView(app));
 	}
-
+	
 }

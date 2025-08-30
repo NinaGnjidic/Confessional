@@ -76,7 +76,7 @@ public class EndView extends StatefulPanel{
 
 	@Override
 	public void update() {
-		this.app.show(new WelcomeView(app));
+		this.app.show(new InsertCoinView(app));
 	}
 
 }

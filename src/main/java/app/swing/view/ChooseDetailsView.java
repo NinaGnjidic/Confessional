@@ -30,8 +30,14 @@ public class ChooseDetailsView extends StatefulPanelWithButtons<Detail> {
 	}
 
 	@Override
+	public void onHash() {
+		this.handleDone();
+	}
+
+	@Override
 	protected void handleDone() {
 		this.app.show(new ChooseCategoryView(app));
 	}
+	
 
 }

@@ -73,6 +73,11 @@ public class InsertCoinView extends StatefulPanel {
 	public void onButton0() {
 		this.update();
 	}
+	
+	@Override
+	public void onRedButton() {
+		this.update();
+	}
 
 	@Override
 	public void update() {

@@ -23,20 +23,28 @@ public abstract class StatefulPanelWithButtons<T extends Displayable> extends St
 	protected List<T> data = new ArrayList<>();
 	private int pageSize = 4;
 	private int pageIndex = 0;
+	private boolean includeActionButtons;
 
 	private JPanel leftPanel;
 	private JPanel rightPanel;
 
+	protected StatefulPanelWithButtons(StatefulApplication app, List<T> data, int pageSize, boolean includeActionButtons) {
+		this(app, data, pageSize);
+		this.includeActionButtons = includeActionButtons;
+	}
+	
 	protected StatefulPanelWithButtons(StatefulApplication app, List<T> data, int pageSize) {
 		super(app);
 		this.data = data;
 		this.pageSize = pageSize;
+		this.includeActionButtons = true;
 	}
 	
 	protected StatefulPanelWithButtons(StatefulApplication app, List<T> data, int pageSize, String backgroundImagePath) {
 		super(app, backgroundImagePath);
 		this.data = data;
 		this.pageSize = pageSize;
+		this.includeActionButtons = true;
 	}
 	
 	@Override
@@ -49,8 +57,8 @@ public abstract class StatefulPanelWithButtons<T extends Displayable> extends St
 		setLayout(new BorderLayout());
 
 		JPanel centerPanel = new JPanel(new GridLayout(1, 2));
-		leftPanel = new JPanel(new GridLayout(pageSize + 1, 1));
-		rightPanel = new JPanel(new GridLayout(pageSize + 1, 1));
+		leftPanel = new JPanel(new GridLayout(includeActionButtons ? pageSize + 1 : pageSize, 1));
+		rightPanel = new JPanel(new GridLayout(includeActionButtons ? pageSize + 1 : pageSize, 1));
 		centerPanel.add(leftPanel);
 		centerPanel.add(rightPanel);
 		add(centerPanel, BorderLayout.CENTER);
@@ -86,11 +94,13 @@ public abstract class StatefulPanelWithButtons<T extends Displayable> extends St
 			}
 		}
 
-		JButton nextButton = createRightPanelControlButton();
-		rightPanel.add(nextButton);
-		JButton prevButton = createControlButton(EnvConfig.PREVIOUS_BUTTON_LABEL, pageIndex > 0, this::handlePrevious);
-		leftPanel.add(prevButton);
-
+		if(includeActionButtons) {
+			JButton nextButton = createRightPanelControlButton();
+			rightPanel.add(nextButton);
+			JButton prevButton = createControlButton(EnvConfig.PREVIOUS_BUTTON_LABEL, pageIndex > 0, this::handlePrevious);
+			leftPanel.add(prevButton);
+		}
+		
 		leftPanel.revalidate();
 		rightPanel.revalidate();
 		leftPanel.repaint();
@@ -162,7 +172,7 @@ public abstract class StatefulPanelWithButtons<T extends Displayable> extends St
 		handleInput();
 	}
 	
-	protected abstract void handleDone();
+	protected void handleDone() {};
 	protected abstract boolean isDataSelected(T data);
 	protected abstract void onDataSelected(T data);
 	protected abstract void onDataUnSelected(T data);

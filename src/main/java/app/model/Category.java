@@ -4,11 +4,11 @@ public class Category implements Displayable{
 
 	private long id;
 	private String name;
-	private String type;
+	private Type type;
 
 	public Category() {}
 
-	public Category(long id, String name, String type) {
+	public Category(long id, String name, Type type) {
 		this.id = id;
 		this.name = name;
 		this.type = type;
@@ -23,7 +23,7 @@ public class Category implements Displayable{
 		return name;
 	}
 	
-	public String getType() {
+	public Type getType() {
 		return type;
 	}
 
@@ -39,6 +39,5 @@ public class Category implements Displayable{
 		}
 		return false;
 	}
-	
 	
 }

@@ -1,5 +1,6 @@
 package main.java.app.model;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -29,20 +30,26 @@ public class Data {
 	public List<Detail> getDetails() {
 		return details;
 	}
-//
-//	public void setCategories(List<Category> categories) {
-//		this.categories = categories;
-//	}
-//
-//	public void setDetails(List<Detail> details) {
-//		this.details = details;
-//	}
+	
+	public List<Type> getTypes() {
+		return categories.stream().map(Category::getType).distinct().collect(Collectors.toList());
+	}
+	
+	@JsonIgnore
+	public Map<Type, List<Category>> getCategoriesPerType() {
+		Map<Type, List<Category>> categoriesPerType = new LinkedHashMap<>();
 
+		for (Category category : this.getCategories()) {
+			categoriesPerType.computeIfAbsent(category.getType(), (v) -> new ArrayList<Category>()).add(category);
+		}
+		
+		return categoriesPerType;
+	}
+	
 	@JsonIgnore
 	public Map<Category, List<Detail>> getDetailsPerCategory() {
 		Map<Category, List<Detail>> detailsPerCategory = new LinkedHashMap<>();
 
-		// TODO: details without existing categories will be excluded
 		for (Category category : this.getCategories()) {
 			List<Detail> details = this.getDetails().stream().filter(d -> d.getCategoryId() == category.getId()).collect(Collectors.toList());
 			detailsPerCategory.put(category, details);

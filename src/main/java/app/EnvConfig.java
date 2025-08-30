@@ -1,5 +1,9 @@
 package main.java.app;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
 import io.github.cdimascio.dotenv.Dotenv;
 
 public class EnvConfig {
@@ -15,6 +19,10 @@ public class EnvConfig {
 	public static final String NEXT_BUTTON_LABEL = ENV.get("NEXT_BUTTON_LABEL");
 	public static final String PREVIOUS_BUTTON_LABEL = ENV.get("PREVIOUS_BUTTON_LABEL");
 	public static final String DONE_BUTTON_LABEL = ENV.get("DONE_BUTTON_LABEL");
-	
+
+	private static List<String> asList(String label) {
+		String value = ENV.get(label);
+		return Arrays.stream(value.split(",")).map(String::trim).collect(Collectors.toList());
+	}
 	private EnvConfig() {}
 }

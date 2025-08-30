@@ -56,7 +56,7 @@ public class PrivacyPolicyView extends StatefulPanel {
 
 	@Override
 	public void update() {
-		this.app.show(new ChooseCategoryView(app));
+		this.app.show(new ChooseTypeView(app));
 	}
 
 }
