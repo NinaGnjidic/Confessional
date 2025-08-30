@@ -1,0 +1,85 @@
+ZASLONI
+1. INSERT COIN
+	-? bg: 
+	-? label: 
+	- * button
+		-? bg:
+		-? label:
+		-> 2. INSTRUCTIONS
+	- # button
+		-? bg
+		-? label:
+		-> 3. RANKING
+	- coin input
+		-> 4. PRESS (RED) BUTTON
+
+2. INSTRUCTIONS
+	-? bg: 
+	-? label: 
+	- # button
+		-? bg
+		-? label:
+		-> 1. INSERT COIN
+3. RANKING
+	-? bg: 
+	-? label: 	
+	- # button
+		-> 1. INSERT COIN
+	
+
+4. PRESS (RED) BUTTON
+	-? bg: 
+	-? label: 
+	- red button
+		-> 5. PRIVACY POLICY
+
+5. PRIVACY POLICY
+	-? bg: 
+	-? label: 
+	- red button
+		-> 6. CHOOSE TYPE
+6. CHOOSE TYPE
+	-? bg: 
+	-? label: 
+	- teski, laki
+		-? bg: 
+		-? label: 
+		-> 7. CHOOSE CATEGORY
+	- red button
+		-? bg:
+		-? label:
+		-> 8. END
+7. CHOOSE CATEGORY
+	-? bg: 
+	-? label: 
+	-? ...kategorije grijeha
+		-? bg: 
+		-? label: 
+		-> 8. CHOOSE DETAILS
+	-? Nazad/Naprijed
+		-? bg: 
+		-? label: 
+		- listanje
+	- # button
+		-> 6. CHOOSE TYPE
+8. CHOOSE DETAILS
+	-? bg: 
+	-? label: 
+	-? ...grijesi
+		-? bg: 
+		-? label: 
+		- lista odabranih
+	-? Nazad/Naprijed
+		-? bg: 
+		-? label: 
+		- listanje
+		-> Gotovo -> 7. CHOOSE CATEGORY
+	- # button
+		-> 7. CHOOSE CATEGORY
+	
+8. END	
+	-? bg: 
+	-? label:
+	- AI poruka
+	- printanje
+	
