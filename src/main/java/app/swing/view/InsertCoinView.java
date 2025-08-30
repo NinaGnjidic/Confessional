@@ -1,12 +1,9 @@
 package main.java.app.swing.view;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Font;
 
-import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.SwingConstants;
 
 import main.java.app.state.StatefulApplication;
 import main.java.app.swing.button.HashButton;
@@ -19,8 +16,10 @@ public class InsertCoinView extends StatefulPanel {
 	private static final long serialVersionUID = -5509182536642826627L;
 
 	private static final String TITLE = "Ubacite kovanicu!";
-	private static final String LEFT_BUTTON_LABEL = "  Upute";
-	private static final String RIGHT_BUTTON_LABEL = "      Rang lista";
+
+	private ImageTextPanel label;
+	private StarButton starButton;
+	private HashButton hashButton;
 
 	public InsertCoinView(StatefulApplication app) {
 		super(app);
@@ -34,46 +33,45 @@ public class InsertCoinView extends StatefulPanel {
 	@Override
 	public void handleDisplay() {
 		this.setLayout(new BorderLayout());
-		JLabel label = new JLabel(TITLE, SwingConstants.CENTER);
-		label.setForeground(Color.WHITE);
-		label.setFont(new Font(app.getFontName(), Font.BOLD, 35));
 
+		label = new ImageTextPanel(TITLE, null, app.getFont().deriveFont(Font.BOLD, 24));
 		this.add(label, BorderLayout.CENTER);
 
 		JPanel bottomPanel = new JPanel(new BorderLayout());
 		bottomPanel.setOpaque(false);
 
-		ImageTextPanel leftButton = new StarButton(LEFT_BUTTON_LABEL, new Font(app.getFontName(), Font.PLAIN, 10));
-		ImageTextPanel rightButton = new HashButton(RIGHT_BUTTON_LABEL, new Font(app.getFontName(), Font.PLAIN, 10));
-		
-	    bottomPanel.add(leftButton, BorderLayout.WEST);
-	    bottomPanel.add(rightButton, BorderLayout.EAST);
-	    this.add(bottomPanel, BorderLayout.SOUTH);
+		starButton = new StarButton("  Upute", app.getFont());
+		hashButton = new HashButton("      Rang lista", app.getFont());
+
+		bottomPanel.add(starButton, BorderLayout.WEST);
+		bottomPanel.add(hashButton, BorderLayout.EAST);
+
+		this.add(bottomPanel, BorderLayout.SOUTH);
+		this.revalidate();
+		this.repaint();
 	}
-	
+
 	@Override
 	public void handleInput() {
 		this.setFocusable(true);
-	    this.requestFocusInWindow();
-	    
-	    //TODO: listen for coin input - on coin inserted update()
+		this.requestFocusInWindow();
 	}
-	
+
 	@Override
 	public void onStar() {
-		app.show(new InstructionsView(app));
+		starButton.animateButton(() -> app.show(new InstructionsView(app)));
 	}
 
 	@Override
 	public void onHash() {
-		app.show(new RankingView(app));
+		hashButton.animateButton(() -> app.show(new RankingView(app)));
 	}
-	
+
 	@Override
 	public void onButton0() {
 		this.update();
 	}
-	
+
 	@Override
 	public void onRedButton() {
 		this.update();
@@ -81,7 +79,6 @@ public class InsertCoinView extends StatefulPanel {
 
 	@Override
 	public void update() {
-		this.app.show(new PressButtonView(app));
+		label.animateButton(() -> app.show(new PressButtonView(app)));
 	}
-
 }

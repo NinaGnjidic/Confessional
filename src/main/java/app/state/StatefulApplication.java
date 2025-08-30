@@ -42,6 +42,10 @@ public abstract class StatefulApplication {
 		this.frame = new ApplicationFrame(title);
 	}
 	
+	public Font getFont() {
+		return this.font;
+	}
+	
 	public String getFontName() {
 		return this.font.getFontName();
 	}

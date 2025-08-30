@@ -11,11 +11,12 @@ import main.java.app.swing.view.InsertCoinView;
 public class Main {
 
 	public static void main(String[] args) throws FontFormatException, IOException {
-		Font customFont = Font.createFont(Font.TRUETYPE_FONT, Main.class.getResourceAsStream("/fonts/arcade.ttf")).deriveFont(24f);
-        
+		Font customFont = Font.createFont(Font.TRUETYPE_FONT, Main.class.getResourceAsStream("/fonts/PressStart2P-Regular.ttf")).deriveFont(Font.BOLD, 16);
+
 		StatefulApplication app = new StatefulApplication("Ispovjedaonica", customFont) {};
 		StatefulPanel firstPanel = new InsertCoinView(app);
-		
+
 		app.start(firstPanel);
 	}
+
 }
