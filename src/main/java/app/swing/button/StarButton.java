@@ -2,7 +2,7 @@ package main.java.app.swing.button;
 
 import java.awt.Font;
 
-public class StarButton extends ImageTextPanel {
+public class StarButton extends Button {
 
 	private static final long serialVersionUID = -7754726524244795676L;
 	

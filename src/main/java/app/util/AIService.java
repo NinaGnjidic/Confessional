@@ -10,6 +10,7 @@ import java.net.http.HttpResponse.BodyHandlers;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import main.java.app.EnvConfig;
@@ -18,7 +19,7 @@ public class AIService {
 
 	private static final String GROQ_RESPONSES_URL = "https://api.groq.com/openai/v1/responses";
 
-	public static String confessional(String content) throws IOException, InterruptedException {
+	public static String confessional(String content){
 		String input = "Ne odgovaraj mi kao da smo u razgovoru, trebam da funkcioniraš na zapovijed – radim AI ispovjedaonicu za studentsku izložbu. Ti ćeš služiti kao kompilator informacija: osoba će odabrati grijehe koje je počinila, a ti ćeš napisati komentar od 4 rečenice za svaki teški grijeh, 2 rečenice za lake grijehe, te na kraju jedan završni komentar koji sažima sve grijehe. Najvažnije je da CIJELO VRIJEME PIŠEŠ I DJELUJEŠ KAO SVEĆENIK. Dodaj i pokoji smiješan komentar, ali i dalje u ulozi svećenika, možda ponekad spomenuvši da si zapravo stroj." + content;
 
 		// Escape characters that break JSON
@@ -37,12 +38,24 @@ public class AIService {
 				.POST(BodyPublishers.ofString(jsonInput, StandardCharsets.UTF_8)).build();
 
 		HttpClient client = HttpClient.newHttpClient();
-		HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
+		HttpResponse<String> response;
+		try {
+			response = client.send(request, BodyHandlers.ofString());
+		} catch (IOException | InterruptedException e) {
+			e.printStackTrace();
+			return "";
+		}
 
 		String responseContent = response.body();
 		System.out.println("Response JSON: " + responseContent);
 
-		Response res = new ObjectMapper().readValue(responseContent, Response.class);
+		Response res;
+		try {
+			res = new ObjectMapper().readValue(responseContent, Response.class);
+		} catch (JsonProcessingException e) {
+			e.printStackTrace();
+			return "";
+		}
 
 		return res.getOutput().stream().filter(o -> "message".equalsIgnoreCase(o.getType())).findFirst().get()
 				.getContent().get(0).getText();

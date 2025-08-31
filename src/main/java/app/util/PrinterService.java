@@ -19,7 +19,7 @@ public class PrinterService {
 
     private PrinterService() { }
 
-    public static void print(String escposData) throws UnsupportedEncodingException, PrintException {
+    public static void print(String escposData) {
         String printerName = EnvConfig.PRINTER;
 
         PrintService[] services = PrintServiceLookup.lookupPrintServices(null, null);
@@ -37,7 +37,13 @@ public class PrinterService {
             return;
         }
 
-        byte[] textBytes = escposData.getBytes(EnvConfig.PRINTER_ENCODING);
+        byte[] textBytes;
+		try {
+			textBytes = escposData.getBytes(EnvConfig.PRINTER_ENCODING);
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+			return;
+		}
 
         byte[] data = new byte[SELECT_CP852_BYTES.length + textBytes.length + FEED_6_LINES_BYTES.length + CUT_BYTES.length];
 
@@ -54,7 +60,12 @@ public class PrinterService {
         System.arraycopy(CUT_BYTES, 0, data, pos, CUT_BYTES.length);
 
         DocPrintJob printJob = selectedPrinter.createPrintJob();
-        printJob.print(new SimpleDoc(data, DocFlavor.BYTE_ARRAY.AUTOSENSE, null), null);
+        try {
+			printJob.print(new SimpleDoc(data, DocFlavor.BYTE_ARRAY.AUTOSENSE, null), null);
+		} catch (PrintException e) {
+			e.printStackTrace();
+			return;
+		}
 
         System.out.println("Sent to printer!");
     }

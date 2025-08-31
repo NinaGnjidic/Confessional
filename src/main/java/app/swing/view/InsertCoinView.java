@@ -1,13 +1,12 @@
 package main.java.app.swing.view;
 
 import java.awt.BorderLayout;
-import java.awt.Font;
+import java.awt.Component;
 
 import javax.swing.JPanel;
 
 import main.java.app.state.StatefulApplication;
 import main.java.app.swing.button.HashButton;
-import main.java.app.swing.button.ImageTextPanel;
 import main.java.app.swing.button.StarButton;
 import main.java.app.swing.frame.StatefulPanel;
 
@@ -17,12 +16,8 @@ public class InsertCoinView extends StatefulPanel {
 
 	private static final String TITLE = "Ubacite kovanicu!";
 
-	private ImageTextPanel label;
-	private StarButton starButton;
-	private HashButton hashButton;
-
 	public InsertCoinView(StatefulApplication app) {
-		super(app);
+		super(app, TITLE, null);
 	}
 
 	@Override
@@ -31,37 +26,27 @@ public class InsertCoinView extends StatefulPanel {
 	}
 
 	@Override
-	public void handleDisplay() {
-		this.setLayout(new BorderLayout());
-
-		label = new ImageTextPanel(TITLE, null, app.getFont().deriveFont(Font.BOLD, 24));
-		this.add(label, BorderLayout.CENTER);
-
+	protected Component displayBottom() {
 		JPanel bottomPanel = new JPanel(new BorderLayout());
 		bottomPanel.setOpaque(false);
 
-		starButton = new StarButton("  Upute", app.getFont());
-		hashButton = new HashButton("      Rang lista", app.getFont());
+		leftButton = new StarButton("  Upute", app.getFont());
+		rightButton = new HashButton("      Rang lista", app.getFont());
 
-		bottomPanel.add(starButton, BorderLayout.WEST);
-		bottomPanel.add(hashButton, BorderLayout.EAST);
-
-		this.add(bottomPanel, BorderLayout.SOUTH);
-		this.revalidate();
-		this.repaint();
+		bottomPanel.add(leftButton, BorderLayout.WEST);
+		bottomPanel.add(rightButton, BorderLayout.EAST);
 		
-		this.setFocusable(true);
-		this.requestFocusInWindow();
+		return bottomPanel;
 	}
 
 	@Override
 	public void onStar() {
-		starButton.animateButton(() -> app.show(new InstructionsView(app)));
+		leftButton.animateButton(() -> app.show(new InstructionsView(app)));
 	}
 
 	@Override
 	public void onHash() {
-		hashButton.animateButton(() -> app.show(new RankingView(app)));
+		rightButton.animateButton(() -> app.show(new RankingView(app)));
 	}
 
 	//TODO: should be on coin input

@@ -27,21 +27,21 @@ public abstract class StatefulPanelWithButtons<T extends Displayable> extends St
 
 	private JPanel leftPanel;
 	private JPanel rightPanel;
-
+	
 	protected StatefulPanelWithButtons(StatefulApplication app, List<T> data, int pageSize, boolean includeActionButtons) {
 		this(app, data, pageSize);
 		this.includeActionButtons = includeActionButtons;
 	}
-	
+
 	protected StatefulPanelWithButtons(StatefulApplication app, List<T> data, int pageSize) {
-		super(app);
+		super(app, null, null);
 		this.data = data;
 		this.pageSize = pageSize;
 		this.includeActionButtons = true;
 	}
 	
 	protected StatefulPanelWithButtons(StatefulApplication app, List<T> data, int pageSize, String backgroundImagePath) {
-		super(app, backgroundImagePath);
+		super(app, backgroundImagePath, null, null);
 		this.data = data;
 		this.pageSize = pageSize;
 		this.includeActionButtons = true;

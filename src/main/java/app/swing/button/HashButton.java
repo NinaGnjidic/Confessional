@@ -2,7 +2,7 @@ package main.java.app.swing.button;
 
 import java.awt.Font;
 
-public class HashButton extends ImageTextPanel {
+public class HashButton extends Button {
 
 	private static final long serialVersionUID = 6522338955043211588L;
 
