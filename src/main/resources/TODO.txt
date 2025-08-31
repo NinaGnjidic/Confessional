@@ -40,8 +40,8 @@ Također, na početnom ekranu, pritiskom na # možete pogledati rang-listu najve
 	
 
 4. PRESS (RED) BUTTON
-	-? bg: 
-	-? label: 
+	-? bg: STARTNI EKRAN s krizem
+	-? label:  PRITISNI CRVENI GUMB ZA POČETAK (centre/24pt/#b21d1d)
 	- red button
 		-> 5. PRIVACY POLICY
 
@@ -72,21 +72,21 @@ Molimo vas da crvenim gumbom potvrdite da ste pročitali i prihvaćate uvjete za
 	- red button
 		-> 6. CHOOSE TYPE
 6. CHOOSE TYPE
-	-? bg: 
+	-? bg: POZADINA CLEAR- za odabir grijeha.png
 	-? label: 
 	- teski, laki
-		-? bg: 
+		-? bg: POZADINA CLEAR- za odabir grijeha.png
 		-? label: 
 		-> 7. CHOOSE CATEGORY
 	- red button
-		-? bg:
+		-? bg: POZADINA CLEAR- za odabir grijeha.png
 		-? label:
 		-> 8. END
 7. CHOOSE CATEGORY
-	-? bg: 
+	-? bg: POZADINA CLEAR- za odabir grijeha.png
 	-? label: 
 	-? ...kategorije grijeha
-		-? bg: 
+		-? bg: POZADINA CLEAR- za odabir grijeha.png
 		-? label: 
 		-> 8. CHOOSE DETAILS
 	-? Nazad/Naprijed
@@ -96,7 +96,7 @@ Molimo vas da crvenim gumbom potvrdite da ste pročitali i prihvaćate uvjete za
 	- # button
 		-> 6. CHOOSE TYPE
 8. CHOOSE DETAILS
-	-? bg: 
+	-? bg: POZADINA CLEAR- za odabir grijeha.png
 	-? label: 
 	-? ...grijesi
 		-? bg: 
@@ -111,7 +111,7 @@ Molimo vas da crvenim gumbom potvrdite da ste pročitali i prihvaćate uvjete za
 		-> 7. CHOOSE CATEGORY
 	
 8. END	
-	-? bg: 
+	-? bg: POZADINA CLEAR- za odabir grijeha.png
 	-? label:
 	- AI poruka
 	- printanje
