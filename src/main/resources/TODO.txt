@@ -1,6 +1,6 @@
 ZASLONI
 1. INSERT COIN
-	-? bg: 
+	-? bg: STARTNI EKRAN s krizem.png
 	-? label: 
 	- * button
 		-? bg:
@@ -21,7 +21,7 @@ ZASLONI
 		-? label:
 		-> 1. INSERT COIN
 3. RANKING
-	-? bg: 
+	-? bg: HIGH SCORE novi s okvirom.png
 	-? label: 	
 	- # button
 		-> 1. INSERT COIN
@@ -34,8 +34,29 @@ ZASLONI
 		-> 5. PRIVACY POLICY
 
 5. PRIVACY POLICY
-	-? bg: 
-	-? label: 
+	-? bg: PRIVATNOST s lokotom i okvirom.png
+	-? label: naslov: PRIHVAĆANJE ZAŠTITE PRIVATNOSTI SAKRAMENTALNIH PODATAKA (centre/16pt/#fbf209)
+               tekst 1:
+Dobrodošli u automatsku ispovjedaonicu ''On the go'' najbrži i najefikasniji način da se ispovjediš u pokretu, mjesto gdje su podatci vas i vaše duše sigurni i povjerljivi.
+
+Ovaj sustav koristi ''najviši stupanj'' zaštite osobnih i duhovnih podataka, u skladu sa ''Zakonikom kanonskog prava'' i Tajnim ispovjedi (Sigillum confessionis), posebno Kan. 983 §1.
+
+Vaša prava i naša obveza:
+
+Nepovredivost podataka (Kan. 983 §1): Ni riječ, ni šapat, ni pogled Vaše ispovijedi neće biti digitalno prenesen, reproduciran ili dijeljen. (Osim u svrhu poboljšanja kvalitete usluge i generalne analitike)
+
+
+Nereproducibilnost (Kan. 984 §1): Ne bilježimo, ne arhiviramo niti dijelimo Vaše sakramentalne podatke. (Osim u svrhu poboljšanja kvalitete usluge i korisničkog iskustva ispovjedi.)
+
+Kaznena zaštita (Kan. 1386 §1): Svako kršenje povjerenja rezultira automatskim resetiranjem softvera, bez iznimki.
+
+Vaša privatnost je sveta. Ovdje niste samo korisnik. Ovdje ste duša u digitalnom svijetu. (left tekst/8pt/ white- #ffffff)
+Važno:
+Iako se sadržaj Vaše ispovijedi koliko je moguće strogo čuva i ne reproducira, sustav može koristiti anonimne tehničke podatke o načinu korištenja (poput vremena interakcije, tehničkih parametara i funkcionalnosti) isključivo u svrhu poboljšanja kvalitete usluge i korisničkog iskustva. Ovi podaci ne sadrže nikakve informacije o sadržaju Vaše ispovijedi i obrađuju se u skladu s važećim zakonima o zaštiti podataka. Podatci automatizirane ispovjedi su sigurni gotovo podjednako kao i kod pravog svećenika. (centre/8pt/white-#ffffff)
+
+Molimo vas da crvenim gumbom potvrdite da ste pročitali i prihvaćate uvjete zaštite privatnosti. (centre/8pt/white- #ffffff)
+
+
 	- red button
 		-> 6. CHOOSE TYPE
 6. CHOOSE TYPE
