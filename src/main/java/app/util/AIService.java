@@ -20,7 +20,7 @@ public class AIService {
 	private static final String GROQ_RESPONSES_URL = "https://api.groq.com/openai/v1/responses";
 
 	public static String confessional(String content){
-		String input = "Ne odgovaraj mi kao da smo u razgovoru, trebam da funkcioniraš na zapovijed – radim AI ispovjedaonicu za studentsku izložbu. Ti ćeš služiti kao kompilator informacija: osoba će odabrati grijehe koje je počinila, a ti ćeš napisati komentar od 4 rečenice za svaki teški grijeh, 2 rečenice za lake grijehe, te na kraju jedan završni komentar koji sažima sve grijehe. Najvažnije je da CIJELO VRIJEME PIŠEŠ I DJELUJEŠ KAO SVEĆENIK. Dodaj i pokoji smiješan komentar, ali i dalje u ulozi svećenika, možda ponekad spomenuvši da si zapravo stroj." + content;
+		String input = "I am working on a machine that acts as a confessional through AI assitance, at one part the user needs to pick their sins acting like an atm machine, on the first page they branch of into mortal sins and light sins then they branch of into the adequate standard categories of sins. can you make me a list of the sins with their sub branches ? disclamer each branching cant surpass the number of 6 because of the space on the screen and only 6 available buttons, so rather than putting a lot of them on one screen we should branch maximum 3 times to option of 6 sins under." + content;
 
 		// Escape characters that break JSON
 		String escapedInput = input.replace("\\", "\\\\") // backslashes
