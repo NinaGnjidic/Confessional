@@ -1,29 +1,41 @@
 ZASLONI
 1. INSERT COIN
 	-? bg: STARTNI EKRAN s krizem.png
-	-? label: 
+	-? label: UBACI MILODAR  (centre ali jedan ispod drugog/48pt/-žuta: #eafb00- tamni podslik:#181c7b )
 	- * button
-		-? bg:
-		-? label:
+		-? bg: GUMB NOVI tamniji-prazan    *-ZVJEZDICA SOLO
+		-? label: UPUTE (18pt/ black:#000000)
 		-> 2. INSTRUCTIONS
 	- # button
-		-? bg
-		-? label:
+		-? bg: GUMB NOVI tamniji-prazan     #-HASHTAG SOLO.png
+		-? label: RANG (18pt/ black:#000000)
 		-> 3. RANKING
 	- coin input
 		-> 4. PRESS (RED) BUTTON
 
 2. INSTRUCTIONS
-	-? bg: 
-	-? label: 
+	-? bg: UPUTE s upitnicima.png
+	-? label: UPUTE (CENTRE/36pt/#030984)
+
+Dobrodošli u automatsku ispovjedaonicu.
+Nakon što ubacite kovanicu kao milodar u željenom iznosu i prihvatite obrazac o privatnosti ispovijedi, dolazite do sučelja koje vam nudi odabir grijeha prema njihovim odgovarajućim kategorijama.
+Odaberite grijehe koji vam imaju smisla – možete odabrati više grijeha. Nakon odabira svakog grijeha, pritiskom na tipku # na tipkovnici možete se vratiti natrag i odabrati grijehe iz drugih kategorija.
+
+Grijesi se bilježe prema bodovnom sustavu. Na kraju ispovijedi dobit ćete listić "AI svećenika" s analizom i komentarom na vaše grijehe te ukupnim brojem "griješnih bodova", koji se prevode u broj molitvi koje je potrebno izmoliti kako bi vam grijesi bili oprošteni.
+
+Također, na početnom ekranu, pritiskom na # možete pogledati rang-listu najvećih grješnika.   (LEFT txt/ 11pt/white- #ffffff)
+
+
 	- # button
-		-? bg
-		-? label:
+		-? bg: GUMB NOVI tamniji-prazan
+		-? label: NAZAD (18pt/ black:#000000)
 		-> 1. INSERT COIN
 3. RANKING
 	-? bg: HIGH SCORE novi s okvirom.png
-	-? label: 	
+	-? label: (Generira se rang lista)
 	- # button
+          -? bg: GUMB NOVI tamniji-prazan
+		  -? label: NAZAD (18pt/ black:#000000)
 		-> 1. INSERT COIN
 	
 
