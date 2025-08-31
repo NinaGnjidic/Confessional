@@ -27,21 +27,13 @@ public class PressButtonView extends StatefulPanel {
 		label.setFont(new Font(app.getFontName(), Font.BOLD, 35));
 
 		this.add(label, BorderLayout.CENTER);
-	}
-
-	@Override
-	public void handleInput() {
+		
 		this.setFocusable(true);
 	    this.requestFocusInWindow();
 	}
-	
-	@Override
-	public void onRedButton() {
-		this.update();
-	}
 
 	@Override
-	public void update() {
+	public void onRedButton() {
 		this.app.show(new PrivacyPolicyView(app));
 	}
 

@@ -54,21 +54,13 @@ public class RankingView extends StatefulPanel {
 		ImageTextPanel backButton = new BackButton(new Font(app.getFontName(), Font.PLAIN, 10));
 	    bottomPanel.add(backButton, BorderLayout.EAST);
 	    this.add(bottomPanel, BorderLayout.SOUTH);
-    }
-
-    @Override
-    public void handleInput() {
+	    
         this.setFocusable(true);
         this.requestFocusInWindow();
     }
 
     @Override
     public void onHash() {
-        this.update();
-    }
-
-    @Override
-    public void update() {
         this.app.show(new InsertCoinView(app));
     }
 

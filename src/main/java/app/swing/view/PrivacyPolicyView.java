@@ -41,21 +41,13 @@ public class PrivacyPolicyView extends StatefulPanel {
         textArea.setOpaque(false);
         textArea.setBorder(BorderFactory.createEmptyBorder(100, 100, 0, 60));
         this.add(textArea, BorderLayout.CENTER);
+        
+		this.setFocusable(true);
+	    this.requestFocusInWindow();
     }
 
 	@Override
-	public void handleInput() {
-		this.setFocusable(true);
-	    this.requestFocusInWindow();
-	}
-	
-	@Override
 	public void onRedButton() {
-		this.update();
-	}
-
-	@Override
-	public void update() {
 		this.app.show(new ChooseTypeView(app));
 	}
 

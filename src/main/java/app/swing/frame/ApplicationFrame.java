@@ -1,8 +1,6 @@
 package main.java.app.swing.frame;
 
 import java.awt.CardLayout;
-import java.awt.GraphicsDevice;
-import java.awt.GraphicsEnvironment;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -37,7 +35,8 @@ public class ApplicationFrame extends JFrame {
 	}
 	
 	public void show(StatefulPanel newPanel) {
-		newPanel.showState();
+		newPanel.processData();
+		newPanel.handleDisplay();
 
 		cardPanel.removeAll();
 	    cardPanel.add(newPanel);

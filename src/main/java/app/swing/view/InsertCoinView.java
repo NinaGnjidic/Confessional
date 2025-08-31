@@ -26,7 +26,7 @@ public class InsertCoinView extends StatefulPanel {
 	}
 
 	@Override
-	public void preprocessData() {
+	public void processData() {
 		this.app.clearSelected();
 	}
 
@@ -49,10 +49,7 @@ public class InsertCoinView extends StatefulPanel {
 		this.add(bottomPanel, BorderLayout.SOUTH);
 		this.revalidate();
 		this.repaint();
-	}
-
-	@Override
-	public void handleInput() {
+		
 		this.setFocusable(true);
 		this.requestFocusInWindow();
 	}
@@ -67,18 +64,10 @@ public class InsertCoinView extends StatefulPanel {
 		hashButton.animateButton(() -> app.show(new RankingView(app)));
 	}
 
-	@Override
-	public void onButton0() {
-		this.update();
-	}
-
+	//TODO: should be on coin input
 	@Override
 	public void onRedButton() {
-		this.update();
-	}
-
-	@Override
-	public void update() {
 		label.animateButton(() -> app.show(new PressButtonView(app)));
 	}
+
 }

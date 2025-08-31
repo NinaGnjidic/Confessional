@@ -2,17 +2,14 @@ package main.java.app.swing.frame;
 
 import java.awt.Graphics;
 import java.awt.Image;
-import java.awt.event.ComponentAdapter;
-import java.awt.event.ComponentEvent;
 
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
-import main.java.app.state.State;
 import main.java.app.state.StatefulApplication;
 import main.java.app.util.KeypadListener;
 
-public abstract class StatefulPanel extends JPanel implements State, KeypadListener  {
+public abstract class StatefulPanel extends JPanel implements KeypadListener {
 
 	private static final long serialVersionUID = -6129290005971012152L;
 	private static final String DEFAULT_BACKGROUND_IMAGE_PATH = "/images/background.jpg";
@@ -31,26 +28,10 @@ public abstract class StatefulPanel extends JPanel implements State, KeypadListe
 	protected StatefulPanel(StatefulApplication app, Image backgroundImage) {
 		this.app = app;
 		this.backgroundImage = backgroundImage;
-		
-		init();
+
+		this.addKeyListener(this);
 	}
 	
-    private void init() {
-		this.addKeyListener(this);
-    	
-    	this.addComponentListener(new ComponentAdapter() {
-	        @Override
-	        public void componentResized(ComponentEvent e) {
-	            onComponentResized();
-	        }
-	    });
-	}
-    
-    //TODO: not fully implemented yet
-    protected void onComponentResized() {
-		// it's okay to do nothing
-	}
-
 	@Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
@@ -58,5 +39,8 @@ public abstract class StatefulPanel extends JPanel implements State, KeypadListe
             g.drawImage(backgroundImage, 0, 0, getWidth(), getHeight(), this);
         }
     }
+	
+	public void processData() {};
+    public void handleDisplay() {};
 	
 }

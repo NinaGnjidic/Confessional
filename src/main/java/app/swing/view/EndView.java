@@ -30,10 +30,7 @@ public class EndView extends StatefulPanel{
 		this.setLayout(new BorderLayout());
 		JLabel label = new JLabel("Good job! AI God will not determine how naughty you were... Press any key!", SwingConstants.CENTER);
 		this.add(label);
-	}
-
-	@Override
-	public void handleInput() {
+		
 		String content = createDetailsPerCategoryString();
 		String aiResponse = "";
 		try {
@@ -57,7 +54,8 @@ public class EndView extends StatefulPanel{
 					System.out.println("woops! something went wrong while printing");
 				}
 				
-				update();
+
+				app.show(new InsertCoinView(app));
 			}
 		});
 		
@@ -89,11 +87,6 @@ public class EndView extends StatefulPanel{
 			}
 		}
 		return sb.toString();
-	}
-
-	@Override
-	public void update() {
-		this.app.show(new InsertCoinView(app));
 	}
 
 }

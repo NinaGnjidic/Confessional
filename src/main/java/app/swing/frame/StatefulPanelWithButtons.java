@@ -48,11 +48,6 @@ public abstract class StatefulPanelWithButtons<T extends Displayable> extends St
 	}
 	
 	@Override
-	public void update() {
-		//it is okay to do nothing
-	}
-
-	@Override
 	public void handleDisplay() {
 		setLayout(new BorderLayout());
 
@@ -64,9 +59,9 @@ public abstract class StatefulPanelWithButtons<T extends Displayable> extends St
 		add(centerPanel, BorderLayout.CENTER);
 
 		setVisible(true);
+		handleInput();
 	}
 
-	@Override
 	public void handleInput() {
 		leftPanel.removeAll();
 		rightPanel.removeAll();
