@@ -21,9 +21,12 @@ public class ApplicationFrame extends JFrame {
 	
 	public void init(StatefulPanel firstPanel) {
 		this.setTitle(title);
+		
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-		this.setExtendedState(JFrame.MAXIMIZED_BOTH);
-		this.setUndecorated(true);
+		this.setSize(400, 200);
+		this.setLocationRelativeTo(null);
+//		this.setExtendedState(JFrame.MAXIMIZED_BOTH);
+//		this.setUndecorated(true);
 		
 		cardLayout = new CardLayout();
         cardPanel = new JPanel(cardLayout);

@@ -9,7 +9,7 @@ import javax.print.PrintService;
 import javax.print.PrintServiceLookup;
 import javax.print.SimpleDoc;
 
-import main.java.app.EnvConfig;
+import main.java.app.EnvironmentVariables;
 
 public class PrinterService {
 
@@ -19,8 +19,8 @@ public class PrinterService {
 
     private PrinterService() { }
 
-    public static void print(String escposData) {
-        String printerName = EnvConfig.PRINTER;
+    public static void print(String escposData) throws UnsupportedEncodingException, PrintException {
+        String printerName = EnvironmentVariables.PRINTER;
 
         PrintService[] services = PrintServiceLookup.lookupPrintServices(null, null);
         PrintService selectedPrinter = null;
@@ -37,13 +37,7 @@ public class PrinterService {
             return;
         }
 
-        byte[] textBytes;
-		try {
-			textBytes = escposData.getBytes(EnvConfig.PRINTER_ENCODING);
-		} catch (UnsupportedEncodingException e) {
-			e.printStackTrace();
-			return;
-		}
+        byte[] textBytes = escposData.getBytes(EnvironmentVariables.PRINTER_ENCODING);
 
         byte[] data = new byte[SELECT_CP852_BYTES.length + textBytes.length + FEED_6_LINES_BYTES.length + CUT_BYTES.length];
 

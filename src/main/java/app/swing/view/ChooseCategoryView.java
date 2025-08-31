@@ -28,7 +28,7 @@ public class ChooseCategoryView extends StatefulPanelWithButtons<Category> {
 	}
 	
 	@Override
-	public void onHash() {
+	public void hashButtonPressed() {
 		handleDone();
 	}
 

@@ -29,7 +29,7 @@ public class ChooseTypeView extends StatefulPanelWithButtons<Type>{
 	}
 
 	@Override
-	public void onRedButton() {
+	public void bigRedButtonPressed() {
 		this.app.show(new EndView(app));
 	}
 	

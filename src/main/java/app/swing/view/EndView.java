@@ -1,9 +1,11 @@
 package main.java.app.swing.view;
 
 import java.awt.Component;
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 import java.util.Map;
 
+import javax.print.PrintException;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 
@@ -58,9 +60,14 @@ public class EndView extends StatefulPanel {
 	}
 
 	@Override
-	public void onRedButton() {
+	public void bigRedButtonPressed() {
 		if (printContent != null && !printContent.trim().isEmpty())
-			PrinterService.print(printContent);
+			try {
+				PrinterService.print(printContent);
+			} catch (UnsupportedEncodingException | PrintException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 	}
 
 }

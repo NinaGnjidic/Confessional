@@ -5,7 +5,7 @@ import java.util.Optional;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import main.java.app.EnvConfig;
+import main.java.app.EnvironmentVariables;
 import main.java.app.Main;
 import main.java.app.model.Data;
 
@@ -17,7 +17,7 @@ public class DataReader {
 		Optional<Data> data = Optional.empty();
 		
 		try {
-			InputStream is = Main.class.getClassLoader().getResourceAsStream(EnvConfig.DATA_JSON);
+			InputStream is = Main.class.getClassLoader().getResourceAsStream(EnvironmentVariables.DATA_JSON);
 			ObjectMapper mapper = new ObjectMapper();
 			data = Optional.of(mapper.readValue(is, Data.class));
 		} catch (Exception e) {

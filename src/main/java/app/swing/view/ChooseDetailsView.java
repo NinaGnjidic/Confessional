@@ -30,7 +30,7 @@ public class ChooseDetailsView extends StatefulPanelWithButtons<Detail> {
 	}
 
 	@Override
-	public void onHash() {
+	public void hashButtonPressed() {
 		this.handleDone();
 	}
 

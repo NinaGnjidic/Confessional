@@ -40,18 +40,18 @@ public class InsertCoinView extends StatefulPanel {
 	}
 
 	@Override
-	public void onStar() {
+	public void starButtonPressed() {
 		leftButton.animateButton(() -> app.show(new InstructionsView(app)));
 	}
 
 	@Override
-	public void onHash() {
+	public void hashButtonPressed() {
 		rightButton.animateButton(() -> app.show(new RankingView(app)));
 	}
 
 	//TODO: should be on coin input
 	@Override
-	public void onRedButton() {
+	public void bigRedButtonPressed() {
 		label.animateButton(() -> app.show(new PressButtonView(app)));
 	}
 

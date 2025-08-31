@@ -15,7 +15,7 @@ public class InstructionsView extends StatefulPanel {
 	}
 
 	@Override
-	public void onHash() {
+	public void hashButtonPressed() {
 		rightButton.animateButton(() -> this.app.show(new InsertCoinView(app)));
 	}
 

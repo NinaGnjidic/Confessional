@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import main.java.app.EnvConfig;
+import main.java.app.EnvironmentVariables;
 
 public class RankingService {
     private static final String FILE_NAME = "ranking.txt";
@@ -46,7 +46,7 @@ public class RankingService {
 
     public static void saveScores(List<Integer> scores) throws IOException {
         File file = new File(FILE_NAME);
-        int limit = Math.min(scores.size(), Integer.parseInt(EnvConfig.MAX_SCORES));
+        int limit = Math.min(scores.size(), Integer.parseInt(EnvironmentVariables.MAX_SCORES));
         
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(file))) {
             for (int i = 0; i < limit; i++) {

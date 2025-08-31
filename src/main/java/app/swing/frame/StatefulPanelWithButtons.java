@@ -12,7 +12,7 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JToggleButton;
 
-import main.java.app.EnvConfig;
+import main.java.app.EnvironmentVariables;
 import main.java.app.model.Displayable;
 import main.java.app.state.StatefulApplication;
 
@@ -92,7 +92,7 @@ public abstract class StatefulPanelWithButtons<T extends Displayable> extends St
 		if(includeActionButtons) {
 			JButton nextButton = createRightPanelControlButton();
 			rightPanel.add(nextButton);
-			JButton prevButton = createControlButton(EnvConfig.PREVIOUS_BUTTON_LABEL, pageIndex > 0, this::handlePrevious);
+			JButton prevButton = createControlButton(EnvironmentVariables.PREVIOUS_BUTTON_LABEL, pageIndex > 0, this::handlePrevious);
 			leftPanel.add(prevButton);
 		}
 		
@@ -109,11 +109,11 @@ public abstract class StatefulPanelWithButtons<T extends Displayable> extends St
 	}
 
 	private JButton createNextButton() {
-		return createControlButton(EnvConfig.NEXT_BUTTON_LABEL, true, this::handleNext);
+		return createControlButton(EnvironmentVariables.NEXT_BUTTON_LABEL, true, this::handleNext);
 	}
 	
 	private JButton createDoneButton() {
-		return createControlButton(EnvConfig.DONE_BUTTON_LABEL, true, this::handleDone);
+		return createControlButton(EnvironmentVariables.DONE_BUTTON_LABEL, true, this::handleDone);
 	}
 	
 	private JButton createControlButton(String label, boolean isEnabled, Runnable action) {

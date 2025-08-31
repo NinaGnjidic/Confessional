@@ -13,7 +13,7 @@ import java.util.List;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import main.java.app.EnvConfig;
+import main.java.app.EnvironmentVariables;
 
 public class AIService {
 
@@ -34,7 +34,7 @@ public class AIService {
 
 		HttpRequest request = HttpRequest.newBuilder().uri(URI.create(GROQ_RESPONSES_URL))
 				.header("Content-Type", "application/json")
-				.header("Authorization", "Bearer " + EnvConfig.CONFESSIONAL_API_KEY)
+				.header("Authorization", "Bearer " + EnvironmentVariables.CONFESSIONAL_API_KEY)
 				.POST(BodyPublishers.ofString(jsonInput, StandardCharsets.UTF_8)).build();
 
 		HttpClient client = HttpClient.newHttpClient();

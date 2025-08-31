@@ -14,7 +14,7 @@ public class PrivacyPolicyView extends StatefulPanel {
 	}
 
 	@Override
-	public void onRedButton() {
+	public void bigRedButtonPressed() {
 		label.animateButton(() -> this.app.show(new ChooseTypeView(app)));
 	}
 

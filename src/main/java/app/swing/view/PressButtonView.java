@@ -13,7 +13,7 @@ public class PressButtonView extends StatefulPanel {
 	}
 
 	@Override
-	public void onRedButton() {
+	public void bigRedButtonPressed() {
 		label.animateButton(()-> this.app.show(new PrivacyPolicyView(app)));
 	}
 

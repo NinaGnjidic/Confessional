@@ -16,9 +16,9 @@ import main.java.app.state.StatefulApplication;
 import main.java.app.swing.button.BackButton;
 import main.java.app.swing.button.Button;
 import main.java.app.swing.button.StarButton;
-import main.java.app.util.KeypadListener;
+import main.java.app.util.ButtonListener;
 
-public abstract class StatefulPanel extends JPanel implements KeypadListener {
+public abstract class StatefulPanel extends JPanel implements ButtonListener {
 
 	private static final long serialVersionUID = -6129290005971012152L;
 	private static final String DEFAULT_BACKGROUND_IMAGE_PATH = "/images/background.jpg";
