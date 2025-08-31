@@ -32,12 +32,12 @@ public class ChooseCategoryView extends StatefulPanelWithButtons<Category> {
 	@Override
 	public void hashButtonPressed() {
 		if(isLastPage())
-			rightButton.animateButton(() -> handleDone());
+			rightButton.animateButton(() -> this.app.show(new ChooseTypeView(app)));
 	}
 
 	@Override
 	protected void handleDone() {
-		this.app.show(new ChooseTypeView(app));
+		rightButton.animateButton(() -> this.app.show(new ChooseTypeView(app)));
 	}
 	
 }

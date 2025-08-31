@@ -1,5 +1,7 @@
 package main.java.app.swing.view;
 
+import java.awt.Component;
+
 import main.java.app.state.StatefulApplication;
 import main.java.app.swing.frame.StatefulPanel;
 
@@ -10,6 +12,11 @@ public class PressButtonView extends StatefulPanel {
 
 	public PressButtonView(StatefulApplication app) {
 		super(app, TITLE, "");
+	}
+	
+	@Override
+	protected Component displayBottom() {
+		return null;
 	}
 
 	@Override

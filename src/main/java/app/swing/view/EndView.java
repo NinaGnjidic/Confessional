@@ -1,11 +1,9 @@
 package main.java.app.swing.view;
 
 import java.awt.Component;
-import java.io.UnsupportedEncodingException;
 import java.util.List;
 import java.util.Map;
 
-import javax.print.PrintException;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 
@@ -27,13 +25,13 @@ public class EndView extends StatefulPanel {
 	public EndView(StatefulApplication app) {
 		super(app, TITLE, null);
 	}
-	
+
 	@Override
 	public void processData() {
 		String content = createDetailsPerCategoryString();
 		printContent = AIService.confessional(content);
 	}
-	
+
 	private String createDetailsPerCategoryString() {
 		Map<Category, List<Detail>> detailsPerCategory = app.getSelectedDeatilsPerCategory();
 
@@ -68,7 +66,7 @@ public class EndView extends StatefulPanel {
 	public void bigRedButtonPressed() {
 		if (printContent != null && !printContent.trim().isEmpty())
 			PrinterService.print(printContent);
-		
+
 		label.animateButton(() -> app.show(new InsertCoinView(app)));
 	}
 
