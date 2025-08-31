@@ -7,9 +7,11 @@ import main.java.app.swing.frame.StatefulPanelWithButtons;
 public class ChooseTypeView extends StatefulPanelWithButtons<Type>{
 
 	private static final long serialVersionUID = 1125776317717562001L;
+	
+	private static final String TITLE = "Odaberi tip";
 
 	protected ChooseTypeView(StatefulApplication app) {
-		super(app, app.getData().getTypes(), 1, false);
+		super(app, app.getData().getTypes(), 1, false, TITLE);
 	}
 
 	@Override
@@ -27,7 +29,7 @@ public class ChooseTypeView extends StatefulPanelWithButtons<Type>{
 		this.app.setType(data);
 		this.app.show(new ChooseCategoryView(app));
 	}
-
+	
 	@Override
 	public void bigRedButtonPressed() {
 		this.app.show(new EndView(app));

@@ -19,7 +19,7 @@ public class PrinterService {
 
     private PrinterService() { }
 
-    public static void print(String escposData) throws UnsupportedEncodingException, PrintException {
+    public static void print(String escposData) {
         String printerName = EnvironmentVariables.PRINTER;
 
         PrintService[] services = PrintServiceLookup.lookupPrintServices(null, null);
@@ -37,7 +37,13 @@ public class PrinterService {
             return;
         }
 
-        byte[] textBytes = escposData.getBytes(EnvironmentVariables.PRINTER_ENCODING);
+        byte[] textBytes;
+		try {
+			textBytes = escposData.getBytes(EnvironmentVariables.PRINTER_ENCODING);
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+			return;
+		}
 
         byte[] data = new byte[SELECT_CP852_BYTES.length + textBytes.length + FEED_6_LINES_BYTES.length + CUT_BYTES.length];
 

@@ -128,4 +128,9 @@ public class Button extends JPanel {
 
         timer.start();
     }
+    
+    public void setTextColor(Color textColor) {
+        this.textColor = textColor;
+        repaint();
+    }
 }

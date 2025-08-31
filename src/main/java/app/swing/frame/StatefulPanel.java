@@ -15,7 +15,6 @@ import javax.swing.JTextArea;
 import main.java.app.state.StatefulApplication;
 import main.java.app.swing.button.BackButton;
 import main.java.app.swing.button.Button;
-import main.java.app.swing.button.StarButton;
 import main.java.app.util.ButtonListener;
 
 public abstract class StatefulPanel extends JPanel implements ButtonListener {
@@ -30,7 +29,7 @@ public abstract class StatefulPanel extends JPanel implements ButtonListener {
 
 	protected Button label;
 	protected Button rightButton;
-	protected StarButton leftButton;
+	protected Button leftButton;
 
 	protected StatefulPanel(StatefulApplication app, String title, String text) {
 		this(app, DEFAULT_BACKGROUND_IMAGE_PATH, title, text);
@@ -49,8 +48,7 @@ public abstract class StatefulPanel extends JPanel implements ButtonListener {
 		this.addKeyListener(this);
 	}
 
-	public void processData() {
-	};
+	public void processData() {}
 
 	public void handleDisplay() {
 		this.setLayout(new BorderLayout());
@@ -105,5 +103,5 @@ public abstract class StatefulPanel extends JPanel implements ButtonListener {
 			g.drawImage(backgroundImage, 0, 0, getWidth(), getHeight(), this);
 		}
 	}
-
+	
 }

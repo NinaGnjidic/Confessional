@@ -9,9 +9,10 @@ import main.java.app.swing.frame.StatefulPanelWithButtons;
 public class ChooseDetailsView extends StatefulPanelWithButtons<Detail> {
 
 	private static final long serialVersionUID = -2813996135449968932L;
+	private static final String TITLE = "Odaberi grijeh";
 
 	public ChooseDetailsView(StatefulApplication app, List<Detail> details) {
-		super(app, details, 4);
+		super(app, details, 4, true, TITLE);
 	}
 
 	@Override
@@ -29,9 +30,9 @@ public class ChooseDetailsView extends StatefulPanelWithButtons<Detail> {
 		this.app.removeFromSelected(data);
 	}
 
-	@Override
 	public void hashButtonPressed() {
-		this.handleDone();
+		if(isLastPage())
+			rightButton.animateButton(() -> handleDone());
 	}
 
 	@Override

@@ -20,7 +20,7 @@ public class EndView extends StatefulPanel {
 
 	private static final long serialVersionUID = 5201383428151921653L;
 
-	private static final String TITLE = "Good job! AI God will not determine how naughty you were... Press any key!";
+	private static final String TITLE = "Calculating...";
 
 	String printContent;
 
@@ -60,14 +60,16 @@ public class EndView extends StatefulPanel {
 	}
 
 	@Override
+	protected Component displayBottom() {
+		return null;
+	}
+
+	@Override
 	public void bigRedButtonPressed() {
 		if (printContent != null && !printContent.trim().isEmpty())
-			try {
-				PrinterService.print(printContent);
-			} catch (UnsupportedEncodingException | PrintException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			PrinterService.print(printContent);
+		
+		label.animateButton(() -> app.show(new InsertCoinView(app)));
 	}
 
 }

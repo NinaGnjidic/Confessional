@@ -7,9 +7,11 @@ import main.java.app.swing.frame.StatefulPanelWithButtons;
 public class ChooseCategoryView extends StatefulPanelWithButtons<Category> {
 
 	private static final long serialVersionUID = 5417688993812029835L;
+	
+	private static final String TITLE = "Odaberi kategoriju";
 
 	protected ChooseCategoryView(StatefulApplication app) {
-		super(app, app.getCategoriesPerType(), 4);
+		super(app, app.getCategoriesPerType(), 4, true, TITLE);
 	}
 
 	@Override
@@ -29,7 +31,8 @@ public class ChooseCategoryView extends StatefulPanelWithButtons<Category> {
 	
 	@Override
 	public void hashButtonPressed() {
-		handleDone();
+		if(isLastPage())
+			rightButton.animateButton(() -> handleDone());
 	}
 
 	@Override
