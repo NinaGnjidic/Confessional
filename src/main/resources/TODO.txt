@@ -111,8 +111,8 @@ Molimo vas da crvenim gumbom potvrdite da ste pročitali i prihvaćate uvjete za
 		-> 7. CHOOSE CATEGORY
 	
 8. END	
-	-? bg: POZADINA CLEAR- za odabir grijeha.png
-	-? label:
+	-? bg: ISP CRVENI GUMB KRAJ ekran.png
+	-? label: ISPOVIJEDI GRIJEHE  (CENTRE/24pt/white-#ffffff)
 	- AI poruka
 	- printanje
 	
