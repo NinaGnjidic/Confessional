@@ -4,14 +4,16 @@ public class Detail implements Displayable {
 	private long id;
 	private long categoryId;
 	private String name;
+	private int points;
 
 	public Detail() {
 	}
 
-	public Detail(long id, long categoryId, String name) {
+	public Detail(long id, long categoryId, String name, int points) {
 		this.id = id;
 		this.categoryId = categoryId;
 		this.name = name;
+		this.points = points;
 	}
 
 	public long getId() {
@@ -25,6 +27,10 @@ public class Detail implements Displayable {
 	@Override
 	public String getName() {
 		return name;
+	}
+	
+	public int getPoints() {
+		return points;
 	}
 
 	@Override

@@ -110,6 +110,20 @@ public abstract class StatefulApplication {
 		
 		return false;
 	}
+	
+	public String createDetailsPerCategoryString() {
+		Map<Category, List<Detail>> detailsPerCategory = getSelectedDeatilsPerCategory();
+
+		StringBuilder sb = new StringBuilder();
+		for (Map.Entry<Category, List<Detail>> e : detailsPerCategory.entrySet()) {
+			Category category = e.getKey();
+			sb.append(category.getName()).append("\n");
+			for (Detail detail : e.getValue()) {
+				sb.append("\t").append(detail.getName()).append("\n");
+			}
+		}
+		return sb.toString();
+	}
 
 	public void clearSelected() {
 		this.type = null;

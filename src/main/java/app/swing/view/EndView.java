@@ -2,22 +2,26 @@ package main.java.app.swing.view;
 
 import java.awt.Component;
 import java.util.List;
-import java.util.Map;
+import java.util.stream.Collectors;
 
-import main.java.app.model.Category;
 import main.java.app.model.Detail;
 import main.java.app.state.StatefulApplication;
 import main.java.app.swing.frame.StatefulPanel;
 import main.java.app.util.AIService;
 import main.java.app.util.PrinterService;
+import main.java.app.util.RankingService;
 
 public class EndView extends StatefulPanel {
 
 	private static final long serialVersionUID = 5201383428151921653L;
 
-	private static final String TITLE = "Calculating...";
+	private static final String TITLE = "Calculating sins";
+	private static final String SCORE_CONTENT_PREFIX = "You scored: ";
+	private static final String RANK_CONTENT_PREFIX = "Congratulations! You’ve made it into the top 5 sinners! Your position in the top five is: ";
 
-	String printContent;
+	String AIResponse;
+	int score;
+	int rank;
 
 	public EndView(StatefulApplication app) {
 		super(app, TITLE, null);
@@ -25,27 +29,17 @@ public class EndView extends StatefulPanel {
 
 	@Override
 	public void processData() {
-		String content = createDetailsPerCategoryString();
-		printContent = AIService.confessional(content);
-	}
+		String content = app.createDetailsPerCategoryString();
+		this.AIResponse = AIService.confessional(content);
 
-	private String createDetailsPerCategoryString() {
-		Map<Category, List<Detail>> detailsPerCategory = app.getSelectedDeatilsPerCategory();
-
-		StringBuilder sb = new StringBuilder();
-		for (Map.Entry<Category, List<Detail>> e : detailsPerCategory.entrySet()) {
-			Category category = e.getKey();
-			sb.append(category.getName()).append("\n");
-			for (Detail detail : e.getValue()) {
-				sb.append("\t").append(detail.getName()).append("\n");
-			}
-		}
-		return sb.toString();
+		List<Detail> selecedDetails = app.getSelectedDeatilsPerCategory().values().stream().flatMap(List::stream).collect(Collectors.toList());
+		this.score = selecedDetails.stream().mapToInt(Detail::getPoints).sum();
+		this.rank = RankingService.addScore(score);
 	}
 
 	@Override
 	protected Component displayCenter(String text) {
-		return super.displayCenter(printContent);
+		return super.displayCenter(createContent());
 	}
 
 	@Override
@@ -55,10 +49,38 @@ public class EndView extends StatefulPanel {
 
 	@Override
 	public void bigRedButtonPressed() {
-		if (printContent != null && !printContent.trim().isEmpty())
-			PrinterService.print(printContent);
+		String content = createContent();
+		if (content != null && !content.trim().isEmpty())
+			PrinterService.print(content);
 
 		label.animateButton(() -> app.show(new InsertCoinView(app)));
 	}
+	
+	private String createContent() {
+		StringBuilder sb = new StringBuilder();
 
+		String scoreContent = createScoreContent();
+		if(scoreContent != null && !scoreContent.isEmpty())
+			sb.append(scoreContent).append("\n");
+		
+		String rankingContent = createRankingContent();
+		if(rankingContent != null && !rankingContent.isEmpty())
+			sb.append(rankingContent).append("\n");
+		
+		if(this.AIResponse != null && !this.AIResponse.isEmpty())
+			sb.append(this.AIResponse);
+		
+		return sb.toString();
+	}
+	
+	private String createScoreContent() {
+		return SCORE_CONTENT_PREFIX + this.score;
+	}
+	
+	private String createRankingContent() {
+		if(this.rank < 0)
+			return "";
+		int rankPosition = this.rank + 1;
+		return RANK_CONTENT_PREFIX + rankPosition;
+	}
 }

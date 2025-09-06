@@ -89,362 +89,434 @@
 		{
 			"id": 0,
 			"categoryId": 0,
-			"name": "Pretjerana umišljenost"
+			"name": "Pretjerana umišljenost",
+			"points": 9
 		},
 		{
 			"id": 1,
 			"categoryId": 0,
-			"name": "Ponižavanje drugih"
+			"name": "Ponižavanje drugih",
+			"points": 10
 		},
 		{
 			"id": 2,
 			"categoryId": 0,
-			"name": "Odbijanje kritike"
+			"name": "Odbijanje kritike",
+			"points": 8
 		},
 		{
 			"id": 3,
 			"categoryId": 0,
-			"name": "Oholost u vjeri"
+			"name": "Oholost u vjeri",
+			"points": 11
 		},
 		{
 			"id": 4,
 			"categoryId": 0,
-			"name": "Manipulacija radi pohvale"
+			"name": "Manipulacija radi pohvale",
+			"points": 9
 		},
 		{
 			"id": 5,
 			"categoryId": 0,
-			"name": "Hvalisanje dobrim djelima"
+			"name": "Hvalisanje dobrim djelima",
+			"points": 8
 		},
 		{
 			"id": 6,
 			"categoryId": 1,
-			"name": "Preljub"
+			"name": "Preljub",
+			"points": 12
 		},
 		{
 			"id": 7,
 			"categoryId": 1,
-			"name": "Pornografija"
+			"name": "Pornografija",
+			"points": 10
 		},
 		{
 			"id": 8,
 			"categoryId": 1,
-			"name": "Bludnost"
+			"name": "Bludnost",
+			"points": 10
 		},
 		{
 			"id": 9,
 			"categoryId": 1,
-			"name": "Objektiviziranje drugih"
+			"name": "Objektiviziranje drugih",
+			"points": 9
 		},
 		{
 			"id": 10,
 			"categoryId": 1,
-			"name": "Samozadovoljavanje"
+			"name": "Samozadovoljavanje",
+			"points": 8
 		},
 		{
 			"id": 11,
 			"categoryId": 1,
-			"name": "Navođenje drugih na grijeh"
+			"name": "Navođenje drugih na grijeh",
+			"points": 11
 		},
 		{
 			"id": 12,
 			"categoryId": 2,
-			"name": "Fizičko zlostavljanje"
+			"name": "Fizičko zlostavljanje",
+			"points": 12
 		},
 		{
 			"id": 13,
 			"categoryId": 2,
-			"name": "Namjerno nanošenje boli"
+			"name": "Namjerno nanošenje boli",
+			"points": 11
 		},
 		{
 			"id": 14,
 			"categoryId": 2,
-			"name": "Ubilačke misli"
+			"name": "Ubilačke misli",
+			"points": 11
 		},
 		{
 			"id": 15,
 			"categoryId": 2,
-			"name": "Želja za osvetom"
+			"name": "Želja za osvetom",
+			"points": 10
 		},
 		{
 			"id": 16,
 			"categoryId": 2,
-			"name": "Uvredljiv govor"
+			"name": "Uvredljiv govor",
+			"points": 9
 		},
 		{
 			"id": 17,
 			"categoryId": 2,
-			"name": "Uništavanje tuđe imovine"
+			"name": "Uništavanje tuđe imovine",
+			"points": 10
 		},
 		{
 			"id": 18,
 			"categoryId": 3,
-			"name": "Prijevara ili krađa"
+			"name": "Prijevara ili krađa",
+			"points": 11
 		},
 		{
 			"id": 19,
 			"categoryId": 3,
-			"name": "Pohlepno gomilanje bogatstva"
+			"name": "Pohlepno gomilanje bogatstva",
+			"points": 9
 		},
 		{
 			"id": 20,
 			"categoryId": 3,
-			"name": "Nepravedna isplata plaća"
+			"name": "Nepravedna isplata plaća",
+			"points": 10
 		},
 		{
 			"id": 21,
 			"categoryId": 3,
-			"name": "Korupcija"
+			"name": "Korupcija",
+			"points": 12
 		},
 		{
 			"id": 22,
 			"categoryId": 3,
-			"name": "Iskorištavanje siromašnih"
+			"name": "Iskorištavanje siromašnih",
+			"points": 11
 		},
 		{
 			"id": 23,
 			"categoryId": 3,
-			"name": "Utaja poreza"
+			"name": "Utaja poreza",
+			"points": 10
 		},
 		{
 			"id": 24,
 			"categoryId": 4,
-			"name": "Želja za zlom drugome"
+			"name": "Želja za zlom drugome",
+			"points": 10
 		},
 		{
 			"id": 25,
 			"categoryId": 4,
-			"name": "Sprečavanje tuđeg uspjeha"
+			"name": "Sprečavanje tuđeg uspjeha",
+			"points": 9
 		},
 		{
 			"id": 26,
 			"categoryId": 4,
-			"name": "Zlonamjerno ogovaranje"
+			"name": "Zlonamjerno ogovaranje",
+			"points": 9
 		},
 		{
 			"id": 27,
 			"categoryId": 4,
-			"name": "Neopraštanje"
+			"name": "Neopraštanje",
+			"points": 8
 		},
 		{
 			"id": 28,
 			"categoryId": 4,
-			"name": "Ljubomora na tuđe darove"
+			"name": "Ljubomora na tuđe darove",
+			"points": 8
 		},
 		{
 			"id": 29,
 			"categoryId": 4,
-			"name": "Uživanje u tuđoj nesreći"
+			"name": "Uživanje u tuđoj nesreći",
+			"points": 9
 		},
 		{
 			"id": 30,
 			"categoryId": 5,
-			"name": "Izostanak sa mise bez opravdanja"
+			"name": "Izostanak sa mise bez opravdanja",
+			"points": 9
 		},
 		{
 			"id": 31,
 			"categoryId": 5,
-			"name": "Poricanje vjere"
+			"name": "Poricanje vjere",
+			"points": 12
 		},
 		{
 			"id": 32,
 			"categoryId": 5,
-			"name": "Bavljenje okultnim praksama"
+			"name": "Bavljenje okultnim praksama",
+			"points": 12
 		},
 		{
 			"id": 33,
 			"categoryId": 5,
-			"name": "Skrnavljenje svetih stvari"
+			"name": "Skrnavljenje svetih stvari",
+			"points": 11
 		},
 		{
 			"id": 34,
 			"categoryId": 5,
-			"name": "Odbijanje ispovijedi"
+			"name": "Odbijanje ispovijedi",
+			"points": 10
 		},
 		{
 			"id": 35,
 			"categoryId": 5,
-			"name": "Osramoćivanje euharistije"
+			"name": "Osramoćivanje euharistije",
+			"points": 12
 		},
 		{
 			"id": 36,
 			"categoryId": 6,
-			"name": "Upadanje drugima u riječ"
+			"name": "Upadanje drugima u riječ",
+			"points": 2
 		},
 		{
 			"id": 37,
 			"categoryId": 6,
-			"name": "Želja da uvijek budete u pravu"
+			"name": "Želja da uvijek budete u pravu",
+			"points": 3
 		},
 		{
 			"id": 38,
 			"categoryId": 6,
-			"name": "Blago hvalisanje"
+			"name": "Blago hvalisanje",
+			"points": 2
 		},
 		{
 			"id": 39,
 			"categoryId": 6,
-			"name": "Prevrtanje očima ili ismijavanje"
+			"name": "Prevrtanje očima ili ismijavanje",
+			"points": 2
 		},
 		{
 			"id": 40,
 			"categoryId": 6,
-			"name": "Ne slušanje drugih"
+			"name": "Ne slušanje drugih",
+			"points": 2
 		},
 		{
 			"id": 41,
 			"categoryId": 6,
-			"name": "Prisvajanje tuđih zasluga"
+			"name": "Prisvajanje tuđih zasluga",
+			"points": 3
 		},
 		{
 			"id": 42,
 			"categoryId": 7,
-			"name": "Prejedanje"
+			"name": "Prejedanje",
+			"points": 2
 		},
 		{
 			"id": 43,
 			"categoryId": 7,
-			"name": "Pretjerano opijanje"
+			"name": "Pretjerano opijanje",
+			"points": 4
 		},
 		{
 			"id": 44,
 			"categoryId": 7,
-			"name": "Blago koketiranje"
+			"name": "Blago koketiranje",
+			"points": 3
 		},
 		{
 			"id": 45,
 			"categoryId": 7,
-			"name": "Požudni pogledi"
+			"name": "Požudni pogledi",
+			"points": 3
 		},
 		{
 			"id": 46,
 			"categoryId": 7,
-			"name": "Nečiste šale"
+			"name": "Nečiste šale",
+			"points": 3
 		},
 		{
 			"id": 47,
 			"categoryId": 7,
-			"name": "Ilegalni roštilj"
+			"name": "Ilegalni roštilj",
+			"points": 2
 		},
 		{
 			"id": 48,
 			"categoryId": 8,
-			"name": "Manje laži"
+			"name": "Manje laži",
+			"points": 2
 		},
 		{
 			"id": 49,
 			"categoryId": 8,
-			"name": "Ogovaranje"
+			"name": "Ogovaranje",
+			"points": 3
 		},
 		{
 			"id": 50,
 			"categoryId": 8,
-			"name": "Hladnoća prema drugima"
+			"name": "Hladnoća prema drugima",
+			"points": 2
 		},
 		{
 			"id": 51,
 			"categoryId": 8,
-			"name": "Pasivna agresija"
+			"name": "Pasivna agresija",
+			"points": 3
 		},
 		{
 			"id": 52,
 			"categoryId": 8,
-			"name": "Ignoriranje onih kojima treba pomoć"
+			"name": "Ignoriranje onih kojima treba pomoć",
+			"points": 3
 		},
 		{
 			"id": 53,
 			"categoryId": 8,
-			"name": "Zadržavanje dobrote"
+			"name": "Zadržavanje dobrote",
+			"points": 2
 		},
 		{
 			"id": 54,
 			"categoryId": 9,
-			"name": "Prokastiniranje"
+			"name": "Prokastiniranje",
+			"points": 2
 		},
 		{
 			"id": 55,
 			"categoryId": 9,
-			"name": "Preskakanje molitve"
+			"name": "Preskakanje molitve",
+			"points": 3
 		},
 		{
 			"id": 56,
 			"categoryId": 9,
-			"name": "Kašnjenje iz lijenosti"
+			"name": "Kašnjenje iz lijenosti",
+			"points": 1
 		},
 		{
 			"id": 57,
 			"categoryId": 9,
-			"name": "Ne pomaganje kod kuće"
+			"name": "Ne pomaganje kod kuće",
+			"points": 2
 		},
 		{
 			"id": 58,
 			"categoryId": 9,
-			"name": "Gubljenje vremena"
+			"name": "Gubljenje vremena",
+			"points": 1
 		},
 		{
 			"id": 59,
 			"categoryId": 9,
-			"name": "Zanemarivanje obaveza"
+			"name": "Zanemarivanje obaveza",
+			"points": 3
 		},
 		{
 			"id": 60,
 			"categoryId": 10,
-			"name": "Podli sarkazam"
+			"name": "Podli sarkazam",
+			"points": 3
 		},
 		{
 			"id": 61,
 			"categoryId": 10,
-			"name": "Nestrpljivost"
+			"name": "Nestrpljivost",
+			"points": 2
 		},
 		{
 			"id": 62,
 			"categoryId": 10,
-			"name": "Psovanje"
+			"name": "Psovanje",
+			"points": 3
 		},
 		{
 			"id": 63,
 			"categoryId": 10,
-			"name": "Stalno žaljenje"
+			"name": "Stalno žaljenje",
+			"points": 2
 		},
 		{
 			"id": 64,
 			"categoryId": 10,
-			"name": "Upadanje u riječ"
+			"name": "Upadanje u riječ",
+			"points": 2
 		},
 		{
 			"id": 65,
 			"categoryId": 10,
-			"name": "Cinizam"
+			"name": "Cinizam",
+			"points": 3
 		},
 		{
 			"id": 66,
 			"categoryId": 11,
-			"name": "Prijatelji koji rade vaš glavni zadatak"
+			"name": "Prijatelji koji rade vaš glavni zadatak",
+			"points": 5
 		},
 		{
 			"id": 67,
 			"categoryId": 11,
-			"name": "Doom skrolanje"
+			"name": "Doom skrolanje",
+			"points": 2
 		},
 		{
 			"id": 68,
 			"categoryId": 11,
-			"name": "Shitpostanje"
+			"name": "Shitpostanje",
+			"points": 2
 		},
 		{
 			"id": 69,
 			"categoryId": 11,
-			"name": "Korištenje ChatGPT-a za ispit"
+			"name": "Korištenje ChatGPT-a za ispit",
+			"points": 5
 		},
 		{
 			"id": 70,
 			"categoryId": 11,
-			"name": "Primanje novca preko tuđeg ugovora"
+			"name": "Primanje novca preko tuđeg ugovora",
+			"points": 5
 		},
 		{
 			"id": 71,
 			"categoryId": 11,
-			"name": "Digitalno piratstvo"
+			"name": "Digitalno piratstvo",
+			"points": 4
 		}
 	]
 }

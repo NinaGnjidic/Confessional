@@ -10,18 +10,29 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import main.java.app.EnvironmentVariables;
-
 public class RankingService {
+	
     private static final String FILE_NAME = "ranking.txt";
+    private static final int MAX_RANKINGS = 5;
     
     private RankingService() {}
 
-    public static void addScore(int newScore) throws IOException {
+	/**
+	 * Adds a score, updates the ranking, saves the top {@code MAX_SCORES} to file,
+	 * and returns the 0-based rank of the score. Equal scores share the same rank.
+	 * If the score is not in top {@code MAX_SCORES} scores, -1 is returned.
+	 *
+	 * @param score
+	 * @return rank
+	 */
+    public static int addScore(int score) {
         List<Integer> scores = loadScores();
-        scores.add(newScore);
+        scores.add(score);
         scores.sort(Collections.reverseOrder());
+        scores = scores.subList(0, MAX_RANKINGS -1);
         saveScores(scores);
+        
+        return scores.indexOf(score);
     }
     
     public static List<Integer> loadScores() {
@@ -44,15 +55,16 @@ public class RankingService {
         return scores;
     }
 
-    public static void saveScores(List<Integer> scores) throws IOException {
-        File file = new File(FILE_NAME);
-        int limit = Math.min(scores.size(), Integer.parseInt(EnvironmentVariables.MAX_SCORES));
-        
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter(file))) {
-            for (int i = 0; i < limit; i++) {
-                bw.write(String.valueOf(scores.get(i)));
-                bw.newLine();
-            }
-        }
-    }
+	private static void saveScores(List<Integer> scores) {
+		File file = new File(FILE_NAME);
+
+		try (BufferedWriter writer = new BufferedWriter(new FileWriter(file))) {
+			for (int score : scores) {
+				writer.write(String.valueOf(score));
+				writer.newLine();
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 }
