@@ -7,7 +7,9 @@ public class EnvironmentVariables {
 
 	public static final String PRINTER = ENV.get("PRINTER");
 	public static final String PRINTER_ENCODING = ENV.get("PRINTER_ENCODING");
-	public static final String CONFESSIONAL_API_KEY = ENV.get("CONFESSIONAL_API_KEY");
+	public static final String AI_API_KEY = ENV.get("AI_API_KEY");
+	public static final String AI_RESPONSE_URL = ENV.get("AI_RESPONSE_URL");
+	public static final String AI_PROMPT = ENV.get("AI_PROMPT");
 	public static final String DATA_JSON = ENV.get("DATA_JSON");
 	public static final String NEXT_BUTTON_LABEL = ENV.get("NEXT_BUTTON_LABEL");
 	public static final String PREVIOUS_BUTTON_LABEL = ENV.get("PREVIOUS_BUTTON_LABEL");

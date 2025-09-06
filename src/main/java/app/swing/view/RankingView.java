@@ -23,7 +23,7 @@ public class RankingView extends StatefulPanel {
 	}
 
 	@Override
-	public Component displayCenter() {
+	public Component displayCenter(String text) {
 		JTextArea textArea = new JTextArea(rankingText());
 		textArea.setFont(app.getFont());
 		textArea.setWrapStyleWord(true);

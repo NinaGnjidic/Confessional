@@ -4,9 +4,6 @@ import java.awt.Component;
 import java.util.List;
 import java.util.Map;
 
-import javax.swing.JLabel;
-import javax.swing.SwingConstants;
-
 import main.java.app.model.Category;
 import main.java.app.model.Detail;
 import main.java.app.state.StatefulApplication;
@@ -47,14 +44,8 @@ public class EndView extends StatefulPanel {
 	}
 
 	@Override
-	protected Component displayCenter() {
-		JLabel responseLabel = new JLabel(
-				"<html><div style='text-align: center;'>" + printContent.replace("\n", "<br>") + "</div></html>",
-				SwingConstants.CENTER);
-		responseLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		responseLabel.setVerticalAlignment(SwingConstants.CENTER);
-
-		return responseLabel;
+	protected Component displayCenter(String text) {
+		return super.displayCenter(printContent);
 	}
 
 	@Override

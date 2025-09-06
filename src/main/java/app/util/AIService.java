@@ -17,10 +17,8 @@ import main.java.app.EnvironmentVariables;
 
 public class AIService {
 
-	private static final String GROQ_RESPONSES_URL = "https://api.groq.com/openai/v1/responses";
-
 	public static String confessional(String content){
-		String input = "I am working on a machine that acts as a confessional through AI assitance, at one part the user needs to pick their sins acting like an atm machine, on the first page they branch of into mortal sins and light sins then they branch of into the adequate standard categories of sins. can you make me a list of the sins with their sub branches ? disclamer each branching cant surpass the number of 6 because of the space on the screen and only 6 available buttons, so rather than putting a lot of them on one screen we should branch maximum 3 times to option of 6 sins under." + content;
+		String input = EnvironmentVariables.AI_PROMPT + "/n" + content;
 
 		// Escape characters that break JSON
 		String escapedInput = input.replace("\\", "\\\\") // backslashes
@@ -32,9 +30,9 @@ public class AIService {
 		String jsonInput = "{\n" + "  \"model\": \"openai/gpt-oss-20b\",\n" + "  \"input\": \"" + escapedInput + "\"\n"
 				+ "}";
 
-		HttpRequest request = HttpRequest.newBuilder().uri(URI.create(GROQ_RESPONSES_URL))
+		HttpRequest request = HttpRequest.newBuilder().uri(URI.create(EnvironmentVariables.AI_RESPONSE_URL))
 				.header("Content-Type", "application/json")
-				.header("Authorization", "Bearer " + EnvironmentVariables.CONFESSIONAL_API_KEY)
+				.header("Authorization", "Bearer " + EnvironmentVariables.AI_API_KEY)
 				.POST(BodyPublishers.ofString(jsonInput, StandardCharsets.UTF_8)).build();
 
 		HttpClient client = HttpClient.newHttpClient();

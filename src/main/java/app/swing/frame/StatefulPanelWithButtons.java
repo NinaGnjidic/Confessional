@@ -45,7 +45,7 @@ public abstract class StatefulPanelWithButtons<T extends Displayable> extends St
     }
 
     @Override
-    protected Component displayCenter() {
+    protected Component displayCenter(String text) {
         JPanel centerPanel = new JPanel(new GridLayout(1, 2));
         leftPanel = new JPanel(new GridLayout(includeActionButtons ? pageSize + 1 : pageSize, 1));
         rightPanel = new JPanel(new GridLayout(includeActionButtons ? pageSize + 1 : pageSize, 1));

@@ -58,7 +58,7 @@ public abstract class StatefulPanel extends JPanel implements ButtonListener {
 			this.add(label, BorderLayout.NORTH);
 		}
 
-		Component centerArea = displayCenter();
+		Component centerArea = displayCenter(this.text);
 		if (centerArea != null)
 			this.add(centerArea, BorderLayout.CENTER);
 
@@ -73,8 +73,8 @@ public abstract class StatefulPanel extends JPanel implements ButtonListener {
 		this.requestFocusInWindow();
 	}
 
-	protected Component displayCenter() {
-		if (this.text != null) {
+	protected Component displayCenter(String text) {
+		if (text != null) {
 			JTextArea textArea = new JTextArea(text);
 			textArea.setForeground(Color.WHITE);
 			textArea.setFont(app.getFont());

@@ -2,70 +2,84 @@
 	"categories": [
 		{
 			"id": 0,
-			"name": "Oholost",
+			"name": "Oholost i taština",
 			"type": {
 				"name": "Teški"
 			}
 		},
 		{
 			"id": 1,
-			"name": "Zavist",
+			"name": "Požuda i spolni grijesi",
 			"type": {
 				"name": "Teški"
 			}
 		},
 		{
 			"id": 2,
-			"name": "Gnjev",
+			"name": "Srdžba i nasilje",
 			"type": {
 				"name": "Teški"
 			}
 		},
 		{
 			"id": 3,
-			"name": "Lijenost",
+			"name": "Pohlepnost i iskorištavanje",
 			"type": {
-				"name": "Laki"
+				"name": "Teški"
 			}
 		},
 		{
 			"id": 4,
-			"name": "Pohota",
+			"name": "Zavist i mržnja",
 			"type": {
 				"name": "Teški"
 			}
 		},
 		{
 			"id": 5,
-			"name": "Proždrljivost",
+			"name": "Duhovni nemar",
 			"type": {
-				"name": "Laki"
+				"name": "Teški"
 			}
 		},
 		{
 			"id": 6,
-			"name": "Pohlepa",
+			"name": "Svakodnevni ego",
 			"type": {
 				"name": "Laki"
 			}
 		},
 		{
 			"id": 7,
-			"name": "Duhovna mlakost",
+			"name": "Iskrivljene želje",
 			"type": {
 				"name": "Laki"
 			}
 		},
 		{
 			"id": 8,
-			"name": "Ometanje drugih u dobru",
+			"name": "Manja šteta drugima",
 			"type": {
 				"name": "Laki"
 			}
 		},
 		{
 			"id": 9,
-			"name": "Skrnavljenje svetoga",
+			"name": "Nemar i lijenost",
+			"type": {
+				"name": "Laki"
+			}
+		},
+		{
+			"id": 10,
+			"name": "Riječi i stavovi",
+			"type": {
+				"name": "Laki"
+			}
+		},
+		{
+			"id": 11,
+			"name": "Digitalni i moderni grijesi",
 			"type": {
 				"name": "Laki"
 			}
@@ -75,252 +89,362 @@
 		{
 			"id": 0,
 			"categoryId": 0,
-			"name": "Uzdizanje iznad drugih"
+			"name": "Pretjerana umišljenost"
 		},
 		{
 			"id": 1,
 			"categoryId": 0,
-			"name": "Neprihvaćanje kritike"
+			"name": "Ponižavanje drugih"
 		},
 		{
 			"id": 2,
 			"categoryId": 0,
-			"name": "Lažna poniznost"
+			"name": "Odbijanje kritike"
 		},
 		{
 			"id": 3,
 			"categoryId": 0,
-			"name": "Omalovažavanje drugih"
+			"name": "Oholost u vjeri"
 		},
 		{
 			"id": 4,
 			"categoryId": 0,
-			"name": "Samodostatnost"
+			"name": "Manipulacija radi pohvale"
 		},
 		{
 			"id": 5,
-			"categoryId": 1,
-			"name": "Ljubomora na tuđi uspjeh"
+			"categoryId": 0,
+			"name": "Hvalisanje dobrim djelima"
 		},
 		{
 			"id": 6,
 			"categoryId": 1,
-			"name": "Mržnja zbog tuđe sreće"
+			"name": "Preljub"
 		},
 		{
 			"id": 7,
 			"categoryId": 1,
-			"name": "Ogovaranje iz zavisti"
+			"name": "Pornografija"
 		},
 		{
 			"id": 8,
 			"categoryId": 1,
-			"name": "Sabotiranje drugih"
+			"name": "Bludnost"
 		},
 		{
 			"id": 9,
 			"categoryId": 1,
-			"name": "Nezahvalnost"
+			"name": "Objektiviziranje drugih"
 		},
 		{
 			"id": 10,
-			"categoryId": 2,
-			"name": "Vikanje"
+			"categoryId": 1,
+			"name": "Samozadovoljavanje"
 		},
 		{
 			"id": 11,
-			"categoryId": 2,
-			"name": "Fizičko nasilje"
+			"categoryId": 1,
+			"name": "Navođenje drugih na grijeh"
 		},
 		{
 			"id": 12,
 			"categoryId": 2,
-			"name": "Mržnja"
+			"name": "Fizičko zlostavljanje"
 		},
 		{
 			"id": 13,
 			"categoryId": 2,
-			"name": "Osvetoljubivost"
+			"name": "Namjerno nanošenje boli"
 		},
 		{
 			"id": 14,
 			"categoryId": 2,
-			"name": "Netolerancija"
+			"name": "Ubilačke misli"
 		},
 		{
 			"id": 15,
-			"categoryId": 3,
-			"name": "Zanemarivanje dužnosti"
+			"categoryId": 2,
+			"name": "Želja za osvetom"
 		},
 		{
 			"id": 16,
-			"categoryId": 3,
-			"name": "Duhovna lijenost"
+			"categoryId": 2,
+			"name": "Uvredljiv govor"
 		},
 		{
 			"id": 17,
-			"categoryId": 3,
-			"name": "Odgađanje molitve"
+			"categoryId": 2,
+			"name": "Uništavanje tuđe imovine"
 		},
 		{
 			"id": 18,
 			"categoryId": 3,
-			"name": "Nemarnost"
+			"name": "Prijevara ili krađa"
 		},
 		{
 			"id": 19,
 			"categoryId": 3,
-			"name": "Neangažiranost"
+			"name": "Pohlepno gomilanje bogatstva"
 		},
 		{
 			"id": 20,
-			"categoryId": 4,
-			"name": "Bludnost"
+			"categoryId": 3,
+			"name": "Nepravedna isplata plaća"
 		},
 		{
 			"id": 21,
-			"categoryId": 4,
-			"name": "Pornografija"
+			"categoryId": 3,
+			"name": "Korupcija"
 		},
 		{
 			"id": 22,
-			"categoryId": 4,
-			"name": "Preljub"
+			"categoryId": 3,
+			"name": "Iskorištavanje siromašnih"
 		},
 		{
 			"id": 23,
-			"categoryId": 4,
-			"name": "Nepristojne misli"
+			"categoryId": 3,
+			"name": "Utaja poreza"
 		},
 		{
 			"id": 24,
 			"categoryId": 4,
-			"name": "Zavođenje"
+			"name": "Želja za zlom drugome"
 		},
 		{
 			"id": 25,
-			"categoryId": 5,
-			"name": "Pretjerano jedenje"
+			"categoryId": 4,
+			"name": "Sprečavanje tuđeg uspjeha"
 		},
 		{
 			"id": 26,
-			"categoryId": 5,
-			"name": "Opijanje"
+			"categoryId": 4,
+			"name": "Zlonamjerno ogovaranje"
 		},
 		{
 			"id": 27,
-			"categoryId": 5,
-			"name": "Rastrošnost hranom"
+			"categoryId": 4,
+			"name": "Neopraštanje"
 		},
 		{
 			"id": 28,
-			"categoryId": 5,
-			"name": "Traženje luksuza u jelu"
+			"categoryId": 4,
+			"name": "Ljubomora na tuđe darove"
 		},
 		{
 			"id": 29,
-			"categoryId": 5,
-			"name": "Neumjerenost u piću"
+			"categoryId": 4,
+			"name": "Uživanje u tuđoj nesreći"
 		},
 		{
 			"id": 30,
-			"categoryId": 6,
-			"name": "Lakomanstvo"
+			"categoryId": 5,
+			"name": "Izostanak sa mise bez opravdanja"
 		},
 		{
 			"id": 31,
-			"categoryId": 6,
-			"name": "Krađa"
+			"categoryId": 5,
+			"name": "Poricanje vjere"
 		},
 		{
 			"id": 32,
-			"categoryId": 6,
-			"name": "Mito"
+			"categoryId": 5,
+			"name": "Bavljenje okultnim praksama"
 		},
 		{
 			"id": 33,
-			"categoryId": 6,
-			"name": "Zlouporaba bogatstva"
+			"categoryId": 5,
+			"name": "Skrnavljenje svetih stvari"
 		},
 		{
 			"id": 34,
-			"categoryId": 6,
-			"name": "Bezosjećajnost prema siromašnima"
+			"categoryId": 5,
+			"name": "Odbijanje ispovijedi"
 		},
 		{
 			"id": 35,
-			"categoryId": 7,
-			"name": "Nedostatak vjere"
+			"categoryId": 5,
+			"name": "Osramoćivanje euharistije"
 		},
 		{
 			"id": 36,
-			"categoryId": 7,
-			"name": "Ravnodušnost prema sakramentima"
+			"categoryId": 6,
+			"name": "Upadanje drugima u riječ"
 		},
 		{
 			"id": 37,
-			"categoryId": 7,
-			"name": "Ignoriranje duhovne borbe"
+			"categoryId": 6,
+			"name": "Želja da uvijek budete u pravu"
 		},
 		{
 			"id": 38,
-			"categoryId": 7,
-			"name": "Formalizam u molitvi"
+			"categoryId": 6,
+			"name": "Blago hvalisanje"
 		},
 		{
 			"id": 39,
-			"categoryId": 7,
-			"name": "Zanemarivanje ispovijedi"
+			"categoryId": 6,
+			"name": "Prevrtanje očima ili ismijavanje"
 		},
 		{
 			"id": 40,
-			"categoryId": 8,
-			"name": "Navoditi druge na grijeh"
+			"categoryId": 6,
+			"name": "Ne slušanje drugih"
 		},
 		{
 			"id": 41,
-			"categoryId": 8,
-			"name": "Ismijavanje vjere"
+			"categoryId": 6,
+			"name": "Prisvajanje tuđih zasluga"
 		},
 		{
 			"id": 42,
-			"categoryId": 8,
-			"name": "Nepotrebno skandaliziranje"
+			"categoryId": 7,
+			"name": "Prejedanje"
 		},
 		{
 			"id": 43,
-			"categoryId": 8,
-			"name": "Podrivanje autoriteta Crkve"
+			"categoryId": 7,
+			"name": "Pretjerano opijanje"
 		},
 		{
 			"id": 44,
-			"categoryId": 8,
-			"name": "Negativan utjecaj na mlade"
+			"categoryId": 7,
+			"name": "Blago koketiranje"
 		},
 		{
 			"id": 45,
-			"categoryId": 9,
-			"name": "Bogohuljenje"
+			"categoryId": 7,
+			"name": "Požudni pogledi"
 		},
 		{
 			"id": 46,
-			"categoryId": 9,
-			"name": "Neprikladno ponašanje u crkvi"
+			"categoryId": 7,
+			"name": "Nečiste šale"
 		},
 		{
 			"id": 47,
-			"categoryId": 9,
-			"name": "Zlouporaba svetih predmeta"
+			"categoryId": 7,
+			"name": "Ilegalni roštilj"
 		},
 		{
 			"id": 48,
-			"categoryId": 9,
-			"name": "Nepristojna pričest"
+			"categoryId": 8,
+			"name": "Manje laži"
 		},
 		{
 			"id": 49,
+			"categoryId": 8,
+			"name": "Ogovaranje"
+		},
+		{
+			"id": 50,
+			"categoryId": 8,
+			"name": "Hladnoća prema drugima"
+		},
+		{
+			"id": 51,
+			"categoryId": 8,
+			"name": "Pasivna agresija"
+		},
+		{
+			"id": 52,
+			"categoryId": 8,
+			"name": "Ignoriranje onih kojima treba pomoć"
+		},
+		{
+			"id": 53,
+			"categoryId": 8,
+			"name": "Zadržavanje dobrote"
+		},
+		{
+			"id": 54,
 			"categoryId": 9,
-			"name": "Ismijavanje svetih stvari"
+			"name": "Prokastiniranje"
+		},
+		{
+			"id": 55,
+			"categoryId": 9,
+			"name": "Preskakanje molitve"
+		},
+		{
+			"id": 56,
+			"categoryId": 9,
+			"name": "Kašnjenje iz lijenosti"
+		},
+		{
+			"id": 57,
+			"categoryId": 9,
+			"name": "Ne pomaganje kod kuće"
+		},
+		{
+			"id": 58,
+			"categoryId": 9,
+			"name": "Gubljenje vremena"
+		},
+		{
+			"id": 59,
+			"categoryId": 9,
+			"name": "Zanemarivanje obaveza"
+		},
+		{
+			"id": 60,
+			"categoryId": 10,
+			"name": "Podli sarkazam"
+		},
+		{
+			"id": 61,
+			"categoryId": 10,
+			"name": "Nestrpljivost"
+		},
+		{
+			"id": 62,
+			"categoryId": 10,
+			"name": "Psovanje"
+		},
+		{
+			"id": 63,
+			"categoryId": 10,
+			"name": "Stalno žaljenje"
+		},
+		{
+			"id": 64,
+			"categoryId": 10,
+			"name": "Upadanje u riječ"
+		},
+		{
+			"id": 65,
+			"categoryId": 10,
+			"name": "Cinizam"
+		},
+		{
+			"id": 66,
+			"categoryId": 11,
+			"name": "Prijatelji koji rade vaš glavni zadatak"
+		},
+		{
+			"id": 67,
+			"categoryId": 11,
+			"name": "Doom skrolanje"
+		},
+		{
+			"id": 68,
+			"categoryId": 11,
+			"name": "Shitpostanje"
+		},
+		{
+			"id": 69,
+			"categoryId": 11,
+			"name": "Korištenje ChatGPT-a za ispit"
+		},
+		{
+			"id": 70,
+			"categoryId": 11,
+			"name": "Primanje novca preko tuđeg ugovora"
+		},
+		{
+			"id": 71,
+			"categoryId": 11,
+			"name": "Digitalno piratstvo"
 		}
 	]
 }
