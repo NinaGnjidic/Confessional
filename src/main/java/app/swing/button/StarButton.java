@@ -5,11 +5,11 @@ import java.awt.Font;
 public class StarButton extends Button {
 
 	private static final long serialVersionUID = -7754726524244795676L;
-	
-	private static final String STAR_BUTTON_IMAGE = "/images/button_star.png";
+
+	private static final String ICON_IMAGE_PATH = "/images/icons/ZVJEZDICA SOLO.png";
 
 	public StarButton(String text, Font font) {
-		super(text, STAR_BUTTON_IMAGE, font);
+		super(text, font, ICON_IMAGE_PATH);
 	}
 
 }

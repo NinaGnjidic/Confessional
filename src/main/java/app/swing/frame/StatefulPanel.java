@@ -13,14 +13,13 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
 import main.java.app.state.StatefulApplication;
-import main.java.app.swing.button.BackButton;
 import main.java.app.swing.button.Button;
+import main.java.app.swing.button.HashButton;
 import main.java.app.util.ButtonListener;
 
 public abstract class StatefulPanel extends JPanel implements ButtonListener {
 
 	private static final long serialVersionUID = -6129290005971012152L;
-	private static final String DEFAULT_BACKGROUND_IMAGE_PATH = "/images/background.jpg";
 
 	protected final StatefulApplication app;
 	protected Image backgroundImage;
@@ -30,10 +29,6 @@ public abstract class StatefulPanel extends JPanel implements ButtonListener {
 	protected Button label;
 	protected Button rightButton;
 	protected Button leftButton;
-
-	protected StatefulPanel(StatefulApplication app, String title, String text) {
-		this(app, DEFAULT_BACKGROUND_IMAGE_PATH, title, text);
-	}
 
 	protected StatefulPanel(StatefulApplication app, String backgroundImagePath, String title, String text) {
 		this(app, new ImageIcon(StatefulPanel.class.getResource(backgroundImagePath)).getImage(), title, text);
@@ -91,7 +86,7 @@ public abstract class StatefulPanel extends JPanel implements ButtonListener {
 	protected Component displayBottom() {
 		JPanel bottomPanel = new JPanel(new BorderLayout());
 		bottomPanel.setOpaque(false);
-		rightButton = new BackButton(new Font(app.getFontName(), Font.PLAIN, 10));
+		rightButton = new HashButton("NAZAD", app.getFont());
 		bottomPanel.add(rightButton, BorderLayout.EAST);
 		return bottomPanel;
 	}

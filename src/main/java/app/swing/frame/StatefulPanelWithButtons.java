@@ -19,6 +19,8 @@ import main.java.app.swing.button.ToggleButton;
 public abstract class StatefulPanelWithButtons<T extends Displayable> extends StatefulPanel {
 
     private static final long serialVersionUID = 8245263042179031038L;
+    
+	private static final String BACKGROUND_IMAGE_PATH = "/images/POZADINA CLEAR- za odabir grijeha.png";
 
     protected List<T> data = new ArrayList<>();
     private int pageSize = 4;
@@ -32,7 +34,7 @@ public abstract class StatefulPanelWithButtons<T extends Displayable> extends St
 
     protected StatefulPanelWithButtons(StatefulApplication app, List<T> data, int pageSize,
                                        boolean includeActionButtons, String title) {
-        super(app, title, null);
+        super(app, BACKGROUND_IMAGE_PATH, title, null);
         this.data = data;
         this.pageSize = pageSize;
         this.includeActionButtons = includeActionButtons;

@@ -15,10 +15,12 @@ public class InsertCoinView extends StatefulPanel implements CoinListener {
 
 	private static final long serialVersionUID = -5509182536642826627L;
 
-	private static final String TITLE = "Ubacite kovanicu!";
+	private static final String BACKGROUND_IMAGE_PATH = "/images/STARTNI EKRAN s krizem.png";
+	private static final String TITLE = "UBACI MILODAR";
+	private static final String TEXT = "PRITISNI CRVENI GUMB ZA POČETAK";
 	
 	public InsertCoinView(StatefulApplication app) {
-		super(app, TITLE, null);
+		super(app, BACKGROUND_IMAGE_PATH, TITLE, TEXT);
 	}
 
 	@Override
@@ -31,8 +33,8 @@ public class InsertCoinView extends StatefulPanel implements CoinListener {
 		JPanel bottomPanel = new JPanel(new BorderLayout());
 		bottomPanel.setOpaque(false);
 
-		leftButton = new StarButton("  Upute", app.getFont());
-		rightButton = new HashButton("      Rang lista", app.getFont());
+		leftButton = new StarButton("UPUTE", app.getFont());
+		rightButton = new HashButton("RANG", app.getFont());
 
 		bottomPanel.add(leftButton, BorderLayout.WEST);
 		bottomPanel.add(rightButton, BorderLayout.EAST);
@@ -53,7 +55,7 @@ public class InsertCoinView extends StatefulPanel implements CoinListener {
 	@Override
 	public void bigRedButtonPressed() {
 		if (app.getInsertedCoins() > 0.0)
-			label.animateButton(() -> app.show(new PressButtonView(app)));
+			label.animateButton(() -> app.show(new PrivacyPolicyView(app)));
 	}
 
 	@Override

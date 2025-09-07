@@ -9,7 +9,7 @@ public class PrivacyPolicyView extends StatefulPanel {
 
 	private static final long serialVersionUID = -7773204528442122200L;
 	
-	private static final String BACKGROUND_IMAGE_PATH = "/images/background_privacy.png";
+	private static final String BACKGROUND_IMAGE_PATH = "/images/PRIVATNOST  s lokotima i okvirom.png";
 	private static final String TITLE = "PRIHVAĆANJE ZAŠTITE PRIVATNOSTI SAKRAMENTALNIH PODATAKA";
 	private static final String TEXT = "Dobrodošli u automatsku ispovjedaonicu ''On the go'' najbrži i najefikasniji način da se ispovjediš u pokretu, mjesto gdje su podatci vas i vaše duše sigurni i povjerljivi.\r\n"
 			+ "\r\n"
@@ -24,12 +24,11 @@ public class PrivacyPolicyView extends StatefulPanel {
 			+ "\r\n"
 			+ "Kaznena zaštita (Kan. 1386 §1): Svako kršenje povjerenja rezultira automatskim resetiranjem softvera, bez iznimki.\r\n"
 			+ "\r\n"
-			+ "Vaša privatnost je sveta. Ovdje niste samo korisnik. Ovdje ste duša u digitalnom svijetu. (left tekst/8pt/ white- #ffffff)\r\n"
+			+ "Vaša privatnost je sveta. Ovdje niste samo korisnik. Ovdje ste duša u digitalnom svijetu.\r\n"
 			+ "Važno:\r\n"
-			+ "Iako se sadržaj Vaše ispovijedi koliko je moguće strogo čuva i ne reproducira, sustav može koristiti anonimne tehničke podatke o načinu korištenja (poput vremena interakcije, tehničkih parametara i funkcionalnosti) isključivo u svrhu poboljšanja kvalitete usluge i korisničkog iskustva. Ovi podaci ne sadrže nikakve informacije o sadržaju Vaše ispovijedi i obrađuju se u skladu s važećim zakonima o zaštiti podataka. Podatci automatizirane ispovjedi su sigurni gotovo podjednako kao i kod pravog svećenika. (centre/8pt/white-#ffffff)\r\n"
+			+ "Iako se sadržaj Vaše ispovijedi koliko je moguće strogo čuva i ne reproducira, sustav može koristiti anonimne tehničke podatke o načinu korištenja (poput vremena interakcije, tehničkih parametara i funkcionalnosti) isključivo u svrhu poboljšanja kvalitete usluge i korisničkog iskustva. Ovi podaci ne sadrže nikakve informacije o sadržaju Vaše ispovijedi i obrađuju se u skladu s važećim zakonima o zaštiti podataka. Podatci automatizirane ispovjedi su sigurni gotovo podjednako kao i kod pravog svećenika.\r\n"
 			+ "\r\n"
-			+ "Molimo vas da crvenim gumbom potvrdite da ste pročitali i prihvaćate uvjete zaštite privatnosti. (centre/8pt/white- #ffffff)\r\n"
-			+ "";
+			+ "Molimo vas da crvenim gumbom potvrdite da ste pročitali i prihvaćate uvjete zaštite privatnosti.";
 
 	public PrivacyPolicyView(StatefulApplication app) {
 		super(app, BACKGROUND_IMAGE_PATH, TITLE, TEXT);

@@ -24,6 +24,8 @@ public class Button extends JPanel {
     private String text;
     private int padding;
     private Font font;
+    private Image iconImage;
+    private int iconTextGap = 8; // space between icon and text
 
     private Color textColor = Color.WHITE;
     private final Color pressColor = Color.BLUE;
@@ -31,14 +33,18 @@ public class Button extends JPanel {
     private int pressOffset = 0; // vertical shift during press animation
 
     public Button(String text, Font font) {
-        this(text, DEFAULT_IMAGE_PATH, DEFAULT_WIDTH, DEFAULT_HEIGHT, DEFAULT_PADDING, font);
+        this(text, DEFAULT_IMAGE_PATH, null, DEFAULT_WIDTH, DEFAULT_HEIGHT, DEFAULT_PADDING, font);
     }
-
+    
+    public Button(String text, Font font,  String iconImagePath) {
+        this(text, DEFAULT_IMAGE_PATH, iconImagePath, DEFAULT_WIDTH, DEFAULT_HEIGHT, DEFAULT_PADDING, font);
+    }
+    
     public Button(String text, String imagePath, Font font) {
-        this(text, imagePath, DEFAULT_WIDTH, DEFAULT_HEIGHT, DEFAULT_PADDING, font);
+        this(text, imagePath, null, DEFAULT_WIDTH, DEFAULT_HEIGHT, DEFAULT_PADDING, font);
     }
 
-    public Button(String text, String imagePath, int width, int height, int padding, Font font) {
+    protected Button(String text, String imagePath, String iconImagePath, int width, int height, int padding, Font font) {
         this.text = text;
         this.padding = padding;
         this.font = font;
@@ -51,6 +57,13 @@ public class Button extends JPanel {
             }
         }
         this.backgroundImage = img;
+        
+        if (iconImagePath != null) {
+            java.net.URL iconUrl = getClass().getResource(iconImagePath);
+            if (iconUrl != null) {
+                this.iconImage = new ImageIcon(iconUrl).getImage();
+            }
+        }
 
         setPreferredSize(new Dimension(width + padding * 2, height + padding * 2));
         setOpaque(false); // respect PNG transparency
@@ -67,25 +80,49 @@ public class Button extends JPanel {
         }
 
         // draw text
+//        if (text != null && !text.isEmpty()) {
+//            g.setColor(textColor);
+//            g.setFont(font);
+//            FontMetrics fm = g.getFontMetrics();
+//            int x = (getWidth() - fm.stringWidth(text)) / 2;
+//            int y = (getHeight() - fm.getHeight()) / 2 + fm.getAscent() + pressOffset;
+//            g.drawString(text, x, y);
+//        }
+        
         if (text != null && !text.isEmpty()) {
             g.setColor(textColor);
             g.setFont(font);
             FontMetrics fm = g.getFontMetrics();
-            int x = (getWidth() - fm.stringWidth(text)) / 2;
-            int y = (getHeight() - fm.getHeight()) / 2 + fm.getAscent() + pressOffset;
-            g.drawString(text, x, y);
-        }
-    }
 
-    public void setText(String text) {
-        this.text = text;
-        repaint();
-    }
+            int textWidth = fm.stringWidth(text);
+            int textHeight = fm.getAscent();
 
-    public void setFontSize(float size) {
-        if (font != null) {
-            font = font.deriveFont(size);
-            repaint();
+            int iconWidth = 0;
+            int iconHeight = 0;
+
+            // scale icon to ~60% of button height
+            if (iconImage != null) {
+                double scaleFactor = 0.6; // smaller = icon height is 60% of button height
+                iconHeight = (int) (getHeight() * scaleFactor);
+                double aspectRatio = (double) iconImage.getWidth(this) / iconImage.getHeight(this);
+                iconWidth = (int) (iconHeight * aspectRatio);
+            }
+
+            int totalWidth = textWidth + (iconImage != null ? iconWidth + iconTextGap : 0);
+
+            // center icon+text block horizontally
+            int startX = (getWidth() - totalWidth) / 2;
+            int textY = (getHeight() - fm.getHeight()) / 2 + textHeight + pressOffset;
+
+            // draw icon
+            if (iconImage != null) {
+                int iconY = (getHeight() - iconHeight) / 2 + pressOffset; // vertically centered
+                g.drawImage(iconImage, startX, iconY, iconWidth, iconHeight, this);
+                startX += iconWidth + iconTextGap;
+            }
+
+            // draw text
+            g.drawString(text, startX, textY);
         }
     }
 

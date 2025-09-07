@@ -133,13 +133,11 @@ public abstract class StatefulApplication {
 		this.insertedCoins = 0.0f;
 	}
 	
-	public void incrementInsertedCoins(float coinValue)
-	{
+	public void incrementInsertedCoins(float coinValue) {
 		insertedCoins += coinValue;
 	}
 	
-	public float getInsertedCoins()
-	{
+	public float getInsertedCoins()	{
 		return insertedCoins;
 	}
 }
