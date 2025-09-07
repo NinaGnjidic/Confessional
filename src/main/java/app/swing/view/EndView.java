@@ -59,6 +59,8 @@ public class EndView extends StatefulPanel {
 	private String createContent() {
 		StringBuilder sb = new StringBuilder();
 
+		sb.append("Total: ").append(app.getInsertedCoins()).append("\n");
+		
 		String scoreContent = createScoreContent();
 		if(scoreContent != null && !scoreContent.isEmpty())
 			sb.append(scoreContent).append("\n");

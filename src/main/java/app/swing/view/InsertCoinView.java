@@ -9,13 +9,14 @@ import main.java.app.state.StatefulApplication;
 import main.java.app.swing.button.HashButton;
 import main.java.app.swing.button.StarButton;
 import main.java.app.swing.frame.StatefulPanel;
+import main.java.app.util.CoinListener;
 
-public class InsertCoinView extends StatefulPanel {
+public class InsertCoinView extends StatefulPanel implements CoinListener {
 
 	private static final long serialVersionUID = -5509182536642826627L;
 
 	private static final String TITLE = "Ubacite kovanicu!";
-
+	
 	public InsertCoinView(StatefulApplication app) {
 		super(app, TITLE, null);
 	}
@@ -49,10 +50,14 @@ public class InsertCoinView extends StatefulPanel {
 		rightButton.animateButton(() -> app.show(new RankingView(app)));
 	}
 
-	//TODO: should be on coin input
 	@Override
 	public void bigRedButtonPressed() {
-		label.animateButton(() -> app.show(new PressButtonView(app)));
+		if (app.getInsertedCoins() > 0.0)
+			label.animateButton(() -> app.show(new PressButtonView(app)));
 	}
 
+	@Override
+	public void onCoinInsert(float coinValue) {
+		app.incrementInsertedCoins(coinValue);
+	}
 }

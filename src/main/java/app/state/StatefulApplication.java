@@ -26,6 +26,8 @@ public abstract class StatefulApplication {
 	private Data data;
 	private Type type;
 	
+	private float insertedCoins = 0.0f;
+	
 	Map<Category, List<Detail>> deatilsPerCategory;
 	protected Map<Category, List<Detail>> selectedDeatilsPerCategory;
 	private Map<Type, List<Category>> categoriesPerType;
@@ -128,5 +130,16 @@ public abstract class StatefulApplication {
 	public void clearSelected() {
 		this.type = null;
 		this.selectedDeatilsPerCategory.clear();
+		this.insertedCoins = 0.0f;
+	}
+	
+	public void incrementInsertedCoins(float coinValue)
+	{
+		insertedCoins += coinValue;
+	}
+	
+	public float getInsertedCoins()
+	{
+		return insertedCoins;
 	}
 }
