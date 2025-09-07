@@ -7,7 +7,7 @@ public class InstructionsView extends StatefulPanel {
 
 	private static final long serialVersionUID = 2661132117794606000L;
 
-	private static final String BACKGROUND_IMAGE_PATH = "/images/UPUTE s upitnicima.png";
+	private static final String BACKGROUND_IMAGE_PATH = "/images/bg_instructions.png";
 	private static final String TITLE = "UPUTE";
 	private static final String TEXT = "Dobrodošli u automatsku ispovjedaonicu.\r\n"
 			+ "Nakon što ubacite kovanicu kao milodar u željenom iznosu i prihvatite obrazac o privatnosti ispovijedi, dolazite do sučelja koje vam nudi odabir grijeha prema njihovim odgovarajućim kategorijama.\r\n"

@@ -20,7 +20,7 @@ public abstract class StatefulPanelWithButtons<T extends Displayable> extends St
 
     private static final long serialVersionUID = 8245263042179031038L;
     
-	private static final String BACKGROUND_IMAGE_PATH = "/images/POZADINA CLEAR- za odabir grijeha.png";
+	private static final String BACKGROUND_IMAGE_PATH = "/images/bg_default.png";
 
     protected List<T> data = new ArrayList<>();
     private int pageSize = 4;

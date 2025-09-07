@@ -9,7 +9,7 @@ public class PrivacyPolicyView extends StatefulPanel {
 
 	private static final long serialVersionUID = -7773204528442122200L;
 	
-	private static final String BACKGROUND_IMAGE_PATH = "/images/PRIVATNOST  s lokotima i okvirom.png";
+	private static final String BACKGROUND_IMAGE_PATH = "/images/bg_privacy.png";
 	private static final String TITLE = "PRIHVAĆANJE ZAŠTITE PRIVATNOSTI SAKRAMENTALNIH PODATAKA";
 	private static final String TEXT = "Dobrodošli u automatsku ispovjedaonicu ''On the go'' najbrži i najefikasniji način da se ispovjediš u pokretu, mjesto gdje su podatci vas i vaše duše sigurni i povjerljivi.\r\n"
 			+ "\r\n"

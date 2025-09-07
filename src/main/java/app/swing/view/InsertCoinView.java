@@ -15,7 +15,7 @@ public class InsertCoinView extends StatefulPanel implements CoinListener {
 
 	private static final long serialVersionUID = -5509182536642826627L;
 
-	private static final String BACKGROUND_IMAGE_PATH = "/images/STARTNI EKRAN s krizem.png";
+	private static final String BACKGROUND_IMAGE_PATH = "/images/bg_coin.png";
 	private static final String TITLE = "UBACI MILODAR";
 	private static final String TEXT = "PRITISNI CRVENI GUMB ZA POČETAK";
 	

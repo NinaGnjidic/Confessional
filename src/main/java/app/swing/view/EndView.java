@@ -16,7 +16,7 @@ public class EndView extends StatefulPanel {
 	private static final long serialVersionUID = 5201383428151921653L;
 
 	private static final String TITLE = "ISPOVIJEDI GRIJEHE";
-	private static final String BACKGROUND_IMAGE_PATH = "/images/ISP CRVENI GUMB KRAJ ekran.png";
+	private static final String BACKGROUND_IMAGE_PATH = "/images/bg_end.png";
 	
 	private static final String SCORE_CONTENT_PREFIX = "You scored: ";
 	private static final String RANK_CONTENT_PREFIX = "Congratulations! You’ve made it into the top 5 sinners! Your position in the top five is: ";
