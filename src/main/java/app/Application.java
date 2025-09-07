@@ -5,7 +5,6 @@ import java.awt.FontFormatException;
 import java.io.IOException;
 
 import com.fazecast.jSerialComm.SerialPort;
-import com.fazecast.jSerialComm.SerialPortDataListener;
 
 import main.java.app.state.StatefulApplication;
 import main.java.app.swing.frame.StatefulPanel;
@@ -15,13 +14,13 @@ public class Application implements Runnable {
 	@Override
 	public void run() {
 		SerialPort serialPort = SerialPort.getCommPorts()[0];
-        serialPort.setBaudRate(9600);
-        if (serialPort.openPort()) {
-            System.out.println("Port opened successfully.");
-        } else {
-            System.out.println("Failed to open port.");
-            return;
-        }
+		serialPort.setBaudRate(9600);
+		if (serialPort.openPort()) {
+			System.out.println("Port opened successfully.");
+		} else {
+			System.out.println("Failed to open port.");
+			return;
+		}
 		try {
 			Font font = Font
 					.createFont(Font.TRUETYPE_FONT, Main.class.getResourceAsStream("/fonts/PressStart2P-Regular.ttf"))

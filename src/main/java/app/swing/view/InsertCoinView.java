@@ -18,7 +18,7 @@ public class InsertCoinView extends StatefulPanel implements CoinListener {
 	private static final String BACKGROUND_IMAGE_PATH = "/images/bg_coin.png";
 	private static final String TITLE = "UBACI MILODAR";
 	private static final String TEXT = "PRITISNI CRVENI GUMB ZA POČETAK";
-	
+
 	public InsertCoinView(StatefulApplication app) {
 		super(app, BACKGROUND_IMAGE_PATH, TITLE, TEXT);
 	}
@@ -38,8 +38,13 @@ public class InsertCoinView extends StatefulPanel implements CoinListener {
 
 		bottomPanel.add(leftButton, BorderLayout.WEST);
 		bottomPanel.add(rightButton, BorderLayout.EAST);
-		
+
 		return bottomPanel;
+	}
+
+	@Override
+	public void button0Pressed() {
+		label.animateButton(() -> app.show(new PrivacyPolicyView(app)));
 	}
 
 	@Override
