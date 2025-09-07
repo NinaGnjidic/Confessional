@@ -5,6 +5,8 @@ import java.awt.Component;
 
 import javax.swing.JPanel;
 
+import com.fazecast.jSerialComm.SerialPort;
+
 import main.java.app.state.StatefulApplication;
 import main.java.app.swing.button.HashButton;
 import main.java.app.swing.button.StarButton;
@@ -21,6 +23,9 @@ public class InsertCoinView extends StatefulPanel implements CoinListener {
 
 	public InsertCoinView(StatefulApplication app) {
 		super(app, BACKGROUND_IMAGE_PATH, TITLE, TEXT);
+		SerialPort serialPort = getSerialPort();
+		if (serialPort != null)
+			serialPort.addDataListener(this);
 	}
 
 	@Override

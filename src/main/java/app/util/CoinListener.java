@@ -29,4 +29,19 @@ public interface CoinListener extends SerialPortMessageListener {
 	}
 	
 	public void onCoinInsert(float coinValue);
+	
+	public default SerialPort getSerialPort() {
+		SerialPort[] serialPorts = SerialPort.getCommPorts();
+		if (serialPorts.length == 0)
+			return null;
+		SerialPort serialPort = serialPorts[0];
+		serialPort.setBaudRate(9600);
+		if (serialPort.openPort()) {
+			System.out.println("Port opened successfully.");
+		} else {
+			System.out.println("Failed to open port.");
+		}
+		return serialPort;
+	}
+	
 }
