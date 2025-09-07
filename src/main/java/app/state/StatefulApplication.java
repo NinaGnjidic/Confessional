@@ -53,7 +53,7 @@ public abstract class StatefulApplication {
 	}
 
 	public void start(StatefulPanel firstPanel) {
-		SwingUtilities.invokeLater(() -> this.frame.init(firstPanel));
+		this.frame.init(firstPanel);
 	}
 
 	// TODO
