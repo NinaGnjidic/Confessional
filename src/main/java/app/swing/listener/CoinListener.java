@@ -1,4 +1,4 @@
-package main.java.app.util;
+package main.java.app.swing.listener;
 
 import com.fazecast.jSerialComm.SerialPort;
 import com.fazecast.jSerialComm.SerialPortEvent;
@@ -12,7 +12,7 @@ public interface CoinListener extends SerialPortMessageListener {
 
 	@Override
 	public default byte[] getMessageDelimiter() {
-		return new byte[] { (byte) '\r', (byte) '\n' };
+		return new byte[] { '\r', '\n' };
 	}
 
 	@Override

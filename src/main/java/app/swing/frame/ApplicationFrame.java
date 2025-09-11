@@ -48,7 +48,5 @@ public class ApplicationFrame extends JFrame {
 
 	    newPanel.setVisible(true);
 	    newPanel.setFocusable(true);
-		SwingUtilities.invokeLater(newPanel::requestFocusInWindow);
 	}
-
 }

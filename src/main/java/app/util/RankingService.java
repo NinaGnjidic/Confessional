@@ -29,7 +29,7 @@ public class RankingService {
 		List<Integer> scores = loadScores();
 		scores.add(score);
 		scores.sort(Collections.reverseOrder());
-		scores = scores.subList(0, MAX_RANKINGS);
+		scores = scores.subList(0, Math.min(scores.size(), MAX_RANKINGS));
 		saveScores(scores);
 		
 		return scores.indexOf(score);

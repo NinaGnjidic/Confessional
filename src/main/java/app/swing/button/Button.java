@@ -79,16 +79,6 @@ public class Button extends JPanel {
                     getWidth() - padding * 2, getHeight() - padding * 2, this);
         }
 
-        // draw text
-//        if (text != null && !text.isEmpty()) {
-//            g.setColor(textColor);
-//            g.setFont(font);
-//            FontMetrics fm = g.getFontMetrics();
-//            int x = (getWidth() - fm.stringWidth(text)) / 2;
-//            int y = (getHeight() - fm.getHeight()) / 2 + fm.getAscent() + pressOffset;
-//            g.drawString(text, x, y);
-//        }
-        
         if (text != null && !text.isEmpty()) {
             g.setColor(textColor);
             g.setFont(font);
