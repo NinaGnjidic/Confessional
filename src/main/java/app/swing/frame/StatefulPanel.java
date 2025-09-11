@@ -66,7 +66,7 @@ public abstract class StatefulPanel extends JPanel implements ButtonListener {
 //		this.repaint();
 		
 		this.setFocusable(true);
-//		this.requestFocusInWindow();
+		this.requestFocusInWindow();
 	}
 
 	protected Component displayCenter(String text) {
