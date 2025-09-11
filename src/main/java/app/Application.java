@@ -1,6 +1,5 @@
 package main.java.app;
 
-import java.awt.Font;
 import java.awt.FontFormatException;
 import java.io.IOException;
 
@@ -12,11 +11,8 @@ public class Application implements Runnable {
 	@Override
 	public void run() {
 		try {
-			Font font = Font
-					.createFont(Font.TRUETYPE_FONT, Main.class.getResourceAsStream("/fonts/PressStart2P-Regular.ttf"))
-					.deriveFont(Font.BOLD, 16);
-			StatefulApplication app = new StatefulApplication("Ispovjedaonica", font) {
-			};
+
+			StatefulApplication app = new StatefulApplication("Ispovjedaonica") {};
 			StatefulPanel firstPanel = new InsertCoinView(app);
 			app.start(firstPanel);
 		} catch (FontFormatException | IOException e) {

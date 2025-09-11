@@ -16,7 +16,7 @@ import main.java.app.state.StatefulApplication;
 import main.java.app.swing.button.HashButton;
 import main.java.app.swing.button.StarButton;
 import main.java.app.swing.frame.StatefulPanel;
-import main.java.app.util.CoinListener;
+import main.java.app.swing.listener.CoinListener;
 
 public class InsertCoinView extends StatefulPanel implements CoinListener {
 

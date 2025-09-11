@@ -16,7 +16,7 @@ import main.java.app.EnvironmentVariables;
 import main.java.app.state.StatefulApplication;
 import main.java.app.swing.button.Button;
 import main.java.app.swing.button.HashButton;
-import main.java.app.util.ButtonListener;
+import main.java.app.swing.listener.ButtonListener;
 
 public abstract class StatefulPanel extends JPanel implements ButtonListener {
 
@@ -62,11 +62,11 @@ public abstract class StatefulPanel extends JPanel implements ButtonListener {
 		if(bottomArea != null)
 			this.add(bottomArea, BorderLayout.SOUTH);
 		
-		this.revalidate();
-		this.repaint();
+//		this.revalidate();
+//		this.repaint();
 		
 		this.setFocusable(true);
-		this.requestFocusInWindow();
+//		this.requestFocusInWindow();
 	}
 
 	protected Component displayCenter(String text) {
