@@ -1,5 +1,10 @@
 package main.java.app.swing.view;
 
+import static main.java.app.EnvironmentVariables.INSERT_COIN_TEXT;
+import static main.java.app.EnvironmentVariables.INSERT_COIN_TITLE;
+import static main.java.app.EnvironmentVariables.INSERT_COIN_LEFT_BUTTON_TEXT;
+import static main.java.app.EnvironmentVariables.INSERT_COIN_RIGHT_BUTTON_TEXT;
+
 import java.awt.BorderLayout;
 import java.awt.Component;
 
@@ -18,11 +23,9 @@ public class InsertCoinView extends StatefulPanel implements CoinListener {
 	private static final long serialVersionUID = -5509182536642826627L;
 
 	private static final String BACKGROUND_IMAGE_PATH = "/images/bg_coin.png";
-	private static final String TITLE = "UBACI MILODAR";
-	private static final String TEXT = "PRITISNI CRVENI GUMB ZA POČETAK";
 
 	public InsertCoinView(StatefulApplication app) {
-		super(app, BACKGROUND_IMAGE_PATH, TITLE, TEXT);
+		super(app, BACKGROUND_IMAGE_PATH, INSERT_COIN_TITLE, INSERT_COIN_TEXT);
 		SerialPort serialPort = getSerialPort();
 		if (serialPort != null)
 			serialPort.addDataListener(this);
@@ -38,8 +41,8 @@ public class InsertCoinView extends StatefulPanel implements CoinListener {
 		JPanel bottomPanel = new JPanel(new BorderLayout());
 		bottomPanel.setOpaque(false);
 
-		leftButton = new StarButton("UPUTE", app.getFont());
-		rightButton = new HashButton("RANG", app.getFont());
+		leftButton = new StarButton(INSERT_COIN_LEFT_BUTTON_TEXT, app.getFont());
+		rightButton = new HashButton(INSERT_COIN_RIGHT_BUTTON_TEXT, app.getFont());
 
 		bottomPanel.add(leftButton, BorderLayout.WEST);
 		bottomPanel.add(rightButton, BorderLayout.EAST);

@@ -1,5 +1,7 @@
 package main.java.app.swing.view;
 
+import static main.java.app.EnvironmentVariables.CHOOSE_CATEGORY_TITLE;
+
 import main.java.app.model.Category;
 import main.java.app.state.StatefulApplication;
 import main.java.app.swing.frame.StatefulPanelWithButtons;
@@ -8,10 +10,8 @@ public class ChooseCategoryView extends StatefulPanelWithButtons<Category> {
 
 	private static final long serialVersionUID = 5417688993812029835L;
 	
-	private static final String TITLE = "Odaberi kategoriju";
-
 	protected ChooseCategoryView(StatefulApplication app) {
-		super(app, app.getCategoriesPerType(), 4, true, TITLE);
+		super(app, app.getCategoriesPerType(), 4, true, CHOOSE_CATEGORY_TITLE);
 	}
 
 	@Override

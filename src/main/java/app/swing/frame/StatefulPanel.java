@@ -12,6 +12,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
+import main.java.app.EnvironmentVariables;
 import main.java.app.state.StatefulApplication;
 import main.java.app.swing.button.Button;
 import main.java.app.swing.button.HashButton;
@@ -86,7 +87,7 @@ public abstract class StatefulPanel extends JPanel implements ButtonListener {
 	protected Component displayBottom() {
 		JPanel bottomPanel = new JPanel(new BorderLayout());
 		bottomPanel.setOpaque(false);
-		rightButton = new HashButton("NAZAD", app.getFont());
+		rightButton = new HashButton(EnvironmentVariables.PREVIOUS_BUTTON_LABEL, app.getFont());
 		bottomPanel.add(rightButton, BorderLayout.EAST);
 		return bottomPanel;
 	}

@@ -1,5 +1,6 @@
 .env
 ranking.txt
+data.json
 .classpath
 .project
 .settings/

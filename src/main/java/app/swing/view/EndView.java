@@ -1,5 +1,10 @@
 package main.java.app.swing.view;
 
+
+import static main.java.app.EnvironmentVariables.END_TITLE;
+import static main.java.app.EnvironmentVariables.SCORE_CONTENT_PREFIX;
+import static main.java.app.EnvironmentVariables.RANK_CONTENT_PREFIX;
+
 import java.awt.Component;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -15,18 +20,14 @@ public class EndView extends StatefulPanel {
 
 	private static final long serialVersionUID = 5201383428151921653L;
 
-	private static final String TITLE = "ISPOVIJEDI GRIJEHE";
 	private static final String BACKGROUND_IMAGE_PATH = "/images/bg_end.png";
 	
-	private static final String SCORE_CONTENT_PREFIX = "You scored: ";
-	private static final String RANK_CONTENT_PREFIX = "Congratulations! You’ve made it into the top 5 sinners! Your position in the top five is: ";
-
 	String AIResponse;
 	int score;
 	int rank;
 
 	public EndView(StatefulApplication app) {
-		super(app, BACKGROUND_IMAGE_PATH, TITLE, null);
+		super(app, BACKGROUND_IMAGE_PATH, END_TITLE, null);
 	}
 
 	@Override
@@ -61,6 +62,7 @@ public class EndView extends StatefulPanel {
 	private String createContent() {
 		StringBuilder sb = new StringBuilder();
 
+		//TODO: work in progress
 		sb.append("Total: ").append(app.getInsertedCoins()).append("\n");
 		
 		String scoreContent = createScoreContent();
