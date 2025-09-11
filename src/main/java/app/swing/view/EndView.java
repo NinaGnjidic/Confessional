@@ -28,6 +28,8 @@ public class EndView extends StatefulPanel {
 
 	public EndView(StatefulApplication app) {
 		super(app, BACKGROUND_IMAGE_PATH, END_TITLE, null);
+
+		app.playSound("/sounds/exit.mp3");
 	}
 
 	@Override

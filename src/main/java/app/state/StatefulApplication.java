@@ -8,8 +8,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-import javax.swing.SwingUtilities;
-
+import javazoom.jl.player.Player;
 import main.java.app.model.Category;
 import main.java.app.model.Data;
 import main.java.app.model.Detail;
@@ -22,6 +21,7 @@ public abstract class StatefulApplication {
 	
 	private ApplicationFrame frame;
 	private Font font;
+	private Player soundPlayer;
 
 	private Data data;
 	private Type type;
@@ -140,4 +140,27 @@ public abstract class StatefulApplication {
 	public float getInsertedCoins()	{
 		return insertedCoins;
 	}
+
+    public void playSound(String soundResourcePath) {
+        stopSound();
+        try {
+            soundPlayer = new Player(getClass().getResourceAsStream(soundResourcePath));
+            new Thread(() -> {
+                try {
+                    soundPlayer.play();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }).start();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void stopSound() {
+        if (soundPlayer != null) {
+            soundPlayer.close();
+        }
+    }
+
 }

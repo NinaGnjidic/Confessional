@@ -29,6 +29,8 @@ public class InsertCoinView extends StatefulPanel implements CoinListener {
 		SerialPort serialPort = getSerialPort();
 		if (serialPort != null)
 			serialPort.addDataListener(this);
+
+		app.playSound("/sounds/music.mp3");
 	}
 
 	@Override
