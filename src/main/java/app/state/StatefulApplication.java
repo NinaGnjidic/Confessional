@@ -2,6 +2,7 @@ package main.java.app.state;
 
 import java.awt.Font;
 import java.awt.GraphicsEnvironment;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -140,24 +141,28 @@ public abstract class StatefulApplication {
 	public float getInsertedCoins()	{
 		return insertedCoins;
 	}
+	
+    private boolean looping = false;
 
     public void playSound(String soundResourcePath) {
         stopSound();
-        try {
-            soundPlayer = new Player(getClass().getResourceAsStream(soundResourcePath));
-            new Thread(() -> {
-                try {
+        looping = true;
+        new Thread(() -> {
+            while (looping) {
+                try (InputStream stream = getClass().getResourceAsStream(soundResourcePath)) {
+                    if (stream == null) throw new RuntimeException("Resource not found");
+                    soundPlayer = new Player(stream);
                     soundPlayer.play();
                 } catch (Exception e) {
                     e.printStackTrace();
+                    break;
                 }
-            }).start();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+            }
+        }).start();
     }
 
     public void stopSound() {
+    	looping = false;
         if (soundPlayer != null) {
             soundPlayer.close();
         }
