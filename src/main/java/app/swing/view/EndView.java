@@ -20,7 +20,7 @@ public class EndView extends StatefulPanel {
 
 	private static final long serialVersionUID = 5201383428151921653L;
 
-	private static final String BACKGROUND_IMAGE_PATH = "/images/bg_end.png";
+	private static final String BACKGROUND_IMAGE_PATH = "/images/bg_end.jpg";
 	
 	String AIResponse;
 	int score;

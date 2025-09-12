@@ -12,7 +12,7 @@ public class PrivacyPolicyView extends StatefulPanel {
 
 	private static final long serialVersionUID = -7773204528442122200L;
 	
-	private static final String BACKGROUND_IMAGE_PATH = "/images/bg_privacy.png";
+	private static final String BACKGROUND_IMAGE_PATH = "/images/bg_privacy.jpg";
 
 	public PrivacyPolicyView(StatefulApplication app) {
 		super(app, BACKGROUND_IMAGE_PATH, PRIVACY_TITLE, PRIVACY_TEXT);

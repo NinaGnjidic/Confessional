@@ -16,7 +16,7 @@ public class RankingView extends StatefulPanel {
 
 	private static final long serialVersionUID = -5340989876577627372L;
 
-	private static final String BACKGROUND_IMAGE_PATH = "/images/bg_ranking.png";
+	private static final String BACKGROUND_IMAGE_PATH = "/images/bg_ranking.jpg";
 
 	protected RankingView(StatefulApplication app) {
 		super(app, BACKGROUND_IMAGE_PATH, null, null);

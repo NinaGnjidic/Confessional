@@ -22,7 +22,7 @@ public class InsertCoinView extends StatefulPanel implements CoinListener {
 
 	private static final long serialVersionUID = -5509182536642826627L;
 
-	private static final String BACKGROUND_IMAGE_PATH = "/images/bg_coin.png";
+	private static final String BACKGROUND_IMAGE_PATH = "/images/bg_coin.jpg";
 
 	public InsertCoinView(StatefulApplication app) {
 		super(app, BACKGROUND_IMAGE_PATH, INSERT_COIN_TITLE, INSERT_COIN_TEXT);
