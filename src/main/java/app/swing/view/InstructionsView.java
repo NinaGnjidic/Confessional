@@ -24,7 +24,6 @@ public class InstructionsView extends StatefulPanel {
 
 	private static final String BACKGROUND_IMAGE_PATH = "/images/bg_instructions.jpg";
 	private Button rightButton;
-	private Button leftButton;
 	private Button label;
 
 	protected InstructionsView(StatefulApplication app) {
