@@ -1,14 +1,18 @@
 package main.java.app.swing.frame;
 
 import java.awt.BorderLayout;
-import java.awt.Component;
+import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.GridLayout;
+import java.awt.Image;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.Box;
+import javax.swing.ImageIcon;
 import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
 
 import main.java.app.EnvironmentVariables;
 import main.java.app.model.Displayable;
@@ -22,11 +26,17 @@ public abstract class StatefulPanelWithButtons<T extends Displayable> extends St
     
 	private static final String BACKGROUND_IMAGE_PATH = "/images/bg_default.jpg";
 
+	private static final Image BACKGROUND_IMAGE = new ImageIcon(StatefulPanelWithButtons.class.getResource(BACKGROUND_IMAGE_PATH)).getImage();
+
     protected List<T> data = new ArrayList<>();
-    private int pageSize = 4;
+    private int pageSize = 6;
     private int pageIndex = 0;
     private boolean includeActionButtons;
 
+    String title;
+    protected Button label;
+    protected Button rightButton;
+    protected Button leftButton;
     private JPanel leftPanel;
     private JPanel rightPanel;
 
@@ -34,31 +44,45 @@ public abstract class StatefulPanelWithButtons<T extends Displayable> extends St
 
     protected StatefulPanelWithButtons(StatefulApplication app, List<T> data, int pageSize,
                                        boolean includeActionButtons, String title) {
-        super(app, BACKGROUND_IMAGE_PATH, title, null);
+        super(app, BACKGROUND_IMAGE);
+        this.title = title;
         this.data = data;
         this.pageSize = pageSize;
         this.includeActionButtons = includeActionButtons;
     }
 
-    @Override
-    public void handleDisplay() {
-        super.handleDisplay();
-        handleInput();
-    }
+	@Override
+	public void handleDisplay() {
+		this.setLayout(new BorderLayout());
+		this.setBorder(new EmptyBorder(100, 120, 100, 140));
+		
+		label = new Button(title, null, app.getFont().deriveFont(Font.BOLD, 50));
+		label.setTextColor(Color.YELLOW);
+		label.hasShadow = true;
+		this.add(label, BorderLayout.NORTH);
 
-    @Override
-    protected Component displayCenter(String text) {
-        JPanel centerPanel = new JPanel(new GridLayout(1, 2));
-        leftPanel = new JPanel(new GridLayout(includeActionButtons ? pageSize + 1 : pageSize, 1));
-        rightPanel = new JPanel(new GridLayout(includeActionButtons ? pageSize + 1 : pageSize, 1));
-        leftPanel.setOpaque(false);
-        rightPanel.setOpaque(false);
-        centerPanel.add(leftPanel);
-        centerPanel.add(rightPanel);
-        centerPanel.setOpaque(false);
+		JPanel centerPanel = new JPanel(new GridLayout(1, 2));
+		leftPanel = new JPanel(new GridLayout(includeActionButtons ? pageSize + 1 : pageSize, 1));
+		rightPanel = new JPanel(new GridLayout(includeActionButtons ? pageSize + 1 : pageSize, 1));
+		leftPanel.setOpaque(false);
+		rightPanel.setOpaque(false);
+		centerPanel.add(leftPanel);
+		centerPanel.add(rightPanel);
+		centerPanel.setOpaque(false);
+		this.add(centerPanel, BorderLayout.CENTER);
 
-        return centerPanel;
-    }
+		JPanel bottomPanel = (JPanel) super.displayBottom();
+		rightButton = createRightPanelControlButton();
+		if (getMaxPage() != 0) {
+			leftButton = createControlButton(EnvironmentVariables.PREVIOUS_BUTTON_LABEL, pageIndex > 0,
+					this::handlePrevious);
+			bottomPanel.add(leftButton, BorderLayout.WEST);
+		}
+		bottomPanel.add(rightButton, BorderLayout.EAST);
+		this.add(bottomPanel, BorderLayout.SOUTH);
+
+		handleInput();
+	}
 
     /**
      * Populates the left and right panels with toggle buttons representing
@@ -99,25 +123,6 @@ public abstract class StatefulPanelWithButtons<T extends Displayable> extends St
         rightPanel.revalidate();
         leftPanel.repaint();
         rightPanel.repaint();
-    }
-
-    @Override
-    protected Component displayBottom() {
-        if (includeActionButtons) {
-        	JPanel bottomPanel = (JPanel) super.displayBottom();
-        	rightButton = createRightPanelControlButton();
-
-        	if(getMaxPage() != 0) {
-	        	leftButton = createControlButton(EnvironmentVariables.PREVIOUS_BUTTON_LABEL, pageIndex > 0, this::handlePrevious);
-	        	bottomPanel.add(leftButton, BorderLayout.WEST);
-        	}
-        	
-            bottomPanel.add(rightButton, BorderLayout.EAST);
-            
-            
-            return bottomPanel;
-        }
-        return null;
     }
 
 	private Button createRightPanelControlButton() {
