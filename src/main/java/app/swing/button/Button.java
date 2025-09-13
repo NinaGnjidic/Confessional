@@ -17,8 +17,8 @@ public class Button extends JPanel {
     private static final long serialVersionUID = 3775959994320542119L;
     private static final String DEFAULT_IMAGE_PATH = "/images/button.png";
     private static final int DEFAULT_PADDING = 20;
-    private static final int DEFAULT_WIDTH = 180;
-    private static final int DEFAULT_HEIGHT = 50;
+    private static final int DEFAULT_WIDTH = 230;
+    private static final int DEFAULT_HEIGHT = 70;
 
     private final Image backgroundImage;
     private String text;
@@ -26,8 +26,9 @@ public class Button extends JPanel {
     private Font font;
     private Image iconImage;
     private int iconTextGap = 8; // space between icon and text
+    public boolean hasShadow = false;
 
-    private Color textColor = Color.WHITE;
+    private Color textColor = Color.black;
     private final Color pressColor = Color.BLUE;
 
     private int pressOffset = 0; // vertical shift during press animation
@@ -112,6 +113,11 @@ public class Button extends JPanel {
             }
 
             // draw text
+            if (hasShadow) {
+            	g.setColor(new Color(0, 0, 139));
+            	g.drawString(text, startX - 10, textY + 10);
+            	g.setColor(textColor);
+            }
             g.drawString(text, startX, textY);
         }
     }

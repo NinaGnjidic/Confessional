@@ -9,7 +9,7 @@ public class StarButton extends Button {
 	private static final String ICON_IMAGE_PATH = "/images/icons/star.png";
 
 	public StarButton(String text, Font font) {
-		super(text, font, ICON_IMAGE_PATH);
+		super(text, font.deriveFont(Font.BOLD, 18), ICON_IMAGE_PATH);
 	}
 
 }

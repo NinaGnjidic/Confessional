@@ -9,7 +9,7 @@ public class HashButton extends Button {
 	private static final String ICON_IMAGE_PATH = "/images/icons/hashtag.png";
 
 	public HashButton(String text, Font font) {
-		super(text, font, ICON_IMAGE_PATH);
+		super(text, font.deriveFont(Font.BOLD, 18), ICON_IMAGE_PATH);
 	}
 
 }

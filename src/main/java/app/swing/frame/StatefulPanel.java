@@ -11,6 +11,7 @@ import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
+import javax.swing.border.EmptyBorder;
 
 import main.java.app.EnvironmentVariables;
 import main.java.app.state.StatefulApplication;
@@ -22,15 +23,21 @@ public abstract class StatefulPanel extends JPanel implements ButtonListener {
 
 	private static final long serialVersionUID = -6129290005971012152L;
 
-	protected final StatefulApplication app;
+	protected StatefulApplication app;
 	protected Image backgroundImage;
 	private String title;
 	private String text;
 
-	protected Button label;
-	protected Button rightButton;
-	protected Button leftButton;
+	private Button label;
+	private Button rightButton;
+	private Button leftButton;
 
+	public StatefulPanel(StatefulApplication app, Image backgroundImage) {
+		this.app = app;
+		this.backgroundImage = backgroundImage;
+		this.addKeyListener(this);
+	}
+	
 	protected StatefulPanel(StatefulApplication app, String backgroundImagePath, String title, String text) {
 		this(app, new ImageIcon(StatefulPanel.class.getResource(backgroundImagePath)).getImage(), title, text);
 	}
@@ -48,9 +55,9 @@ public abstract class StatefulPanel extends JPanel implements ButtonListener {
 
 	public void handleDisplay() {
 		this.setLayout(new BorderLayout());
-
+		this.setBorder(new EmptyBorder(120, 120, 100, 140));
 		if (title != null) {
-			label = new Button(title, null, app.getFont().deriveFont(Font.BOLD, 24));
+			label = new Button(title, text, app.getFont().deriveFont(Font.BOLD, 24));
 			this.add(label, BorderLayout.NORTH);
 		}
 
@@ -72,8 +79,8 @@ public abstract class StatefulPanel extends JPanel implements ButtonListener {
 	protected Component displayCenter(String text) {
 		if (text != null) {
 			JTextArea textArea = new JTextArea(text);
-			textArea.setForeground(Color.WHITE);
-			textArea.setFont(app.getFont());
+			textArea.setForeground(Color.YELLOW);
+			textArea.setFont(app.getFont().deriveFont(Font.BOLD, 24));
 			textArea.setWrapStyleWord(true);
 			textArea.setLineWrap(true);
 			textArea.setEditable(false);

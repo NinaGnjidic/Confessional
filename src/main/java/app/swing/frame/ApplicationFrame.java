@@ -23,10 +23,11 @@ public class ApplicationFrame extends JFrame {
 		this.setTitle(title);
 		
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-//		this.setSize(400, 200);
+		this.setSize(1920, 1080);
+		this.setResizable(false);
 //		this.setLocationRelativeTo(null);
-		this.setExtendedState(JFrame.MAXIMIZED_BOTH);
-		this.setUndecorated(true);
+//		this.setExtendedState(JFrame.MAXIMIZED_BOTH);
+//		this.setUndecorated(true);
 		
 		cardLayout = new CardLayout();
         cardPanel = new JPanel(cardLayout);

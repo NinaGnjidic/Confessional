@@ -6,26 +6,34 @@ import static main.java.app.EnvironmentVariables.INSERT_COIN_LEFT_BUTTON_TEXT;
 import static main.java.app.EnvironmentVariables.INSERT_COIN_RIGHT_BUTTON_TEXT;
 
 import java.awt.BorderLayout;
-import java.awt.Component;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.Image;
 
+import javax.swing.ImageIcon;
 import javax.swing.JPanel;
-
+import javax.swing.border.EmptyBorder;
 import com.fazecast.jSerialComm.SerialPort;
 
 import main.java.app.state.StatefulApplication;
+import main.java.app.swing.button.Button;
 import main.java.app.swing.button.HashButton;
 import main.java.app.swing.button.StarButton;
 import main.java.app.swing.frame.StatefulPanel;
 import main.java.app.swing.listener.CoinListener;
 
 public class InsertCoinView extends StatefulPanel implements CoinListener {
-
 	private static final long serialVersionUID = -5509182536642826627L;
 
 	private static final String BACKGROUND_IMAGE_PATH = "/images/bg_coin.jpg";
-
+	private static final Image BACKGROUND_IMAGE = new ImageIcon(InsertCoinView.class.getResource(BACKGROUND_IMAGE_PATH)).getImage();
+	
+	private Button label= new Button(INSERT_COIN_TITLE,null, app.getFont().deriveFont(Font.BOLD, 100));;
+	private Button rightButton;
+	private Button leftButton;
+	
 	public InsertCoinView(StatefulApplication app) {
-		super(app, BACKGROUND_IMAGE_PATH, INSERT_COIN_TITLE, INSERT_COIN_TEXT);
+		super(app, BACKGROUND_IMAGE);
 		SerialPort serialPort = getSerialPort();
 		if (serialPort != null)
 			serialPort.addDataListener(this);
@@ -37,10 +45,17 @@ public class InsertCoinView extends StatefulPanel implements CoinListener {
 	public void processData() {
 		this.app.clearSelected();
 	}
-
+	
 	@Override
-	protected Component displayBottom() {
-		JPanel bottomPanel = new JPanel(new BorderLayout());
+	public void handleDisplay() {
+		this.setLayout(new BorderLayout());
+		this.setBorder(new EmptyBorder(120, 120, 100, 140));
+		
+		label.setTextColor(Color.yellow);
+		label.hasShadow = true;
+		this.add(label, BorderLayout.CENTER);
+		
+		JPanel bottomPanel = new JPanel(new BorderLayout(100, 100));
 		bottomPanel.setOpaque(false);
 
 		leftButton = new StarButton(INSERT_COIN_LEFT_BUTTON_TEXT, app.getFont());
@@ -48,8 +63,10 @@ public class InsertCoinView extends StatefulPanel implements CoinListener {
 
 		bottomPanel.add(leftButton, BorderLayout.WEST);
 		bottomPanel.add(rightButton, BorderLayout.EAST);
-
-		return bottomPanel;
+		this.add(bottomPanel, BorderLayout.SOUTH);
+				
+		this.setFocusable(true);
+		this.requestFocusInWindow();
 	}
 
 	@Override
@@ -75,6 +92,11 @@ public class InsertCoinView extends StatefulPanel implements CoinListener {
 
 	@Override
 	public void onCoinInsert(float coinValue) {
+		removeAll();
+		label= new Button(INSERT_COIN_TEXT,null, app.getFont().deriveFont(Font.BOLD, 50));
+		this.handleDisplay();
+		repaint();
+		revalidate();
 		app.incrementInsertedCoins(coinValue);
 	}
 }
