@@ -36,8 +36,9 @@ public class PrinterService {
 		escpos.setCharacterCodeTable(CharacterCodeTable.CP852_Latin2);
 
 		Style center = new Style().setJustification(EscPosConst.Justification.Center);
+		Style left = new Style().setJustification(EscPosConst.Justification.Left_Default);
 		Style boldCenter = new Style(center).setBold(true);
-		Style bigNumbers = new Style(center).setBold(true).setFontSize(Style.FontSize._2, Style.FontSize._2);
+		Style bigNumbers = new Style(center).setBold(true).setFontSize(Style.FontSize._4, Style.FontSize._4);
 
 		BufferedImage cross = ImageIO.read(PrinterService.class.getResource(ICON_IMAGE_PATH));
 
@@ -74,7 +75,7 @@ public class PrinterService {
 		escpos.feed(1);
 
 		// -------- Section 2 --------
-		escpos.writeLF(center, aiResponse);
+		escpos.writeLF(left, aiResponse);
 		escpos.writeLF(center, "________________________________________________");
 		escpos.feed(1);
 
