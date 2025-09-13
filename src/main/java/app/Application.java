@@ -5,7 +5,6 @@ import java.io.IOException;
 
 import main.java.app.state.StatefulApplication;
 import main.java.app.swing.frame.StatefulPanel;
-import main.java.app.swing.view.ChooseTypeView;
 import main.java.app.swing.view.InsertCoinView;
 
 public class Application implements Runnable {
