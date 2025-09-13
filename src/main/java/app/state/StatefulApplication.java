@@ -4,12 +4,14 @@ import java.awt.Font;
 import java.awt.FontFormatException;
 import java.awt.GraphicsEnvironment;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
+import javazoom.jl.player.Player;
 import main.java.app.model.Category;
 import main.java.app.model.Data;
 import main.java.app.model.Detail;
@@ -17,12 +19,12 @@ import main.java.app.model.Type;
 import main.java.app.swing.frame.ApplicationFrame;
 import main.java.app.swing.frame.StatefulPanel;
 import main.java.app.util.DataReader;
-import main.java.app.util.MP3Player;
 
 public class StatefulApplication {
 
 	private ApplicationFrame frame;
 	private Font font;
+	private Player soundPlayer;
 
 	private Data data;
 	private Type type;
@@ -142,14 +144,30 @@ public class StatefulApplication {
 		return insertedCoins;
 	}
 	
-	MP3Player mp3Player = new MP3Player();
-	
+    private boolean looping = false;
+
     public void playSound(String soundResourcePath) {
-    	mp3Player.play(soundResourcePath);
+        stopSound();
+        looping = true;
+        new Thread(() -> {
+            while (looping) {
+                try (InputStream stream = getClass().getResourceAsStream(soundResourcePath)) {
+                    if (stream == null) throw new RuntimeException("Resource not found");
+                    soundPlayer = new Player(stream);
+                    soundPlayer.play();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    break;
+                }
+            }
+        }).start();
     }
 
     public void stopSound() {
-    	mp3Player.stop();
+    	looping = false;
+        if (soundPlayer != null) {
+            soundPlayer.close();
+        }
     }
 
 }
