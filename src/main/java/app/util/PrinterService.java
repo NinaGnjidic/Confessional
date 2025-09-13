@@ -1,22 +1,104 @@
 package main.java.app.util;
 
-import java.io.UnsupportedEncodingException;
+import java.awt.Graphics2D;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.util.List;
 
-import javax.print.DocFlavor;
-import javax.print.DocPrintJob;
-import javax.print.PrintException;
+import javax.imageio.ImageIO;
 import javax.print.PrintService;
 import javax.print.PrintServiceLookup;
-import javax.print.SimpleDoc;
+
+import com.github.anastaciocintra.escpos.EscPos;
+import com.github.anastaciocintra.escpos.EscPos.CharacterCodeTable;
+import com.github.anastaciocintra.escpos.EscPosConst;
+import com.github.anastaciocintra.escpos.Style;
+import com.github.anastaciocintra.escpos.image.BitonalThreshold;
+import com.github.anastaciocintra.escpos.image.CoffeeImageImpl;
+import com.github.anastaciocintra.escpos.image.EscPosImage;
+import com.github.anastaciocintra.escpos.image.RasterBitImageWrapper;
+import com.github.anastaciocintra.output.PrinterOutputStream;
 
 import main.java.app.EnvironmentVariables;
+import main.java.app.model.Detail;
 
 public class PrinterService {
-	private static final byte[] CUT_BYTES = new byte[] { 0x1D, 'V', 0 }; // full cut
-	private static final byte[] FEED_6_LINES_BYTES = new byte[] { 0x1B, 'd', 6 }; // feed 6 lines
-	private static final byte[] SELECT_CP852_BYTES = new byte[] { 0x1B, 't', 18 }; // ESC t 18 = CP852 (Epson) TODO: env
+	private static final String PRINT_TITLE = "AI ISPOVIJED";
+	private static final String PRINT_PRAYERS = "Navedeni broj bodova predstavlja broj molitvi koje je potrebno izmoliti kao pokoru za grijehe. Molitve odabrati proizvoljno.";
+	private static final String PRINT_RANKING = "ČESTITKA ZA ULAZAK U TOP 5. VI STE: ";
+	private static final String PRINT_COINS = "IZDANI MILODAR: ";
+	private static final String ICON_IMAGE_PATH = "/images/icons/cross.png";
 
-	public static void print(String escposData) {
+	public static void print(List<Detail> sins, String aiResponse, int points, int rank, float coins) throws IOException {
+		PrintService printerService = findPrinter();
+
+		EscPos escpos = new EscPos(new PrinterOutputStream(printerService));
+		escpos.setCharacterCodeTable(CharacterCodeTable.CP852_Latin2);
+
+		Style center = new Style().setJustification(EscPosConst.Justification.Center);
+		Style boldCenter = new Style(center).setBold(true);
+		Style bigNumbers = new Style(center).setBold(true).setFontSize(Style.FontSize._2, Style.FontSize._2);
+
+		BufferedImage cross = ImageIO.read(PrinterService.class.getResource(ICON_IMAGE_PATH));
+
+		int maxWidth = 200;
+		int maxHeight = 200;
+		double scale = Math.min((double) maxWidth / cross.getWidth(), (double) maxHeight / cross.getHeight());
+
+		int newWidth = (int) (cross.getWidth() * scale);
+		int newHeight = (int) (cross.getHeight() * scale);
+
+		BufferedImage scaledCross = new BufferedImage(newWidth, newHeight, BufferedImage.TYPE_INT_ARGB);
+		Graphics2D g = scaledCross.createGraphics();
+		g.drawImage(cross, 0, 0, newWidth, newHeight, null);
+		g.dispose();
+
+		CoffeeImageImpl coffeeImage = new CoffeeImageImpl(scaledCross);
+		EscPosImage escposImage = new EscPosImage(coffeeImage, new BitonalThreshold());
+
+		RasterBitImageWrapper imageWrapper = new RasterBitImageWrapper();
+		imageWrapper.setJustification(EscPosConst.Justification.Center);
+
+		escpos.writeLF(center, ""); // optional spacing line
+		escpos.write(imageWrapper, escposImage);
+		escpos.feed(1);
+		escpos.writeLF(boldCenter, PRINT_TITLE);
+		escpos.feed(1);
+		escpos.writeLF(center, "________________________________________________");
+		escpos.feed(1);
+		
+		for(Detail sin : sins) {
+			escpos.writeLF(center, sin.getName());
+		}
+		escpos.writeLF(center, "________________________________________________");
+		escpos.feed(1);
+
+		// -------- Section 2 --------
+		escpos.writeLF(center, aiResponse);
+		escpos.writeLF(center, "________________________________________________");
+		escpos.feed(1);
+
+		escpos.writeLF(center, PRINT_PRAYERS);
+		escpos.feed(1);
+		escpos.writeLF(bigNumbers, points + "");
+		if(rank > 0 && rank < 5) {
+			escpos.feed(1);
+			escpos.writeLF(center, PRINT_RANKING + rank);
+		}
+		escpos.writeLF(center, "________________________________________________");
+		escpos.feed(1);
+		
+		escpos.writeLF(center, PRINT_COINS + coins);
+
+		escpos.feed(6);
+		escpos.cut(EscPos.CutMode.FULL);
+
+		escpos.close();
+
+		System.out.println("Sent to printer!");
+	}
+
+	private static PrintService findPrinter() {
 		String printerName = EnvironmentVariables.PRINTER;
 
 		PrintService[] services = PrintServiceLookup.lookupPrintServices(null, null);
@@ -31,40 +113,8 @@ public class PrinterService {
 
 		if (selectedPrinter == null) {
 			System.err.println("Printer not found!");
-			return;
 		}
 
-		byte[] textBytes;
-		try {
-			textBytes = escposData.getBytes(EnvironmentVariables.PRINTER_ENCODING);
-		} catch (UnsupportedEncodingException e) {
-			e.printStackTrace();
-			return;
-		}
-
-		byte[] data = new byte[SELECT_CP852_BYTES.length + textBytes.length + FEED_6_LINES_BYTES.length
-				+ CUT_BYTES.length];
-
-		int pos = 0;
-		System.arraycopy(SELECT_CP852_BYTES, 0, data, pos, SELECT_CP852_BYTES.length);
-		pos += SELECT_CP852_BYTES.length;
-
-		System.arraycopy(textBytes, 0, data, pos, textBytes.length);
-		pos += textBytes.length;
-
-		System.arraycopy(FEED_6_LINES_BYTES, 0, data, pos, FEED_6_LINES_BYTES.length);
-		pos += FEED_6_LINES_BYTES.length;
-
-		System.arraycopy(CUT_BYTES, 0, data, pos, CUT_BYTES.length);
-
-		DocPrintJob printJob = selectedPrinter.createPrintJob();
-		try {
-			printJob.print(new SimpleDoc(data, DocFlavor.BYTE_ARRAY.AUTOSENSE, null), null);
-		} catch (PrintException e) {
-			e.printStackTrace();
-			return;
-		}
-
-		System.out.println("Sent to printer!");
+		return selectedPrinter;
 	}
 }
