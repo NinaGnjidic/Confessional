@@ -138,7 +138,7 @@ public class Button extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 if (step[0] >= totalSteps) {
                     pressOffset = 0;
-                    textColor = Color.WHITE;
+                    textColor = Color.yellow;
                     self.repaint();
                     ((Timer) e.getSource()).stop();
                     afterAnimation.run();
@@ -151,7 +151,7 @@ public class Button extends JPanel {
                     textColor = pressColor;
                 } else { // on odd steps: released
                     pressOffset = 0;
-                    textColor = Color.WHITE;
+                    textColor = Color.yellow;
                 }
 
                 step[0]++;

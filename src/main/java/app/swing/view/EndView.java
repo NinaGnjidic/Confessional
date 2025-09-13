@@ -58,7 +58,7 @@ public class EndView extends StatefulPanel {
 		if (content != null && !content.trim().isEmpty())
 			PrinterService.print(content);
 
-		label.animateButton(() -> app.show(new InsertCoinView(app)));
+//		label.animateButton(() -> app.show(new InsertCoinView(app)));
 	}
 	
 	private String createContent() {
