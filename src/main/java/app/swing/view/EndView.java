@@ -6,6 +6,7 @@ import static main.java.app.EnvironmentVariables.SCORE_CONTENT_PREFIX;
 import static main.java.app.EnvironmentVariables.RANK_CONTENT_PREFIX;
 
 import java.awt.Component;
+import java.io.IOException;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -55,8 +56,14 @@ public class EndView extends StatefulPanel {
 	@Override
 	public void bigRedButtonPressed() {
 		String content = createContent();
-		if (content != null && !content.trim().isEmpty())
-			PrinterService.print(content);
+		if (content != null && !content.trim().isEmpty()) {
+			List<Detail> sins = app.getSelectedDeatilsPerCategory().values().stream().flatMap(List::stream).collect(Collectors.toList());			
+			try {
+				PrinterService.print(sins, this.AIResponse, this.score, this.rank, app.getInsertedCoins());
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
 
 //		label.animateButton(() -> app.show(new InsertCoinView(app)));
 	}
