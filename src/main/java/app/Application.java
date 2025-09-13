@@ -5,6 +5,7 @@ import java.io.IOException;
 
 import main.java.app.state.StatefulApplication;
 import main.java.app.swing.frame.StatefulPanel;
+import main.java.app.swing.view.ChooseTypeView;
 import main.java.app.swing.view.InsertCoinView;
 
 public class Application implements Runnable {
@@ -13,7 +14,7 @@ public class Application implements Runnable {
 		try {
 
 			StatefulApplication app = new StatefulApplication("Ispovjedaonica") {};
-			StatefulPanel firstPanel = new InsertCoinView(app);
+			StatefulPanel firstPanel = new ChooseTypeView(app);
 			app.start(firstPanel);
 		} catch (FontFormatException | IOException e) {
 			e.printStackTrace();
