@@ -14,7 +14,7 @@ public class Application implements Runnable {
 		try {
 
 			StatefulApplication app = new StatefulApplication("Ispovjedaonica") {};
-			StatefulPanel firstPanel = new ChooseTypeView(app);
+			StatefulPanel firstPanel = new InsertCoinView(app);
 			app.start(firstPanel);
 		} catch (FontFormatException | IOException e) {
 			e.printStackTrace();
