@@ -1,10 +1,14 @@
 package main.java.app.swing.listener;
 
+import javax.swing.SwingWorker;
+
 import com.fazecast.jSerialComm.SerialPort;
 import com.fazecast.jSerialComm.SerialPortEvent;
 import com.fazecast.jSerialComm.SerialPortMessageListener;
 
 public interface CoinListener extends SerialPortMessageListener {
+	static SerialPort serialPort = getSerialPort();
+	
 	@Override
 	public default int getListeningEvents() {
 		return SerialPort.LISTENING_EVENT_DATA_RECEIVED;
@@ -24,24 +28,41 @@ public interface CoinListener extends SerialPortMessageListener {
 	public default void serialEvent(SerialPortEvent event) {
 		byte[] data = event.getReceivedData();
 		String message = new String(data).strip();
-		float coinValue = Float.parseFloat(message);
-		onCoinInsert(coinValue);
+		final float coinValue = Float.parseFloat(message);
+		
+		new SwingWorker<Void, Void>() {
+
+			@Override
+			protected Void doInBackground() throws Exception {
+				return null;
+			}
+
+			@Override
+			protected void done() {
+				onCoinInsert(coinValue);
+			}
+			
+		}.execute();
 	}
-	
+
 	public void onCoinInsert(float coinValue);
-	
-	public default SerialPort getSerialPort() {
+
+	public static SerialPort getSerialPort() {
 		SerialPort[] serialPorts = SerialPort.getCommPorts();
 		if (serialPorts.length == 0)
 			return null;
-		SerialPort serialPort = serialPorts[0];
+		if (serialPort != null && serialPort.isOpen())
+			return serialPort;
+		SerialPort serialPort = SerialPort.getCommPorts()[0];
 		serialPort.setBaudRate(9600);
-		if (serialPort.openPort()) {
-			System.out.println("Port opened successfully.");
-		} else {
-			System.out.println("Failed to open port.");
+		if (!serialPort.isOpen()) {
+			if (serialPort.openPort()) {
+				System.out.println("Port opened successfully.");
+			} else {
+				System.out.println("Failed to open port.");
+			}
 		}
 		return serialPort;
 	}
-	
+
 }

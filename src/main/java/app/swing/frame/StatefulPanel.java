@@ -28,10 +28,6 @@ public abstract class StatefulPanel extends JPanel implements ButtonListener {
 	private String title;
 	private String text;
 
-	private Button label;
-	private Button rightButton;
-	private Button leftButton;
-
 	public StatefulPanel(StatefulApplication app, Image backgroundImage) {
 		this.app = app;
 		this.backgroundImage = backgroundImage;
@@ -57,7 +53,7 @@ public abstract class StatefulPanel extends JPanel implements ButtonListener {
 		this.setLayout(new BorderLayout());
 		this.setBorder(new EmptyBorder(120, 120, 100, 140));
 		if (title != null) {
-			label = new Button(title, text, app.getFont().deriveFont(Font.BOLD, 24));
+			Button label = new Button(title, text, app.getFont().deriveFont(Font.BOLD, 24));
 			this.add(label, BorderLayout.NORTH);
 		}
 
@@ -94,7 +90,7 @@ public abstract class StatefulPanel extends JPanel implements ButtonListener {
 	protected Component displayBottom() {
 		JPanel bottomPanel = new JPanel(new BorderLayout());
 		bottomPanel.setOpaque(false);
-		rightButton = new HashButton(EnvironmentVariables.PREVIOUS_BUTTON_LABEL, app.getFont());
+		HashButton rightButton = new HashButton(EnvironmentVariables.PREVIOUS_BUTTON_LABEL, app.getFont());
 		bottomPanel.add(rightButton, BorderLayout.EAST);
 		return bottomPanel;
 	}

@@ -166,4 +166,10 @@ public class Button extends JPanel {
         this.textColor = textColor;
         repaint();
     }
+    
+    public void setText(String text, Font font) {
+    	this.text = text;
+    	this.font = font;
+    	repaint();
+    }
 }

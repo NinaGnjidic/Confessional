@@ -60,12 +60,13 @@ public class EndView extends StatefulPanel {
 			List<Detail> sins = app.getSelectedDeatilsPerCategory().values().stream().flatMap(List::stream).collect(Collectors.toList());			
 			try {
 				PrinterService.print(sins, this.AIResponse, this.score, this.rank, app.getInsertedCoins());
-			} catch (IOException e) {
+			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}
 
-//		label.animateButton(() -> app.show(new InsertCoinView(app)));
+		this.app.clearSelected();
+		 app.show(new InsertCoinView(app));
 	}
 	
 	private String createContent() {
