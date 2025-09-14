@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.Box;
+import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -18,6 +19,7 @@ import main.java.app.EnvironmentVariables;
 import main.java.app.model.Displayable;
 import main.java.app.state.StatefulApplication;
 import main.java.app.swing.button.Button;
+import main.java.app.swing.button.HashButton;
 import main.java.app.swing.button.ToggleButton;
 
 public abstract class StatefulPanelWithButtons<T extends Displayable> extends StatefulPanel {
@@ -31,7 +33,6 @@ public abstract class StatefulPanelWithButtons<T extends Displayable> extends St
     protected List<T> data = new ArrayList<>();
     private int pageSize = 6;
     private int pageIndex = 0;
-    private boolean includeActionButtons;
 
     String title;
     protected Button label;
@@ -41,14 +42,13 @@ public abstract class StatefulPanelWithButtons<T extends Displayable> extends St
     private JPanel rightPanel;
 
     protected final List<ToggleButton> dataButtons = new ArrayList<>();
+    
 
-    protected StatefulPanelWithButtons(StatefulApplication app, List<T> data, int pageSize,
-                                       boolean includeActionButtons, String title) {
+    protected StatefulPanelWithButtons(StatefulApplication app, List<T> data, int pageSize, String title) {
         super(app, BACKGROUND_IMAGE);
         this.title = title;
         this.data = data;
         this.pageSize = pageSize;
-        this.includeActionButtons = includeActionButtons;
     }
 
 	@Override
@@ -62,8 +62,13 @@ public abstract class StatefulPanelWithButtons<T extends Displayable> extends St
 		this.add(label, BorderLayout.NORTH);
 
 		JPanel centerPanel = new JPanel(new GridLayout(1, 2));
-		leftPanel = new JPanel(new GridLayout(includeActionButtons ? pageSize + 1 : pageSize, 1));
-		rightPanel = new JPanel(new GridLayout(includeActionButtons ? pageSize + 1 : pageSize, 1));
+		
+		leftPanel = new JPanel();
+		leftPanel.setLayout(new BoxLayout(leftPanel, BoxLayout.Y_AXIS));
+		
+		rightPanel = new JPanel();
+		rightPanel.setLayout(new BoxLayout(rightPanel, BoxLayout.Y_AXIS));
+		
 		leftPanel.setOpaque(false);
 		rightPanel.setOpaque(false);
 		centerPanel.add(leftPanel);
@@ -71,6 +76,12 @@ public abstract class StatefulPanelWithButtons<T extends Displayable> extends St
 		centerPanel.setOpaque(false);
 		this.add(centerPanel, BorderLayout.CENTER);
 
+		displayControlsPanel();
+
+		handleInput();
+	}
+
+	protected void displayControlsPanel() {
 		JPanel bottomPanel = (JPanel) super.displayBottom();
 		rightButton = createRightPanelControlButton();
 		if (getMaxPage() != 0) {
@@ -80,8 +91,6 @@ public abstract class StatefulPanelWithButtons<T extends Displayable> extends St
 		}
 		bottomPanel.add(rightButton, BorderLayout.EAST);
 		this.add(bottomPanel, BorderLayout.SOUTH);
-
-		handleInput();
 	}
 
     /**
@@ -92,32 +101,30 @@ public abstract class StatefulPanelWithButtons<T extends Displayable> extends St
     public void handleInput() {
         leftPanel.removeAll();
         rightPanel.removeAll();
+
+		leftPanel.add(Box.createRigidArea(new Dimension(0, pageSize > 1 ? 15 : 250)));
+		rightPanel.add(Box.createRigidArea(new Dimension(0, pageSize > 1 ? 15 : 250)));
+
         dataButtons.clear();
 
         int start = pageIndex * pageSize * 2;
         int end = Math.min(start + pageSize * 2, data.size());
         List<T> currentPageData = data.subList(start, end);
-
-        for (int i = 0; i < pageSize; i++) {
-            if (i < currentPageData.size() / 2) {
-                T item = currentPageData.get(i);
-                ToggleButton btn = createDataButton(item);
-                dataButtons.add(btn);
-                leftPanel.add(btn);
-            } else {
-                leftPanel.add(Box.createVerticalStrut(30));
-            }
-
-            int rightIndex = i + pageSize;
-            if (rightIndex < currentPageData.size()) {
-                T item = currentPageData.get(rightIndex);
-                ToggleButton btn = createDataButton(item);
-                dataButtons.add(btn);
-                rightPanel.add(btn);
-            } else {
-                rightPanel.add(Box.createVerticalStrut(30));
-            }
-        }
+        
+        for(int i = 0; i < (end-start);i++) {
+            ToggleButton letPanelButton = createDataButton(currentPageData.get(i), i);
+            dataButtons.add(letPanelButton);
+            leftPanel.add(letPanelButton);
+            leftPanel.add(Box.createRigidArea(new Dimension(0, 15)));
+            
+            i++;
+            
+            T item = currentPageData.get(i);
+            ToggleButton btn = createDataButton(item, i);
+            dataButtons.add(btn);
+            rightPanel.add(btn);
+            rightPanel.add(Box.createRigidArea(new Dimension(0, 15)));
+        } 
 
         leftPanel.revalidate();
         rightPanel.revalidate();
@@ -142,7 +149,9 @@ public abstract class StatefulPanelWithButtons<T extends Displayable> extends St
 	}
 	
 	private Button createDoneButton() {
-		return createControlButton(EnvironmentVariables.DONE_BUTTON_LABEL, true, this::handleDone);
+		Button button = new HashButton(EnvironmentVariables.PREVIOUS_BUTTON_LABEL, app.getFont());
+		button.setPreferredSize(new Dimension(180 + 20 * 2, 50 + 20 * 2));
+		return button;
 	}
 	
     private Button createControlButton(String label, boolean isEnabled, Runnable action) {
@@ -153,9 +162,10 @@ public abstract class StatefulPanelWithButtons<T extends Displayable> extends St
         return button;
     }
 
-    private ToggleButton createDataButton(T item) {
-        ToggleButton toggle = new ToggleButton(item.getName(), app.getFont());
-        toggle.setPreferredSize(new Dimension(180 + 20 * 2, 50 + 20 * 2));
+    protected ToggleButton createDataButton(T item, int index) {
+        ToggleButton toggle = new ToggleButton((index+1)+". " + item.getName(), app.getFont());
+        toggle.setPreferredSize(new Dimension(250, 150));
+        toggle.setMaximumSize(new Dimension(Integer.MAX_VALUE, 150));
         boolean isSelected = isDataSelected(item);
         toggle.setSelected(isSelected);
         toggle.bindSelectionHandlers(() -> onDataSelected(item), () -> onDataUnSelected(item));

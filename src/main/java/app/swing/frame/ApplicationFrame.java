@@ -25,7 +25,7 @@ public class ApplicationFrame extends JFrame {
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setSize(1920, 1080);
 		this.setResizable(false);
-//		this.setLocationRelativeTo(null);
+		this.setLocationRelativeTo(null);
 //		this.setExtendedState(JFrame.MAXIMIZED_BOTH);
 //		this.setUndecorated(true);
 		

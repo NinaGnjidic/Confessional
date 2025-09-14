@@ -11,6 +11,8 @@ import java.awt.Font;
 public class ToggleButton extends Button {
     private static final long serialVersionUID = 1L;
 
+    private static final String DEFAULT_IMAGE_PATH = "/images/button.png";
+
     private boolean selected = false;
 
     private Color selectedTextColor = Color.YELLOW;
@@ -18,9 +20,13 @@ public class ToggleButton extends Button {
 
     private Runnable onSelect;
     private Runnable onUnselect;
-
+    
     public ToggleButton(String text, Font font) {
-        super(text, font);
+        this(text, font, DEFAULT_IMAGE_PATH);
+    }
+
+    public ToggleButton(String text, Font font, String imagePath) {
+        super(text, imagePath, font);
         updateStyle();
     }
 
