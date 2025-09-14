@@ -41,7 +41,7 @@ public class PrivacyPolicyView extends StatefulPanel {
 	@Override
 	public void handleDisplay() {
 		this.setLayout(new BorderLayout());
-		this.setBorder(new EmptyBorder(170, 120, 100, 140));
+		this.setBorder(new EmptyBorder(130, 120, 100, 140));
 		label = new Button(PRIVACY_TITLE, null, app.getFont().deriveFont(Font.BOLD, 22));
 		label.hasShadow = true;
 		label.setTextColor(Color.yellow);
@@ -66,10 +66,10 @@ public class PrivacyPolicyView extends StatefulPanel {
 			}
 			textPane.setText(ltext.get(i));
 			textPane.setForeground(Color.YELLOW);
-			textPane.setFont(app.getFont().deriveFont(Font.BOLD, 18));
+			textPane.setFont(app.getFont().deriveFont(Font.BOLD, 14));
 			textPane.setEditable(false);
 			textPane.setOpaque(false);
-			textPane.setBorder(BorderFactory.createEmptyBorder(5, 30, 5, 30));
+			textPane.setBorder(BorderFactory.createEmptyBorder(0, 30, 0, 30));
 			panel.add(textPane);
 		}
 
@@ -90,5 +90,11 @@ public class PrivacyPolicyView extends StatefulPanel {
 	@Override
 	public void bigRedButtonPressed() {
 		label.animateButton(() -> this.app.show(new ChooseTypeView(app)));
+	}
+	
+	
+	@Override
+	public void hashButtonPressed() {
+		label.animateButton(() -> this.app.show(new InsertCoinView(app)));
 	}
 }

@@ -7,9 +7,14 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Image;
 
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JTextArea;
+import javax.swing.JTextPane;
 import javax.swing.border.EmptyBorder;
+import javax.swing.text.SimpleAttributeSet;
+import javax.swing.text.StyleConstants;
+import javax.swing.text.StyledDocument;
 
 import main.java.app.state.StatefulApplication;
 import main.java.app.swing.frame.StatefulPanel;
@@ -31,15 +36,21 @@ public class ExitView extends StatefulPanel {
 	@Override
 	public void handleDisplay() {
 		this.setLayout(new BorderLayout());
-		this.setBorder(new EmptyBorder(300, 150, 100, 150));
-		JTextArea textArea = new JTextArea(END_TEXT);
-		textArea.setForeground(Color.YELLOW);
-		textArea.setFont(app.getFont().deriveFont(Font.BOLD, 24));
-		textArea.setWrapStyleWord(true);
-		textArea.setLineWrap(true);
-		textArea.setEditable(false);
-		textArea.setOpaque(false);
-		this.add(textArea, BorderLayout.CENTER);
+		this.setBorder(new EmptyBorder(300, 170, 100, 170));
+		
+		JTextPane textPane = new JTextPane();
+		StyledDocument doc = textPane.getStyledDocument();
+		SimpleAttributeSet center = new SimpleAttributeSet();
+		StyleConstants.setAlignment(center, StyleConstants.ALIGN_CENTER);
+		doc.setParagraphAttributes(0, doc.getLength(), center, false);
+
+		textPane.setText(END_TEXT.replace("\\n", "\n"));
+		textPane.setForeground(Color.YELLOW);
+		textPane.setFont(app.getFont().deriveFont(Font.BOLD, 32));
+		textPane.setEditable(false);
+		textPane.setOpaque(false);
+		textPane.setBorder(BorderFactory.createEmptyBorder(5, 30, 5, 30));
+		this.add(textPane, BorderLayout.CENTER);
 	}
 
 	@Override

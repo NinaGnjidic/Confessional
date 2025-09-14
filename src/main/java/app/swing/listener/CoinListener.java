@@ -29,20 +29,21 @@ public interface CoinListener extends SerialPortMessageListener {
 		byte[] data = event.getReceivedData();
 		String message = new String(data).strip();
 		final float coinValue = Float.parseFloat(message);
-		
-		new SwingWorker<Void, Void>() {
 
-			@Override
-			protected Void doInBackground() throws Exception {
-				return null;
-			}
-
-			@Override
-			protected void done() {
-				onCoinInsert(coinValue);
-			}
-			
-		}.execute();
+		onCoinInsert(coinValue);
+//		new SwingWorker<Void, Void>() {
+//
+//			@Override
+//			protected Void doInBackground() throws Exception {
+//				return null;
+//			}
+//
+//			@Override
+//			protected void done() {
+//				onCoinInsert(coinValue);
+//			}
+//			
+//		}.execute();
 	}
 
 	public void onCoinInsert(float coinValue);

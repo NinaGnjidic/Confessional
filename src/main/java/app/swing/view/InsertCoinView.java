@@ -30,7 +30,7 @@ public class InsertCoinView extends StatefulPanel implements CoinListener {
 	private static final Image BACKGROUND_IMAGE = new ImageIcon(InsertCoinView.class.getResource(BACKGROUND_IMAGE_PATH))
 			.getImage();
 
-	private Button label = new Button(INSERT_COIN_TITLE, null, app.getFont().deriveFont(Font.BOLD, 100));;
+	private Button label = new Button(INSERT_COIN_TITLE, null, app.getFont().deriveFont(Font.BOLD, 90));;
 	private Button text = new Button(INSERT_COIN_TEXT, null, app.getFont().deriveFont(Font.BOLD, 50));;
 	private Button rightButton;
 	private Button leftButton;
@@ -50,7 +50,7 @@ public class InsertCoinView extends StatefulPanel implements CoinListener {
 	@Override
 	public void handleDisplay() {
 		this.setLayout(new BorderLayout());
-		this.setBorder(new EmptyBorder(120, 120, 100, 140));
+		this.setBorder(new EmptyBorder(250, 120, 100, 140));
 
 		this.label.setTextColor(Color.yellow);
 		this.label.hasShadow = true;
@@ -99,5 +99,4 @@ public class InsertCoinView extends StatefulPanel implements CoinListener {
 		app.incrementInsertedCoins(coinValue);
 		this.label.animateButton(() -> app.show(new InsertCoinView(app)));
 	}
-
 }
