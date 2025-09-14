@@ -36,7 +36,6 @@ public class EndView extends StatefulPanel {
 	public EndView(StatefulApplication app, String printContent) {
 		super(app, BACKGROUND_IMAGE_PATH, null, null);
 		this.printContent = printContent;
-		app.playSound("/sounds/exit.mp3");
 	}
 
 	@Override
@@ -59,6 +58,7 @@ public class EndView extends StatefulPanel {
 
 	@Override
 	public void bigRedButtonPressed() {
+		app.playSound("/sounds/exit.mp3");
 		String content = createContent();
 		if (content != null && !content.trim().isEmpty()) {
 			List<Detail> sins = app.getSelectedDeatilsPerCategory().values().stream().flatMap(List::stream).collect(Collectors.toList());			
@@ -69,8 +69,7 @@ public class EndView extends StatefulPanel {
 			}
 		}
 
-		this.app.clearSelected();
-		 app.show(new InsertCoinView(app));
+		label.animateButton(()->app.show(new ExitView(app)));
 	}
 	
 	private String createContent() {

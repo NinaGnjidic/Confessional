@@ -37,6 +37,7 @@ public class EnvironmentVariables {
 	public static final String CHOOSE_DETAILS_TITLE = ENV.get("CHOOSE_DETAILS_TITLE");
 	public static final String LOADING_TITLE = ENV.get("LOADING_TITLE");
 	public static final String END_TITLE = ENV.get("END_TITLE");
+	public static final String END_TEXT = ENV.get("END_TEXT");
 
 	public static final String SCORE_CONTENT_PREFIX = ENV.get("SCORE_CONTENT_PREFIX");
 	public static final String RANK_CONTENT_PREFIX = ENV.get("RANK_CONTENT_PREFIX");

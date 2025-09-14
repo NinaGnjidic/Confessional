@@ -9,6 +9,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import main.java.app.model.Category;
 import main.java.app.model.Data;
@@ -114,6 +115,10 @@ public class StatefulApplication {
 		return false;
 	}
 
+	public List<Detail> getSelectedDetails() {
+		return getSelectedDeatilsPerCategory().values().stream().flatMap(l -> l.stream()).collect(Collectors.toList());
+	}
+	
 	public String createDetailsPerCategoryString() {
 		Map<Category, List<Detail>> detailsPerCategory = getSelectedDeatilsPerCategory();
 

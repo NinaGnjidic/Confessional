@@ -1,9 +1,9 @@
 package main.java.app.swing.view;
 
-import static main.java.app.EnvironmentVariables.INSERT_COIN_TEXT;
-import static main.java.app.EnvironmentVariables.INSERT_COIN_TITLE;
 import static main.java.app.EnvironmentVariables.INSERT_COIN_LEFT_BUTTON_TEXT;
 import static main.java.app.EnvironmentVariables.INSERT_COIN_RIGHT_BUTTON_TEXT;
+import static main.java.app.EnvironmentVariables.INSERT_COIN_TEXT;
+import static main.java.app.EnvironmentVariables.INSERT_COIN_TITLE;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -12,8 +12,8 @@ import java.awt.Image;
 
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
-import javax.swing.SwingUtilities;
 import javax.swing.border.EmptyBorder;
+
 import com.fazecast.jSerialComm.SerialPort;
 
 import main.java.app.state.StatefulApplication;
@@ -41,9 +41,10 @@ public class InsertCoinView extends StatefulPanel implements CoinListener {
 		if (serialPort != null)
 			serialPort.addDataListener(this);
 
-		app.playSound("/sounds/music.mp3");
-		
 		this.label = app.getInsertedCoins() > 0 ? text:label;
+		if(app.getInsertedCoins() >0) {
+			app.playSound("/sounds/music.mp3");
+		}
 	}
 
 	@Override
@@ -71,6 +72,7 @@ public class InsertCoinView extends StatefulPanel implements CoinListener {
 
 	@Override
 	public void button0Pressed() {
+		app.playSound("/sounds/music.mp3");
 		this.label.animateButton(() -> app.show(new PrivacyPolicyView(app)));
 	}
 
