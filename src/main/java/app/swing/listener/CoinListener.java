@@ -53,7 +53,7 @@ public interface CoinListener extends SerialPortMessageListener {
 			return null;
 		if (serialPort != null && serialPort.isOpen())
 			return serialPort;
-		SerialPort serialPort = SerialPort.getCommPorts()[0];
+		SerialPort serialPort = SerialPort.getCommPort("COM8");
 		serialPort.setBaudRate(9600);
 		if (!serialPort.isOpen()) {
 			if (serialPort.openPort()) {
@@ -64,5 +64,4 @@ public interface CoinListener extends SerialPortMessageListener {
 		}
 		return serialPort;
 	}
-
 }

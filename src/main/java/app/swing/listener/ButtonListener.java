@@ -6,6 +6,8 @@ import java.awt.event.KeyListener;
 public interface ButtonListener extends KeyListener {
 	@Override
 	default void keyPressed(KeyEvent event) {
+//		System.out.println(event.getKeyCode());
+//		System.out.println(event.getKeyChar());
 		char character = event.getKeyChar();
 		switch (character) {
 		case '0':
