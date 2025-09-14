@@ -23,13 +23,9 @@ import main.java.app.EnvironmentVariables;
 import main.java.app.model.Detail;
 
 public class PrinterService {
-	private static final String PRINT_TITLE = "AI ISPOVIJED";
-	private static final String PRINT_PRAYERS = "Navedeni broj bodova predstavlja broj molitvi koje je potrebno izmoliti kao pokoru za grijehe. Molitve odabrati proizvoljno.";
-	private static final String PRINT_RANKING = "ČESTITKA ZA ULAZAK U TOP 5. VI STE: ";
-	private static final String PRINT_COINS = "IZDANI MILODAR: ";
 	private static final String ICON_IMAGE_PATH = "/images/icons/cross.png";
 
-	public static void print(List<Detail> sins, String aiResponse, int points, int rank, float coins) throws IOException {
+	public static void printConfessional(List<Detail> sins, String content, int points, int rank, float coins) throws IOException {
 		PrintService printerService = findPrinter();
 
 		EscPos escpos = new EscPos(new PrinterOutputStream(printerService));
@@ -63,33 +59,36 @@ public class PrinterService {
 		escpos.writeLF(center, ""); // optional spacing line
 		escpos.write(imageWrapper, escposImage);
 		escpos.feed(1);
-		escpos.writeLF(boldCenter, PRINT_TITLE);
+		escpos.writeLF(boldCenter, EnvironmentVariables.PRINT_TITLE);
 		escpos.feed(1);
 		escpos.writeLF(center, "________________________________________________");
 		escpos.feed(1);
 		
-		for(Detail sin : sins) {
-			escpos.writeLF(center, sin.getName());
+		if(sins.isEmpty()) {
+			escpos.writeLF(center, EnvironmentVariables.PRINT_NO_SINS);
+		} else {
+			for(Detail sin : sins) {
+				escpos.writeLF(center, sin.getName());
+			}
 		}
 		escpos.writeLF(center, "________________________________________________");
 		escpos.feed(1);
 
-		// -------- Section 2 --------
-		escpos.writeLF(left, aiResponse);
+		escpos.writeLF(left, content);
 		escpos.writeLF(center, "________________________________________________");
 		escpos.feed(1);
 
-		escpos.writeLF(center, PRINT_PRAYERS);
+		escpos.writeLF(center, EnvironmentVariables.PRINT_PRAYERS);
 		escpos.feed(1);
 		escpos.writeLF(bigNumbers, points + "");
-		if(rank > 0 && rank < 5) {
+		if(rank > 0 && rank <= 5) {
 			escpos.feed(1);
-			escpos.writeLF(center, PRINT_RANKING + rank);
+			escpos.writeLF(center, EnvironmentVariables.PRINT_RANKING + rank);
 		}
 		escpos.writeLF(center, "________________________________________________");
 		escpos.feed(1);
 		
-		escpos.writeLF(center, PRINT_COINS + coins);
+		escpos.writeLF(center, EnvironmentVariables.PRINT_COINS + coins);
 
 		escpos.feed(6);
 		escpos.cut(EscPos.CutMode.FULL);
@@ -98,7 +97,7 @@ public class PrinterService {
 
 		System.out.println("Sent to printer!");
 	}
-
+	
 	private static PrintService findPrinter() {
 		String printerName = EnvironmentVariables.PRINTER;
 

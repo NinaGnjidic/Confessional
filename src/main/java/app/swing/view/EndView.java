@@ -2,18 +2,22 @@ package main.java.app.swing.view;
 
 
 import static main.java.app.EnvironmentVariables.END_TITLE;
-import static main.java.app.EnvironmentVariables.SCORE_CONTENT_PREFIX;
 import static main.java.app.EnvironmentVariables.RANK_CONTENT_PREFIX;
+import static main.java.app.EnvironmentVariables.SCORE_CONTENT_PREFIX;
 
-import java.awt.Component;
-import java.io.IOException;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import javax.swing.border.EmptyBorder;
+
 import main.java.app.model.Detail;
 import main.java.app.state.StatefulApplication;
+import main.java.app.swing.button.Button;
 import main.java.app.swing.frame.StatefulPanel;
-import main.java.app.util.AIService;
 import main.java.app.util.PrinterService;
 import main.java.app.util.RankingService;
 
@@ -23,34 +27,34 @@ public class EndView extends StatefulPanel {
 
 	private static final String BACKGROUND_IMAGE_PATH = "/images/bg_end.jpg";
 	
-	String AIResponse;
+	private Button label;
+	
+	String printContent;
 	int score;
 	int rank;
 
-	public EndView(StatefulApplication app) {
-		super(app, BACKGROUND_IMAGE_PATH, END_TITLE, null);
-
+	public EndView(StatefulApplication app, String printContent) {
+		super(app, BACKGROUND_IMAGE_PATH, null, null);
+		this.printContent = printContent;
 		app.playSound("/sounds/exit.mp3");
 	}
 
 	@Override
 	public void processData() {
-		String content = app.createDetailsPerCategoryString();
-		this.AIResponse = AIService.confessional(content);
-
 		List<Detail> selecedDetails = app.getSelectedDeatilsPerCategory().values().stream().flatMap(List::stream).collect(Collectors.toList());
 		this.score = selecedDetails.stream().mapToInt(Detail::getPoints).sum();
 		this.rank = RankingService.addScore(score);
 	}
 
 	@Override
-	protected Component displayCenter(String text) {
-		return super.displayCenter(createContent());
-	}
-
-	@Override
-	protected Component displayBottom() {
-		return null;
+	public void handleDisplay() {
+		this.setLayout(new BorderLayout());
+		this.setBorder(new EmptyBorder(120, 120, 100, 140));
+		label = new Button(END_TITLE, null, app.getFont().deriveFont(Font.BOLD, 40));
+		label.setPreferredSize(new Dimension(Integer.MAX_VALUE, 200));
+		label.setMaximumSize(new Dimension(Integer.MAX_VALUE, 200));
+		label.setTextColor(Color.WHITE);
+		this.add(label, BorderLayout.NORTH);
 	}
 
 	@Override
@@ -59,7 +63,7 @@ public class EndView extends StatefulPanel {
 		if (content != null && !content.trim().isEmpty()) {
 			List<Detail> sins = app.getSelectedDeatilsPerCategory().values().stream().flatMap(List::stream).collect(Collectors.toList());			
 			try {
-				PrinterService.print(sins, this.AIResponse, this.score, this.rank, app.getInsertedCoins());
+				PrinterService.printConfessional(sins, printContent, this.score, this.rank, app.getInsertedCoins());
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -83,8 +87,8 @@ public class EndView extends StatefulPanel {
 		if(rankingContent != null && !rankingContent.isEmpty())
 			sb.append(rankingContent).append("\n");
 		
-		if(this.AIResponse != null && !this.AIResponse.isEmpty())
-			sb.append(this.AIResponse);
+		if(this.printContent != null && !this.printContent.isEmpty())
+			sb.append(this.printContent);
 		
 		return sb.toString();
 	}

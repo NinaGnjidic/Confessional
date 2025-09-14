@@ -21,7 +21,7 @@ public class AIService {
 
 		ChatCompletion completion = OPEN_AI_CLIENT.chat().completions().create(params);
 		String output = completion.choices().get(0).message().content().orElse("");
-
+		
 		System.out.println(output);
 
 		return output;

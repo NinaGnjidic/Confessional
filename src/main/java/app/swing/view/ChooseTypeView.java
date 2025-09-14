@@ -50,7 +50,9 @@ public class ChooseTypeView extends StatefulPanelWithButtons<Type>{
 	
 	@Override
 	public void bigRedButtonPressed() {
-		label.animateButton(() -> this.app.show(new EndView(app)));
+//		label.animateButton(() -> this.app.show(new EndView(app)));
+
+		label.animateButton(() -> this.app.show(new LoadingView(app)));
 	}
 	
 }
