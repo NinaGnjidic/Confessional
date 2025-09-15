@@ -46,7 +46,7 @@ public class ExitView extends StatefulPanel {
 
 		textPane.setText(END_TEXT.replace("\\n", "\n"));
 		textPane.setForeground(Color.YELLOW);
-		textPane.setFont(app.getFont().deriveFont(Font.BOLD, 32));
+		textPane.setFont(app.getFont().deriveFont(Font.BOLD, 28));
 		textPane.setEditable(false);
 		textPane.setOpaque(false);
 		textPane.setBorder(BorderFactory.createEmptyBorder(5, 30, 5, 30));

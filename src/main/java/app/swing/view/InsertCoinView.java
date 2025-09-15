@@ -31,7 +31,7 @@ public class InsertCoinView extends StatefulPanel implements CoinListener {
 			.getImage();
 
 	private Button label = new Button(INSERT_COIN_TITLE, null, app.getFont().deriveFont(Font.BOLD, 90));;
-	private Button text = new Button(INSERT_COIN_TEXT, null, app.getFont().deriveFont(Font.BOLD, 50));;
+	private Button text = new Button(INSERT_COIN_TEXT, null, app.getFont().deriveFont(Font.BOLD, 40));;
 	private Button rightButton;
 	private Button leftButton;
 

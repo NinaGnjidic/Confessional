@@ -42,7 +42,7 @@ public class PrivacyPolicyView extends StatefulPanel {
 	public void handleDisplay() {
 		this.setLayout(new BorderLayout());
 		this.setBorder(new EmptyBorder(130, 120, 100, 140));
-		label = new Button(PRIVACY_TITLE, null, app.getFont().deriveFont(Font.BOLD, 22));
+		label = new Button(PRIVACY_TITLE, null, app.getFont().deriveFont(Font.BOLD, 16));
 		label.hasShadow = true;
 		label.setTextColor(Color.yellow);
 		this.add(label, BorderLayout.NORTH);
