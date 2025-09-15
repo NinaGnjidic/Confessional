@@ -1,5 +1,6 @@
 package main.java.app.swing.listener;
 
+import javax.swing.SwingUtilities;
 import javax.swing.SwingWorker;
 
 import com.fazecast.jSerialComm.SerialPort;
@@ -30,20 +31,7 @@ public interface CoinListener extends SerialPortMessageListener {
 		String message = new String(data).strip();
 		final float coinValue = Float.parseFloat(message);
 
-		onCoinInsert(coinValue);
-//		new SwingWorker<Void, Void>() {
-//
-//			@Override
-//			protected Void doInBackground() throws Exception {
-//				return null;
-//			}
-//
-//			@Override
-//			protected void done() {
-//				onCoinInsert(coinValue);
-//			}
-//			
-//		}.execute();
+		SwingUtilities.invokeLater(()->onCoinInsert(coinValue));
 	}
 
 	public void onCoinInsert(float coinValue);
