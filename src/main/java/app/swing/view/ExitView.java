@@ -6,11 +6,12 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Image;
+import java.awt.event.ActionListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
-import javax.swing.JTextArea;
 import javax.swing.JTextPane;
+import javax.swing.Timer;
 import javax.swing.border.EmptyBorder;
 import javax.swing.text.SimpleAttributeSet;
 import javax.swing.text.StyleConstants;
@@ -25,12 +26,13 @@ public class ExitView extends StatefulPanel {
 	private static final long serialVersionUID = -6705770994443136416L;
 
 	private static final String BACKGROUND_IMAGE_PATH = "/images/bg_default.jpg";
+	private static final Image BACKGROUND_IMAGE = new ImageIcon(StatefulPanelWithButtons.class.getResource(BACKGROUND_IMAGE_PATH)).getImage();
 
-	private static final Image BACKGROUND_IMAGE = new ImageIcon(
-			StatefulPanelWithButtons.class.getResource(BACKGROUND_IMAGE_PATH)).getImage();
+	private Timer timer;
 
 	public ExitView(StatefulApplication app) {
 		super(app, BACKGROUND_IMAGE);
+		startTimer(20000, e -> exit());
 	}
 
 	@Override
@@ -55,9 +57,26 @@ public class ExitView extends StatefulPanel {
 
 	@Override
 	public void bigRedButtonPressed() {
-		this.app.clearSelected();
+		stopTimer();
+		exit();
+	}
+	
+	private void exit() {
+		app.clearSelected();
 		app.stopSound();
 		app.show(new InsertCoinView(app));
+	}
+	
+	private void startTimer(int delay, ActionListener listener) {
+		timer = new Timer(delay, listener);
+		timer.setRepeats(false);
+		timer.start();
+	}
+
+	private void stopTimer() {
+		if (timer != null && timer.isRunning()) {
+			timer.stop();
+		}
 	}
 
 }
