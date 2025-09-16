@@ -69,16 +69,6 @@ public class ToggleButton extends Button {
         repaint();
     }
 
-    public void setSelectedTextColor(Color c) {
-        this.selectedTextColor = c;
-        if (selected) updateStyle();
-    }
-
-    public void setUnselectedTextColor(Color c) {
-        this.unselectedTextColor = c;
-        if (!selected) updateStyle();
-    }
-
     public void bindSelectionHandlers(Runnable onSelect, Runnable onUnselect) {
         this.onSelect = onSelect;
         this.onUnselect = onUnselect;

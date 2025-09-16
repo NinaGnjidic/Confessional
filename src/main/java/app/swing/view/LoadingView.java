@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
+import java.util.stream.Collectors;
 
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
@@ -72,7 +73,7 @@ public class LoadingView extends StatefulPanel {
 
 	private String createAIPrintContent() {
 		try {
-			String content = app.createDetailsPerCategoryString();
+			String content = app.getSelectedDetails().stream().map(d -> d.getName()).collect(Collectors.joining(","));
 			return AIService.confessional(content);
 		} catch (Exception e) {
 			e.printStackTrace();
