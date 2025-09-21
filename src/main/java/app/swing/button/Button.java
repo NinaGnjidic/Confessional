@@ -76,8 +76,8 @@ public class Button extends JPanel {
 
         // draw button image
         if (backgroundImage != null) {
-            g.drawImage(backgroundImage, padding, padding + pressOffset,
-                    getWidth() - padding * 2, getHeight() - padding * 2, this);
+            g.drawImage(backgroundImage, padding, padding + pressOffset, getWidth() - padding * 2, getHeight() - padding * 2, this);
+            drawBorder(g, padding, padding + pressOffset, getWidth() - padding * 2, getHeight() - padding * 2);
         }
 
         if (text != null && !text.isEmpty()) {
@@ -121,6 +121,8 @@ public class Button extends JPanel {
             g.drawString(text, startX, textY);
         }
     }
+    
+    protected void drawBorder(Graphics g, int x, int y, int width, int height) { }
 
     /**
      * Animate the button like it’s being pressed (flashes and moves down)

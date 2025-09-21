@@ -1,7 +1,10 @@
 package main.java.app.swing.button;
 
+import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 
 /**
  * A toggleable version of {@link Button}.
@@ -69,7 +72,20 @@ public class ToggleButton extends Button {
         repaint();
     }
 
-    public void bindSelectionHandlers(Runnable onSelect, Runnable onUnselect) {
+    @Override
+    protected void drawBorder(Graphics g, int x, int y, int width, int height) {
+        super.drawBorder(g, x, y, width, height);
+
+        if (selected) {
+            Graphics2D g2 = (Graphics2D) g.create();
+            g2.setColor(Color.YELLOW);
+            g2.setStroke(new BasicStroke(6, BasicStroke.CAP_SQUARE, BasicStroke.JOIN_MITER));
+            g2.drawRoundRect(x, y, width - 1, height - 1, 20, 20);
+            g2.dispose();
+        }
+    }
+
+	public void bindSelectionHandlers(Runnable onSelect, Runnable onUnselect) {
         this.onSelect = onSelect;
         this.onUnselect = onUnselect;
     }
