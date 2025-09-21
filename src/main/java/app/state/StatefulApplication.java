@@ -27,6 +27,7 @@ public class StatefulApplication {
 
 	private Data data;
 	private Type type;
+	private Category category;
 
 	private float insertedCoins = 0.0f;
 
@@ -84,10 +85,18 @@ public class StatefulApplication {
 		return type;
 	}
 
+	public Category getCategory() {
+		return category;
+	}
+
 	public void setType(Type type) {
 		this.type = type;
 	}
 
+	public void setCategory(Category category) {
+		this.category = category;
+	}
+	
 	public void show(StatefulPanel panel) {
 		this.frame.show(panel);
 	}
@@ -135,6 +144,7 @@ public class StatefulApplication {
 
 	public void clearSelected() {
 		this.type = null;
+		this.category = null;
 		this.selectedDeatilsPerCategory.clear();
 		this.insertedCoins = 0.0f;
 	}

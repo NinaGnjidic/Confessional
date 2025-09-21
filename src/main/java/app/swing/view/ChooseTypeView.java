@@ -45,6 +45,7 @@ public class ChooseTypeView extends StatefulPanelWithButtons<Type>{
 	@Override
 	protected void onDataSelected(Type data) {
 		this.app.setType(data);
+		this.app.setCategory(null);
 		this.app.show(new ChooseCategoryView(app));
 	}
 	
