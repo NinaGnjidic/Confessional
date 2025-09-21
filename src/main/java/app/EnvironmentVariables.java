@@ -10,7 +10,7 @@ public class EnvironmentVariables {
 	public static final String PRINTER = ENV.get("PRINTER");
 	public static final String AI_API_KEY = ENV.get("AI_API_KEY");
 	public static final String AI_PROMPT = ENV.get("AI_PROMPT");
-	public static final String AI_PROMPT_ID = ENV.get("AI_PROMPT_ID");
+	public static final String AI_MODEL = ENV.get("AI_MODEL");
 	
 	public static final String PRINT_TITLE = ENV.get("PRINT_TITLE");
 	public static final String PRINT_NO_SINS = ENV.get("PRINT_NO_SINS");
