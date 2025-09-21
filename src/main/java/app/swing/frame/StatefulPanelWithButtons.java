@@ -56,7 +56,7 @@ public abstract class StatefulPanelWithButtons<T extends Displayable> extends St
 		this.setLayout(new BorderLayout());
 		this.setBorder(new EmptyBorder(100, 170, 100, 170));
 		
-		label = new Button(title, null, app.getFont().deriveFont(Font.BOLD, 40));
+		label = new Button(title, null, app.getFont().deriveFont(Font.BOLD, 35));
 		label.setTextColor(Color.YELLOW);
 		label.hasShadow = true;
 		this.add(label, BorderLayout.NORTH);
