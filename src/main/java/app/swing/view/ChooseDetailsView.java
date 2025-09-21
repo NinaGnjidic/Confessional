@@ -12,7 +12,7 @@ public class ChooseDetailsView extends StatefulPanelWithButtons<Detail> {
 	private static final long serialVersionUID = -2813996135449968932L;
 
 	public ChooseDetailsView(StatefulApplication app, List<Detail> details) {
-		super(app, details, 4, CHOOSE_DETAILS_TITLE + " " + app.getCategory().getName().toUpperCase());
+		super(app, details, 4, CHOOSE_DETAILS_TITLE, app.getCategory().getName().toUpperCase());
 	}
 
 	@Override

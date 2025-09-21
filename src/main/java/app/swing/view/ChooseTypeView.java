@@ -15,7 +15,7 @@ public class ChooseTypeView extends StatefulPanelWithButtons<Type>{
 	private static final long serialVersionUID = 1125776317717562001L;
 	
 	public ChooseTypeView(StatefulApplication app) {
-		super(app, app.getData().getTypes(), 1, CHOOSE_TYPE_TITLE);
+		super(app, app.getData().getTypes(), 1, CHOOSE_TYPE_TITLE, "");
 	}
 	
 	@Override

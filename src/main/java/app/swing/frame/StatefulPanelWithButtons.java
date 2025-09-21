@@ -35,7 +35,9 @@ public abstract class StatefulPanelWithButtons<T extends Displayable> extends St
     private int pageIndex = 0;
 
     String title;
+    String subTitle;
     protected Button label;
+    protected Button text;
     protected Button rightButton;
     protected Button leftButton;
     private JPanel leftPanel;
@@ -44,9 +46,10 @@ public abstract class StatefulPanelWithButtons<T extends Displayable> extends St
     protected final List<ToggleButton> dataButtons = new ArrayList<>();
     
 
-    protected StatefulPanelWithButtons(StatefulApplication app, List<T> data, int pageSize, String title) {
+    protected StatefulPanelWithButtons(StatefulApplication app, List<T> data, int pageSize, String title, String subTitle) {
         super(app, BACKGROUND_IMAGE);
         this.title = title;
+        this.subTitle = subTitle;
         this.data = data;
         this.pageSize = pageSize;
     }
@@ -56,10 +59,24 @@ public abstract class StatefulPanelWithButtons<T extends Displayable> extends St
 		this.setLayout(new BorderLayout());
 		this.setBorder(new EmptyBorder(100, 170, 100, 170));
 		
-		label = new Button(title, null, app.getFont().deriveFont(Font.BOLD, 35));
-		label.setTextColor(Color.YELLOW);
-		label.hasShadow = true;
-		this.add(label, BorderLayout.NORTH);
+		JPanel northPanel = new JPanel();
+		northPanel.setOpaque(false);
+		northPanel.setLayout(new BoxLayout(northPanel, BoxLayout.Y_AXIS));
+
+		if (title != null && !"".equals(title)) {
+			label = new Button(title, null, app.getFont().deriveFont(Font.BOLD, 35));
+			label.setTextColor(Color.YELLOW);
+			label.hasShadow = true;
+			northPanel.add(label);
+		}
+		if (subTitle != null && !"".equals(subTitle)) {
+			text = new Button(subTitle, null, app.getFont().deriveFont(Font.BOLD, 20));
+			text.setPreferredSize(new Dimension(150, 40));
+			text.setTextColor(Color.YELLOW);
+			text.hasShadow = true;
+			northPanel.add(text);
+		}
+		this.add(northPanel, BorderLayout.NORTH);
 
 		JPanel centerPanel = new JPanel(new GridLayout(1, 2));
 		
